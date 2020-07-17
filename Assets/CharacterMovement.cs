@@ -10,6 +10,9 @@ public class CharacterMovement : MonoBehaviour
     public float walkForce = 100;
     public float maxWalkSpeed = 10;
     public float maxSprintSpeed = 30;
+
+    //For jumping
+    public bool inAir = false;
     
     [Range(0.0f, 1.0f)] public float drag;
 
@@ -42,14 +45,31 @@ public class CharacterMovement : MonoBehaviour
             //Smooths out movement
             GetComponent<Rigidbody>().AddForce(walkForce * transform.forward * (1 - GetComponent<Rigidbody>().velocity.magnitude / maxSpeed));
         }
-        
+
         //if (Input.GetKey(KeyCode.Space))
         //{
         //    GetComponent<Rigidbody>().velocity += transform.forward * (1 - GetComponent<Rigidbody>().velocity.magnitude/maxSpeed);
         //}
 
+        //Jump Movement
+        if (Input.GetKey(KeyCode.Space) && inAir == false)
+        {
+            //Smooths out movement
+            GetComponent<Rigidbody>().AddForce(new Vector3(0, 3, 0), ForceMode.Impulse);
+            inAir = true;
+        }
+
         //Controls Horizontal rotation of Player + Player Cam
         float newRotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * 3;
         transform.localEulerAngles = new Vector3(0f, newRotationX, 0f);
+    }
+
+    //Collision function with terrain to check if player is on the ground
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Terrain")
+        {
+            inAir = false;
+        }
     }
 }
