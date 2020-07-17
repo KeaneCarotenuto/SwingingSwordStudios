@@ -227,11 +227,11 @@ Rigidbody:
   m_GameObject: {fileID: 1010473380}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1010473386
@@ -251,6 +251,7 @@ MonoBehaviour:
   walkForce: 200
   maxWalkSpeed: 10
   maxSprintSpeed: 30
+  inAir: 0
   drag: 0.25
 --- !u!1 &1295605463
 GameObject:

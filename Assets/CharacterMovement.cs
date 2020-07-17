@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         //drag
-        GetComponent<Rigidbody>().velocity = new Vector3(drag * GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, drag * GetComponent<Rigidbody>().velocity.z);
+        //GetComponent<Rigidbody>().velocity = new Vector3(drag * GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, drag * GetComponent<Rigidbody>().velocity.z);
 
         //Sprint Controller
         if (Input.GetKey(KeyCode.LeftShift))
@@ -43,7 +44,7 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             //Smooths out movement
-            GetComponent<Rigidbody>().AddForce(walkForce * transform.forward * (1 - GetComponent<Rigidbody>().velocity.magnitude / maxSpeed));
+            GetComponent<Rigidbody>().AddForce(walkForce * transform.forward * Mathf.Clamp((1 - GetComponent<Rigidbody>().velocity.magnitude / maxSpeed),0,1));
         }
 
         //if (Input.GetKey(KeyCode.Space))
