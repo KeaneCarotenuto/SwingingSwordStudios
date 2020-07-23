@@ -7,16 +7,19 @@ public class CharacterMovement : MonoBehaviour
 {
     public CharacterController controller;
 
+    [Header("Movement")]
     public float speed = 12f;
     public float gravity = -9.81f;
-    public float jumpHeight = 3f;
-
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
-
     Vector3 velocity;
+
+
+    [Header("Jumping")]
+    public float jumpHeight = 3f;
+    public float groundDistance = 0.4f;
+    public Transform groundCheck;
+    public LayerMask groundMask;
     bool isGrounded;
+    
 
     private void Update()
     {
