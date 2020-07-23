@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour
     //Keane Test
 
     public CharacterController controller;
+    public TextBoxController tbcontroller;
 
     [Header("Movement")]
     public float speed = 8f;
@@ -36,19 +37,22 @@ public class CharacterMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x * 0.65f + transform.forward * z * ((z <= 0) ? 0.6f: 1f);
-
-
-
-        controller.Move(move * (speed * (Input.GetKey(KeyCode.LeftShift) ? sprintMultiplier : 1))  * Time.deltaTime);
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (!tbcontroller.InDialogue)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            Vector3 move = transform.right * x * 0.65f + transform.forward * z * ((z <= 0) ? 0.6f : 1f);
+
+
+
+            controller.Move(move * (speed * (Input.GetKey(KeyCode.LeftShift) ? sprintMultiplier : 1)) * Time.deltaTime);
+
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
+
+            velocity.y += gravity * Time.deltaTime;
+
+            controller.Move(velocity * Time.deltaTime);
         }
-
-        velocity.y += gravity * Time.deltaTime;
-
-        controller.Move(velocity * Time.deltaTime);
     }
 }
