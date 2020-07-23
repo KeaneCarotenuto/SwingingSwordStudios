@@ -10,8 +10,9 @@ public class CharacterMovement : MonoBehaviour
     public CharacterController controller;
 
     [Header("Movement")]
-    public float speed = 12f;
-    public float gravity = -9.81f;
+    public float speed = 8f;
+    public float sprintMultiplier = 2f;
+    public float gravity = -19.62f;
     Vector3 velocity;
 
 
@@ -37,7 +38,9 @@ public class CharacterMovement : MonoBehaviour
 
         Vector3 move = transform.right * x * 0.65f + transform.forward * z * ((z <= 0) ? 0.6f: 1f);
 
-        controller.Move(move * speed * Time.deltaTime);
+
+
+        controller.Move(move * (speed * (Input.GetKey(KeyCode.LeftShift) ? sprintMultiplier : 1))  * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
