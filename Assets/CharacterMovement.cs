@@ -5,12 +5,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-<<<<<<< HEAD
-    //Nerys Test
-
-=======
-    //Some Changes Nerys
->>>>>>> Nerys
+    //Keane Test
 
     public CharacterController controller;
 
