@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +7,9 @@ public class CharacterMovement : MonoBehaviour
 {
     //Nerys Test
 
+=======
+    //Some Changes Nerys
+>>>>>>> Nerys
 
     public CharacterController controller;
 
