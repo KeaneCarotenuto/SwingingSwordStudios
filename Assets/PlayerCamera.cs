@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public GameObject character;
+    public Transform playerBody;
+
+    public float mouseSensitivity = 100f;
+
+    float xRotation = 0f;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -16,8 +22,15 @@ public class PlayerCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Control Vertical rotaiton seperate from horizontal.
-        float newRotationY = transform.localEulerAngles.x - Input.GetAxis("Mouse Y") * 3;
-        transform.localEulerAngles = new Vector3(newRotationY, 0f, 0f);
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        playerBody.Rotate(Vector3.up * mouseX);
+
+        
     }
 }
