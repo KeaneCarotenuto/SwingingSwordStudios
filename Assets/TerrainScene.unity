@@ -758,6 +758,7 @@ GameObject:
   - component: {fileID: 1010473388}
   - component: {fileID: 1010473387}
   - component: {fileID: 1010473386}
+  - component: {fileID: 1010473381}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -765,6 +766,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1010473381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010473380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ff4773e25440447acf5ccf3fe68f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PCamera: {fileID: 1705438781}
+  Bolt: {fileID: 3088174098002601034, guid: ee4e950cd7c2d3049ac7365c89cd7755, type: 3}
+  boltAmount: 0
 --- !u!4 &1010473384
 Transform:
   m_ObjectHideFlags: 0
