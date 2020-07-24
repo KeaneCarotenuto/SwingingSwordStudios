@@ -4,26 +4,32 @@ using UnityEngine;
 
 public class BoltScript : MonoBehaviour
 {
-    private float nextActionTime;
-    private float period = 0.5f;
+    private float branchTime;
+    private float timeBetweenBranch = 0.5f;
     public int branchItter = 0;
     public int branchAmount = 0;
     private float spawnTime;
 
-    private void Start()
+    public int maxBranches = 2;
+    public int maxBranchRepeats = 2;
+
+    public GameObject boltToSpawn;
+
+    private void Awake()
     {
         spawnTime = Time.time;
-        nextActionTime = Time.time + period;
+        branchTime = Time.time + timeBetweenBranch;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        spawnTime = Time.time - 9.5f;
     }
 
-    // Update is called once per frame
     void Update()
     {
+
         if (Time.time - spawnTime > 10)
         {
             Destroy(gameObject);
@@ -31,17 +37,20 @@ public class BoltScript : MonoBehaviour
 
         GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), Random.Range(-100, 100)));
 
-        if (Time.time >= nextActionTime && branchItter < 2 && branchAmount < 2)
+        if (Time.time >= branchTime && branchItter < maxBranchRepeats && branchAmount < maxBranches)
         {
-            nextActionTime = Time.time + period;
+            branchTime = Time.time + timeBetweenBranch;
 
-            branchAmount++;
+            branchAmount += 1;
 
             Debug.Log("Spawn");
 
-            GameObject tempBolt = Instantiate(gameObject, transform.position, transform.rotation, transform);
+            GameObject tempBolt = Instantiate(boltToSpawn, transform.position, transform.rotation, transform);
+            
             tempBolt.GetComponent<Rigidbody>().AddForce(transform.forward * 2000);
-            tempBolt.GetComponent<BoltScript>().SetBranch(1 + branchItter);
+            tempBolt.GetComponent<BoltScript>().branchItter = branchItter + 1;
+            tempBolt.name = tempBolt.GetComponent<BoltScript>().branchItter + "Bolt" + branchAmount;
+
         }
     }
 

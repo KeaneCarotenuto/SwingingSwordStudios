@@ -22,10 +22,6 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetMouseButton(0) && Time.time >= nextActionTime)
         {
             nextActionTime = Time.time + period;
-            //for (int i = 0; i < boltAmount; i++)
-            //{
-
-            //}
 
             GameObject tempBolt = Instantiate(Bolt, (PCamera.transform.position), PCamera.transform.rotation);
             tempBolt.GetComponent<Rigidbody>().AddForce(PCamera.transform.forward * 6000);
