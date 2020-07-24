@@ -19,5 +19,8 @@ public class BoltScript : MonoBehaviour
     void Update()
     {
         GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), Random.Range(-100, 100)));
+
+        //GameObject tempBolt = Instantiate(gameObject, transform.position, transform.rotation);
+        //tempBolt.GetComponent<Rigidbody>().AddForce(transform.forward * 2000);
     }
 }
