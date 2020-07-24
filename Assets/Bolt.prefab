@@ -4944,8 +4944,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBranches: 2
-  maxBranchRepeats: 2
+  maxItterations: 2
   boltToSpawn: {fileID: 3088174098002601034}
+  boltContainer: {fileID: 0}
 --- !u!108 &-2816445738397192501
 Light:
   m_ObjectHideFlags: 0
