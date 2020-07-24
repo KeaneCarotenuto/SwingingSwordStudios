@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
+    public TextBoxController tbcontroller;
+
     public Transform playerBody;
 
     public float mouseSensitivity = 100f;
@@ -18,6 +20,7 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
+        mouseSensitivity = (tbcontroller.InDialogue ? 10f : 100f);
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
