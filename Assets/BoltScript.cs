@@ -4,26 +4,42 @@ using UnityEngine;
 
 public class BoltScript : MonoBehaviour
 {
-    private float nextActionTime;
-    private float period = 0.5f;
-    public int branchItter = 0;
-    public int branchAmount = 0;
+    private float branchTime;
+    private float timeBetweenBranch = 0.25f;
+    private int itterationNum = 0;
+    private int branchAmount = 0;
     private float spawnTime;
+
+    public int maxBranches = 2;
+    public int maxItterations = 2;
+
+    public GameObject boltToSpawn;
+    public GameObject boltContainer;
+
+    private void Awake()
+    {
+        spawnTime = Time.time;
+        branchTime = Time.time + timeBetweenBranch;
+    }
 
     private void Start()
     {
-        spawnTime = Time.time;
-        nextActionTime = Time.time + period;
+        if (gameObject.name == "OriginalBolt")
+        {
+            Debug.Log("FIRST");
+            branchTime = Time.time + timeBetweenBranch / 10;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        spawnTime = Time.time - 9.5f;
     }
 
-    // Update is called once per frame
     void Update()
     {
+
         if (Time.time - spawnTime > 10)
         {
             Destroy(gameObject);
@@ -31,23 +47,24 @@ public class BoltScript : MonoBehaviour
 
         GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), Random.Range(-100, 100)));
 
-        if (Time.time >= nextActionTime && branchItter < 2 && branchAmount < 2)
+        if (Time.time >= branchTime && itterationNum < maxItterations && branchAmount < maxBranches)
         {
-            nextActionTime = Time.time + period;
+            branchTime = Time.time + timeBetweenBranch;
 
-            branchAmount++;
+            branchAmount += 1;
 
             Debug.Log("Spawn");
 
-            GameObject tempBolt = Instantiate(gameObject, transform.position, transform.rotation, transform);
-            tempBolt.GetComponent<Rigidbody>().AddForce(transform.forward * 2000);
-            tempBolt.GetComponent<BoltScript>().SetBranch(1 + branchItter);
+            GameObject tempBolt = Instantiate(boltToSpawn, transform.position, transform.rotation, GameObject.Find("BoltContainer").transform);
+            tempBolt.GetComponent<Rigidbody>().AddForce(transform.forward * 6000);
+            tempBolt.GetComponent<BoltScript>().itterationNum = itterationNum + 1;
+            tempBolt.name = tempBolt.GetComponent<BoltScript>().itterationNum + "Bolt" + branchAmount;
         }
     }
 
     public void SetBranch(int _branch)
     {
-        branchItter = _branch;
+        itterationNum = _branch;
     }
 }
 

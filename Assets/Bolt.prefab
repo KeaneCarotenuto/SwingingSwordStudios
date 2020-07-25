@@ -4874,7 +4874,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 0.4
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.01
@@ -4943,8 +4943,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d17548d63a4a71e42a5b2353a53e6aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  branchItter: 0
-  branchAmount: 0
+  maxBranches: 2
+  maxItterations: 2
+  boltToSpawn: {fileID: 3088174098002601034}
+  boltContainer: {fileID: 0}
 --- !u!108 &-2816445738397192501
 Light:
   m_ObjectHideFlags: 0
