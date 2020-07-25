@@ -8,8 +8,9 @@ using UnityEngine;
  */
 public class ME_Knockback : MagicEffect
 {
+    bool bActive = false;
     public int damage = 25;
-    public float magnitude = 25; // Magnitude of the knockback
+    public float magnitude = 5; // Magnitude of the knockback
     public int duration = 10; // Unused
     public int spellType = 1; // Unusedrn
                               //  public  GameObject body; // Temporary. this actor's body, with the rigidbody
@@ -23,6 +24,7 @@ public class ME_Knockback : MagicEffect
         targetActor = GetComponent<Actor>();
         targetTransform = gameObject.transform;
         targetPosition = targetTransform.position;
+        bActive = true;
         if (targetActor == null)
         {
          //   Debug.Log("DEBUG(ME_KNOCKBACK): This magic effect either not attached to an actor OR you didn't put an ACTOR class to the target npc");
@@ -42,7 +44,9 @@ public class ME_Knockback : MagicEffect
         targetPosition = targetTransform.position;
         //Debug.Log("DEBUG(ME_KNOCKBACK): Knockback triggered!");
         Vector3 direction = targetPosition - targetTransform.forward;
+        
         direction.y = direction.y + 5;
+        Debug.Log(direction);
         targetActor.TakeDamage(25);
         //  Destroy(gameObject);
         rb.AddForce(direction.normalized * magnitude, ForceMode.Impulse);
@@ -54,27 +58,31 @@ public class ME_Knockback : MagicEffect
         // Remove this magic effect
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        Destroy(this);
+        
     }
     void Update()
     {
-        Knockback();
-        if (spellType == 1)
+        if (bActive)
         {
-            // If this spell is a fire and forget, trigger once then remove
-            Dispel();
-        }
-        else if (spellType == 2)
-        {
-            // If this spell is constant effect, trigger for set amount of duration.
-        }
-        else if (spellType == 3)
-        {
-            // If this is a channeling spell, ???
-        }
-        else
-        {
-            // Out of bounds.
+            bActive = false;
+            Knockback();
+            if (spellType == 1)
+            {
+                // If this spell is a fire and forget, trigger once then remove
+                Dispel();
+            }
+            else if (spellType == 2)
+            {
+                // If this spell is constant effect, trigger for set amount of duration.
+            }
+            else if (spellType == 3)
+            {
+                // If this is a channeling spell, ???
+            }
+            else
+            {
+                // Out of bounds.
+            }
         }
     }
 
@@ -85,6 +93,8 @@ public class ME_Knockback : MagicEffect
         yield return new WaitForSeconds(duration);   //Wait
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+        Dispel();
+       // Destroy(gameObject);
         
     }
 }
