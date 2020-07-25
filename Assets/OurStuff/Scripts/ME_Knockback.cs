@@ -43,7 +43,7 @@ public class ME_Knockback : MagicEffect
         //Debug.Log("DEBUG(ME_KNOCKBACK): Knockback triggered!");
         Vector3 direction = targetPosition - targetTransform.forward;
         direction.y = direction.y + 5;
-        targetActor.TakeDamage(10);
+        targetActor.TakeDamage(25);
         //  Destroy(gameObject);
         rb.AddForce(direction.normalized * magnitude, ForceMode.Impulse);
         StartCoroutine(Wait(0.5f));
