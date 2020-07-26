@@ -46,7 +46,7 @@ public class BoltScript : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (GetComponent<Rigidbody>().velocity.magnitude >= 1000)
+        if (GetComponent<Rigidbody>().velocity.magnitude >= 10)
         {
             GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), Random.Range(-100, 100)));
 
