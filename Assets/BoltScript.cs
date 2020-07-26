@@ -33,6 +33,7 @@ public class BoltScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        transform.parent = other.transform;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         spawnTime = Time.time - 9.5f;
     }
@@ -45,21 +46,27 @@ public class BoltScript : MonoBehaviour
             Destroy(gameObject);
         }
 
-        GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), Random.Range(-100, 100)));
-
-        if (Time.time >= branchTime && itterationNum < maxItterations && branchAmount < maxBranches)
+        if (GetComponent<Rigidbody>().velocity.magnitude >= 1000)
         {
-            branchTime = Time.time + timeBetweenBranch;
+            GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), Random.Range(-100, 100)));
 
-            branchAmount += 1;
+            if (Time.time >= branchTime && itterationNum < maxItterations && branchAmount < maxBranches)
+            {
+                branchTime = Time.time + timeBetweenBranch;
 
-            Debug.Log("Spawn");
+                branchAmount += 1;
 
-            GameObject tempBolt = Instantiate(boltToSpawn, transform.position, transform.rotation, GameObject.Find("BoltContainer").transform);
-            tempBolt.GetComponent<Rigidbody>().AddForce(transform.forward * 6000);
-            tempBolt.GetComponent<BoltScript>().itterationNum = itterationNum + 1;
-            tempBolt.name = tempBolt.GetComponent<BoltScript>().itterationNum + "Bolt" + branchAmount;
+                Debug.Log("Spawn");
+
+                GameObject tempBolt = Instantiate(boltToSpawn, transform.position, transform.rotation, GameObject.Find("BoltContainer").transform);
+                tempBolt.GetComponent<Rigidbody>().AddForce(transform.forward * 6000);
+                tempBolt.GetComponent<BoltScript>().itterationNum = itterationNum + 1;
+                tempBolt.name = tempBolt.GetComponent<BoltScript>().itterationNum + "Bolt" + branchAmount;
+            }
         }
+        
+
+        
     }
 
     public void SetBranch(int _branch)
