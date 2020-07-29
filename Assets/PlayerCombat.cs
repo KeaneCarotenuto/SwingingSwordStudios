@@ -22,13 +22,10 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetMouseButton(0) && Time.time >= nextActionTime)
         {
             nextActionTime = Time.time + period;
-            //for (int i = 0; i < boltAmount; i++)
-            //{
 
-            //}
-
-            GameObject tempBolt = Instantiate(Bolt, (PCamera.transform.position), PCamera.transform.rotation);
-            tempBolt.GetComponent<Rigidbody>().AddForce(PCamera.transform.forward * 6000);
+            GameObject tempBolt = Instantiate(Bolt, (PCamera.transform.position), PCamera.transform.rotation, GameObject.Find("BoltContainer").transform);
+            tempBolt.GetComponent<Rigidbody>().AddForce(PCamera.transform.forward * 18000);
+            tempBolt.name = "OriginalBolt";
 
         }
     }
