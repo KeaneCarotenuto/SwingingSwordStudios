@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoltScript : MonoBehaviour
 {
     private float branchTime;
-    private float timeBetweenBranch = 0.25f;
+    private float timeBetweenBranch = 0.1f;
     private int itterationNum = 0;
     private int branchAmount = 0;
     private float spawnTime;
@@ -14,7 +14,7 @@ public class BoltScript : MonoBehaviour
     public int maxItterations = 2;
 
     public GameObject boltToSpawn;
-    public GameObject boltContainer;
+    public SphereCollider mainCollider;
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class BoltScript : MonoBehaviour
         if (gameObject.name == "OriginalBolt")
         {
             Debug.Log("FIRST");
-            branchTime = Time.time + timeBetweenBranch / 10;
+            branchTime = Time.time + timeBetweenBranch / 100;
         }
     }
 
@@ -38,8 +38,9 @@ public class BoltScript : MonoBehaviour
         spawnTime = Time.time - 9.5f;
     }
 
-    void Update()
+    private void FixedUpdate()
     {
+        
 
         if (Time.time - spawnTime > 10)
         {
@@ -64,9 +65,6 @@ public class BoltScript : MonoBehaviour
                 tempBolt.name = tempBolt.GetComponent<BoltScript>().itterationNum + "Bolt" + branchAmount;
             }
         }
-        
-
-        
     }
 
     public void SetBranch(int _branch)

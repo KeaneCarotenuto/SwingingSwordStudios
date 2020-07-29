@@ -24,7 +24,7 @@ public class PlayerCombat : MonoBehaviour
             nextActionTime = Time.time + period;
 
             GameObject tempBolt = Instantiate(Bolt, (PCamera.transform.position), PCamera.transform.rotation, GameObject.Find("BoltContainer").transform);
-            tempBolt.GetComponent<Rigidbody>().AddForce(PCamera.transform.forward * 18000);
+            tempBolt.GetComponent<Rigidbody>().AddForce(PCamera.transform.forward * 30000);
             tempBolt.name = "OriginalBolt";
 
         }
