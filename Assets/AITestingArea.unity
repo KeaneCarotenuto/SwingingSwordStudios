@@ -405,7 +405,7 @@ Light:
   serializedVersion: 9
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -414,7 +414,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.4
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -1598,12 +1598,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1016917846}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2024628533 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5456399819320088855, guid: c7f7621cfee351e48a0d6fb6692c6936,
-    type: 3}
-  m_PrefabInstance: {fileID: 602169519}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2073028969 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5413043162626829238, guid: 3c973b3a585982f40bbb941b614538be,
@@ -1698,12 +1692,22 @@ PrefabInstance:
         type: 3}
       propertyPath: InteractableObject
       value: 
-      objectReference: {fileID: 2024628533}
+      objectReference: {fileID: 0}
     - target: {fileID: 4730941892588180065, guid: b706b756a2c2b774e9635fe487e10c95,
         type: 3}
       propertyPath: TBcontroller
       value: 
       objectReference: {fileID: 2134044250}
+    - target: {fileID: 4730941892588180065, guid: b706b756a2c2b774e9635fe487e10c95,
+        type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2134044250}
+    - target: {fileID: 4730941892588180065, guid: b706b756a2c2b774e9635fe487e10c95,
+        type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextTextBox
+      objectReference: {fileID: 0}
     - target: {fileID: 4730941892588180064, guid: b706b756a2c2b774e9635fe487e10c95,
         type: 3}
       propertyPath: tbcontroller
@@ -1719,5 +1723,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4730941890810604744, guid: b706b756a2c2b774e9635fe487e10c95, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b706b756a2c2b774e9635fe487e10c95, type: 3}
