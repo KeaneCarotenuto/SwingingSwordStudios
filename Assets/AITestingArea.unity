@@ -305,6 +305,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pawn (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3816513650530519017, guid: a127ffc0464c0444d937c2d4e20c5c6b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: 3816513650236402912, guid: a127ffc0464c0444d937c2d4e20c5c6b,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -5017,8 +5017,13 @@ MonoBehaviour:
   maxItterations: 2
   maxBoltAliveTime: 2
   afterHitAliveTime: 0.2
+  seekDistance: 10
+  seekForce: 300
+  maxSeekSpeed: 2000
   boltToSpawn: {fileID: 3088174098002601034}
-  mainCollider: {fileID: 3088174098002601046}
+  toSeek:
+  - {fileID: 3816513650530519017, guid: a127ffc0464c0444d937c2d4e20c5c6b, type: 3}
+  seeking: []
 --- !u!114 &-2120547481063051039
 MonoBehaviour:
   m_ObjectHideFlags: 0
