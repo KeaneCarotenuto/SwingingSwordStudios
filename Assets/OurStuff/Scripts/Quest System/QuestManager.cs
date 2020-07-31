@@ -46,6 +46,7 @@ public class QuestManager : MonoBehaviour
         }
         else
         {
+            _quest.Initialise();
             activeQuests.Add(_quest);
         }
     }

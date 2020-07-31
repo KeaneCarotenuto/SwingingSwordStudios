@@ -12,7 +12,8 @@ public enum ObjectiveType
 public class questObjective : ScriptableObject
 {
     [SerializeField]
-    public int objectiveAmount;
+    public int defaultObjectiveAmount;
+    private int objectiveAmount;
     [SerializeField]
     public ObjectiveType objectiveType;
     [SerializeField]
@@ -22,6 +23,11 @@ public class questObjective : ScriptableObject
     [SerializeField]
     private bool objectiveComplete;
 
+    public void Initialise()
+    {
+        objectiveAmount = defaultObjectiveAmount;
+        objectiveComplete = false;
+    }
     public bool TryAdvance(string _targetID, ObjectiveType _type)
     {
         if(_type != objectiveType) { return false; }
