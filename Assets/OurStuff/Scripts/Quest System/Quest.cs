@@ -14,6 +14,14 @@ public class Quest : ScriptableObject
     [SerializeField]
     public bool questComplete;
 
+    public void Initialise()
+    {
+        foreach(questObjective objective in objectiveList)
+        {
+            objective.Initialise();
+        }
+        questComplete = false;
+    }
     public void checkObjective(string _targetID, ObjectiveType _type)
     {
         bool completeFlag = true;

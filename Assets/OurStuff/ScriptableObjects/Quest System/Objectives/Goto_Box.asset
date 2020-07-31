@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 419a4bbfac2bc9d47902474b0b4c80d1, type: 3}
-  m_Name: Kill 5 Enemies
+  m_Name: Goto_Box
   m_EditorClassIdentifier: 
-  objectiveAmount: 5
-  objectiveType: 0
-  objectiveTargetID: 
+  defaultObjectiveAmount: 1
+  objectiveType: 1
+  objectiveTargetID: 1
   objectiveIndex: 0
-  objectiveComplete: 0
+  objectiveComplete: 1
