@@ -15,5 +15,5 @@ MonoBehaviour:
   defaultObjectiveAmount: 1
   objectiveType: 1
   objectiveTargetID: 1
-  objectiveIndex: 0
+  objectiveDesc: Go to the cube
   objectiveComplete: 1
