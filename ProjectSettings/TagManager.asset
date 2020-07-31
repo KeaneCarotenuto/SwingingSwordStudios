@@ -8,6 +8,7 @@ TagManager:
   - TextBoxService
   - Interactable
   - Body
+  - QuestManager
   layers:
   - Default
   - TransparentFX
