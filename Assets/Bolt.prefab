@@ -251,7 +251,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3000
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -947,7 +947,7 @@ ParticleSystem:
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 1
       scalar: 30
       minScalar: 10
       maxCurve:
@@ -955,21 +955,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
+          value: 0.49777222
+          inSlope: -0.010069667
+          outSlope: -0.010069667
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0.5463722
         - serializedVersion: 3
-          time: 1
+          time: 0.14112854
           value: 1
-          inSlope: 0
-          outSlope: 0
+          inSlope: -0.051270373
+          outSlope: -0.051270373
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.42923617
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -4020,9 +4020,9 @@ ParticleSystem:
     textureMode: 0
     ribbonCount: 1
     shadowBias: 0.5
-    worldSpace: 0
+    worldSpace: 1
     dieWithParticles: 1
-    sizeAffectsWidth: 1
+    sizeAffectsWidth: 0
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 1
@@ -4094,7 +4094,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4875,10 +4875,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.5
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.01
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -4891,6 +4891,15 @@ TrailRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5083008
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -4924,7 +4933,7 @@ TrailRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 10
-    numCapVertices: 0
+    numCapVertices: 10
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
@@ -5006,8 +5015,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxBranches: 2
   maxItterations: 2
+  maxBoltAliveTime: 2
+  afterHitAliveTime: 0.2
+  seekDistance: 10
+  seekForce: 300
+  maxSeekSpeed: 2000
   boltToSpawn: {fileID: 3088174098002601034}
-  mainCollider: {fileID: 3088174098002601046}
+  toSeek:
+  - {fileID: 3816513650530519017, guid: a127ffc0464c0444d937c2d4e20c5c6b, type: 3}
+  seeking: []
 --- !u!114 &-2120547481063051039
 MonoBehaviour:
   m_ObjectHideFlags: 0

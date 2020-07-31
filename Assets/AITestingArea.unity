@@ -305,6 +305,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pawn (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3816513650530519017, guid: a127ffc0464c0444d937c2d4e20c5c6b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: 3816513650236402912, guid: a127ffc0464c0444d937c2d4e20c5c6b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -624,6 +629,42 @@ PrefabInstance:
       propertyPath: TBcontroller
       value: 
       objectReference: {fileID: 2134044250}
+    - target: {fileID: 5456399819320088841, guid: c7f7621cfee351e48a0d6fb6692c6936,
+        type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456399819320088841, guid: c7f7621cfee351e48a0d6fb6692c6936,
+        type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456399819320088841, guid: c7f7621cfee351e48a0d6fb6692c6936,
+        type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456399819320088841, guid: c7f7621cfee351e48a0d6fb6692c6936,
+        type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1921624705}
+    - target: {fileID: 5456399819320088841, guid: c7f7621cfee351e48a0d6fb6692c6936,
+        type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: TryAddQuest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456399819320088841, guid: c7f7621cfee351e48a0d6fb6692c6936,
+        type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Quest, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456399819320088841, guid: c7f7621cfee351e48a0d6fb6692c6936,
+        type: 3}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e13310a2cbd41f4a8047d1816da3c7d,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7f7621cfee351e48a0d6fb6692c6936, type: 3}
 --- !u!1 &803394739
@@ -1592,6 +1633,54 @@ Terrain:
   m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
   m_GroupingID: 0
   m_AllowAutoConnect: 1
+--- !u!1 &1921624704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1921624706}
+  - component: {fileID: 1921624705}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: QuestManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1921624705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921624704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599cbd027f5173b4d9ddeb846412a483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPlayerAction:
+    m_PersistentCalls:
+      m_Calls: []
+  activeQuests: []
+  completedQuests: []
+--- !u!4 &1921624706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921624704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 86.20778, y: 4.0993295, z: 132.11052}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1988217106 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5336039701123002183, guid: 5f96cf12a4c3a3d47a00a596aa5f9d9a,
@@ -1683,6 +1772,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4730941892039705483, guid: b706b756a2c2b774e9635fe487e10c95,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4730941892588180065, guid: b706b756a2c2b774e9635fe487e10c95,
         type: 3}
       propertyPath: InteractPrompt
@@ -1718,10 +1812,6 @@ PrefabInstance:
       propertyPath: tbcontroller
       value: 
       objectReference: {fileID: 2134044250}
-    - target: {fileID: 4730941892039705483, guid: b706b756a2c2b774e9635fe487e10c95,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4730941890810604744, guid: b706b756a2c2b774e9635fe487e10c95, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b706b756a2c2b774e9635fe487e10c95, type: 3}
