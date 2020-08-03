@@ -13,30 +13,42 @@ public class Quest : ScriptableObject
     public List<questObjective> objectiveList;
     [SerializeField]
     public bool questComplete;
+    public int currentObjectiveIndex;
 
     public void Initialise()
     {
-        foreach(questObjective objective in objectiveList)
+        int currentIndex = 0;
+        foreach (questObjective objective in objectiveList)
         {
             objective.Initialise();
+            objective.objectiveIndex = currentIndex++;
         }
         questComplete = false;
+        currentObjectiveIndex = 0;
     }
     public void checkObjective(string _targetID, ObjectiveType _type)
     {
         bool completeFlag = true;
         foreach (questObjective objective in objectiveList)
         {
-            if(!objective.isComplete())
+
+            if (!objective.isComplete())
             {
-                objective.TryAdvance(_targetID, _type);
-                if(!objective.isComplete())
+                if (objective.objectiveIndex == currentObjectiveIndex)
+                {
+                    objective.TryAdvance(_targetID, _type);
+
+                }
+                if (!objective.isComplete())
                 {
                     completeFlag = false;
                 }
+                else { currentObjectiveIndex++; }
             }
         }
         questComplete = completeFlag;
     }
+
+    
 
 }
