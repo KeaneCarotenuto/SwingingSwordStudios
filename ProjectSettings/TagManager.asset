@@ -10,6 +10,7 @@ TagManager:
   - Body
   - QuestManager
   - DynamicUIElement
+  - PatrolPoint
   layers:
   - Default
   - TransparentFX
