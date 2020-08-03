@@ -10,7 +10,13 @@ public class UI_QuestUI : MonoBehaviour
     public QuestManager questManager;
     public void DisplayQuestDetails(Quest _quest)
     {
-        
+        foreach(Transform child in questDetails.transform)
+        {
+            if(child.gameObject.tag == "DynamicUIElement")
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+        }
         currentQuestPanel = (GameObject)Instantiate(questPanel);
         UI_QuestPanel panel = currentQuestPanel.GetComponent<UI_QuestPanel>();
         panel.quest = _quest;
