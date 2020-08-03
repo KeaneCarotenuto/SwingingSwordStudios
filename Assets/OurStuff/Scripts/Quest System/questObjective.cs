@@ -19,7 +19,7 @@ public class questObjective : ScriptableObject
     [SerializeField]
     private string objectiveTargetID;
     [SerializeField]
-    public int objectiveIndex;
+    public string objectiveDesc;
     [SerializeField]
     private bool objectiveComplete;
 

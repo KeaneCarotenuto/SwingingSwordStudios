@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a059e33b702241d4b804f1967e80a0c3, type: 3}
   m_Name: TestQuest
   m_EditorClassIdentifier: 
-  questName: Protect the villager
-  questDesc: Defeat the bandits to protect the villager
+  questName: Quest system test
+  questDesc: A test of a waypoint quest. Go to the cube to complete the quest.
   objectiveList:
   - {fileID: 11400000, guid: 680ee44dc945b9947b756779f8d98054, type: 2}
-  questComplete: 0
+  questComplete: 1

@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 419a4bbfac2bc9d47902474b0b4c80d1, type: 3}
-  m_Name: Goto_Box
+  m_Script: {fileID: 11500000, guid: a059e33b702241d4b804f1967e80a0c3, type: 3}
+  m_Name: New Quest
   m_EditorClassIdentifier: 
-  defaultObjectiveAmount: 1
-  objectiveType: 1
-  objectiveTargetID: 1
-  objectiveDesc: Go to the cube
-  objectiveComplete: 1
+  questName: 
+  questDesc: 
+  objectiveList: []
+  questComplete: 0

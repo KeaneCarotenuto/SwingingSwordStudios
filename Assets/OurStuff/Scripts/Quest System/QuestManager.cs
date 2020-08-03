@@ -10,9 +10,9 @@ public class QuestManager : MonoBehaviour
     [SerializeField]
     public QuestEvent OnPlayerAction;
     [SerializeField]
-    private List<Quest> activeQuests;
+    public List<Quest> activeQuests;
     [SerializeField]
-    private List<Quest> completedQuests;
+    public List<Quest> completedQuests;
     // Start is called before the first frame update
     void Start()
     {

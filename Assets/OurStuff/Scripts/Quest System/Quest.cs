@@ -10,7 +10,7 @@ public class Quest : ScriptableObject
     [SerializeField]
     public string questDesc;
     [SerializeField]
-    private List<questObjective> objectiveList;
+    public List<questObjective> objectiveList;
     [SerializeField]
     public bool questComplete;
 
