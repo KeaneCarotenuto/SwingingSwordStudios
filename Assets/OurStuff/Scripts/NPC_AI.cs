@@ -107,6 +107,7 @@ public void StartRepositionState()
 
     void DoCombatRoutine()
     {
+        myActor.moveSpeed = 10;
         transform.LookAt(target.transform.position);
         // Check if i'm within the range of the target
         if (bTargetWithinRange)
@@ -122,6 +123,7 @@ public void StartRepositionState()
 
     void DoNormalRoutine()
     {
+        myActor.moveSpeed = 5;
         if (state_patrol)
         {
             Patrol();
@@ -134,7 +136,11 @@ public void StartRepositionState()
     void Idle()
     {
         // Stand still and do fuck all
+        navAgent.velocity = Vector3.zero;
         navAgent.isStopped = true;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 
     void Reposition()
@@ -162,7 +168,7 @@ public void StartRepositionState()
         Vector3 targetPos = patrolCurrentPoint.transform.position;
         navAgent.SetDestination(targetPos);
         float distance = Vector3.Distance(targetPos, transform.position);
-        if (distance < 4.5f)
+        if (distance < 5f)
         {
             StartIdleState();
             StartCoroutine("WaitAtPatrolPoint");

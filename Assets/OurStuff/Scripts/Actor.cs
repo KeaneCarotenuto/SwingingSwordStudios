@@ -489,6 +489,7 @@ public class Actor : MonoBehaviour
     public void TakeDamage(float _iDamage)
     {
         DamageAV("health", _iDamage);
+        StartCombat();
     }
 
     /*--- Calculate Functions ---*/
