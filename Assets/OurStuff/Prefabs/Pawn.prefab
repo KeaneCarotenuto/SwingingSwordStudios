@@ -410,7 +410,6 @@ GameObject:
   - component: {fileID: 3816513650530519028}
   - component: {fileID: 3816513650530519029}
   - component: {fileID: 3816513650530519030}
-  - component: {fileID: 3816513650530519031}
   - component: {fileID: 3816513650530519016}
   m_Layer: 0
   m_Name: Pawn
@@ -490,19 +489,6 @@ NavMeshAgent:
   m_BaseOffset: 0.73
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3816513650530519031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3816513650530519017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43cce151c83a6be4a9a0a9b532eebe38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetDestination: {fileID: 0}
 --- !u!114 &3816513650530519016
 MonoBehaviour:
   m_ObjectHideFlags: 0

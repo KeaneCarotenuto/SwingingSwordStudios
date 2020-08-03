@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 /*
      This class is attached to every actor in the game. 
@@ -10,29 +11,39 @@ using UnityEngine.UI;
 public class Actor : MonoBehaviour
 {
     /*--- Variables ---*/
-    public string name;
+    public string name = "John Cena";
     public Faction faction;
     // Actor Values
 
-    public float health;
-    public float healthMax;
-    public float mana;
-    public float manaMax;
-    public float stamina;
-    public float staminaMax;
-    public float aggression;
-    public float attackDamage;
-    public float attackSpeed;
-    public float moveSpeed;
-    public float damageResistance;
-    public float spellResistance;
+    public float health = 100;
+    public float healthMax = 100;
+    public float mana = 100;
+    public float manaMax = 100;
+    public float stamina = 100;
+    public float staminaMax = 100;
+    public float aggression = 4;
+    public float attackDamage = 25;
+    public float attackSpeed = 1;
+    public float attackRange = 30;
+    public float moveSpeed = 25;
+    public float damageResistance = 10;
+    public float spellResistance = 10;
+    public float combatRange = 10; // If the distance between this actor and its combat target is less than combatRange, gtfo 
     // User Interface
     public Slider healthbar;
     public GameObject healthBarUI;
+    // TEMP, COMBAT SHIT
+    public GameObject projectilePrefab;
+    bool bCanAttack = true;
+
+    public GameObject[] linkedObjects;
+
+    NavMeshAgent navAgent;
     /*--- ---*/
     void Start()
     {
         SetDefaultAV();
+        navAgent = GetComponent<NavMeshAgent>();
     }
 
 
@@ -44,6 +55,8 @@ public class Actor : MonoBehaviour
             // dead
             Destroy(gameObject);
         }
+        navAgent.speed = moveSpeed;
+        
     }
 
     /*--- Get() Functions ---*/
@@ -251,8 +264,34 @@ public class Actor : MonoBehaviour
     }
 
     /*--- Actions ---*/
-    void Kill() { }
-    void Disable() { }
+    public void Kill() { }
+    public void Disable() { }
+
+    public void StartCombat()
+    {
+        // Pick a fight with the player
+        if(GetComponent<NPC_AI>() != null)
+        {
+            NPC_AI ai = GetComponent<NPC_AI>();
+            ai.StartCombatState();
+        }
+        
+
+    }
+    public void Attack()
+    {
+        // Fire a projectile in front of this actor. TEMPORARY, WILL CHANGE LATER
+        if (bCanAttack)
+        {
+            Vector3 spawnPoint = transform.position;
+            spawnPoint.y += 2.5f;
+            GameObject projectile = Instantiate(projectilePrefab, spawnPoint, transform.rotation, GameObject.Find("BoltContainer").transform);
+            projectile.GetComponent<Rigidbody>().AddForce(transform.forward * 5000);
+            bCanAttack = false;
+            StartCoroutine("StartAttackCooldown");
+        }
+       
+    }
 
     public void DamageActorValue(string _sValue, float _iAmount)
     {
@@ -487,7 +526,11 @@ public class Actor : MonoBehaviour
         }
     }
 
-
+    IEnumerator StartAttackCooldown()
+    {
+        yield return new WaitForSeconds(attackSpeed);   //Wait
+        bCanAttack = true;
+    }
 
 
 }
