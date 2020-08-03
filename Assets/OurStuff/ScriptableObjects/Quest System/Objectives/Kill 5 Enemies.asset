@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419a4bbfac2bc9d47902474b0b4c80d1, type: 3}
   m_Name: Kill 5 Enemies
   m_EditorClassIdentifier: 
-  objectiveAmount: 5
+  defaultObjectiveAmount: 5
   objectiveType: 0
   objectiveTargetID: 
-  objectiveIndex: 0
+  objectiveDesc: Kill 5 Enemies
   objectiveComplete: 0

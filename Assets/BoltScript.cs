@@ -33,7 +33,7 @@ public class BoltScript : MonoBehaviour
         {
             foreach (GameObject gameObj in FindObjectsOfType(_obj.GetType()))
             {
-                if (gameObj.name.Contains("Pawn"))
+                if (gameObj.name.Contains("Bandit"))
                 {
                     //Debug.Log(gameObj.transform.position);
                     seeking.Add(gameObj);
@@ -101,7 +101,12 @@ public class BoltScript : MonoBehaviour
                 if (closestObj != null && closestDist <= seekDistance)
                 {
                     GetComponent<Rigidbody>().velocity *= 0.8f;
-                    GetComponent<Rigidbody>().AddForce(((closestObj.transform.position + 0.1f*closestObj.GetComponent<Rigidbody>().velocity) - transform.position) * seekForce);
+                    Vector3 seekpos = Vector3.zero;
+
+                    if (closestObj.GetComponent<Rigidbody>() != null) {
+                        seekpos = 0.1f * closestObj.GetComponent<Rigidbody>().velocity;
+                    }
+                    GetComponent<Rigidbody>().AddForce(((closestObj.transform.position + Vector3.up + seekpos) - transform.position) * seekForce);
                 }
             }
             

@@ -10,9 +10,9 @@ public class QuestManager : MonoBehaviour
     [SerializeField]
     public QuestEvent OnPlayerAction;
     [SerializeField]
-    private List<Quest> activeQuests;
+    public List<Quest> activeQuests;
     [SerializeField]
-    private List<Quest> completedQuests;
+    public List<Quest> completedQuests;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +38,19 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    public int getQuestStage(string _questName)
+    {
+        foreach (Quest quest in activeQuests)
+        {
+            if(quest.questName == _questName)
+            {
+                return quest.currentObjectiveIndex;
+            }
+            
+            
+        }
+        return 0;
+    }
     public void TryAddQuest(Quest _quest)
     {
         if(activeQuests.Contains(_quest) || completedQuests.Contains(_quest))
@@ -46,6 +59,7 @@ public class QuestManager : MonoBehaviour
         }
         else
         {
+            _quest.Initialise();
             activeQuests.Add(_quest);
         }
     }
