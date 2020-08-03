@@ -53,7 +53,7 @@ public class Actor : MonoBehaviour
         if(health <= 0)
         {
             // dead
-            Destroy(gameObject);
+            Kill();
         }
         navAgent.speed = moveSpeed;
         
@@ -264,7 +264,16 @@ public class Actor : MonoBehaviour
     }
 
     /*--- Actions ---*/
-    public void Kill() { }
+    public void Kill() 
+    {
+        if(GetComponent<QuestTarget>() != null)
+        {
+            // If this actor is a quest target, trigger the thing
+            QuestTarget quest = GetComponent<QuestTarget>();
+            quest.Trigger();
+        }
+        Destroy(gameObject);
+    }
     public void Disable() { }
 
     public void StartCombat()
@@ -275,8 +284,6 @@ public class Actor : MonoBehaviour
             NPC_AI ai = GetComponent<NPC_AI>();
             ai.StartCombatState();
         }
-        
-
     }
     public void Attack()
     {
@@ -532,6 +539,4 @@ public class Actor : MonoBehaviour
         yield return new WaitForSeconds(attackSpeed);   //Wait
         bCanAttack = true;
     }
-
-
 }
