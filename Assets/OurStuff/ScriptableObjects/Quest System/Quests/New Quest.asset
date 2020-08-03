@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a059e33b702241d4b804f1967e80a0c3, type: 3}
   m_Name: New Quest
   m_EditorClassIdentifier: 
-  questName: 
-  questDesc: 
-  objectiveList: []
+  questName: Second Test Quest
+  questDesc: A test quest with more than one objective
+  objectiveList:
+  - {fileID: 11400000, guid: c2d804d8aca2c4d4f847f408f450b830, type: 2}
+  - {fileID: 11400000, guid: 26fc138518c1e0d49a792e71c27a2022, type: 2}
   questComplete: 0

@@ -1300,7 +1300,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 2e13310a2cbd41f4a8047d1816da3c7d,
+      objectReference: {fileID: 11400000, guid: 137d6662d7a311e4d924f4a5e912b5ab,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7f7621cfee351e48a0d6fb6692c6936, type: 3}
