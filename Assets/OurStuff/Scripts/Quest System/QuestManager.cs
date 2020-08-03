@@ -38,6 +38,19 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    public int getQuestStage(string _questName)
+    {
+        foreach (Quest quest in activeQuests)
+        {
+            if(quest.questName == _questName)
+            {
+                return quest.currentObjectiveIndex;
+            }
+            
+            
+        }
+        return 0;
+    }
     public void TryAddQuest(Quest _quest)
     {
         if(activeQuests.Contains(_quest) || completedQuests.Contains(_quest))
