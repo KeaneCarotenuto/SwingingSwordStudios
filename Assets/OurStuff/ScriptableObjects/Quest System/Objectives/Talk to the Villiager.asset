@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419a4bbfac2bc9d47902474b0b4c80d1, type: 3}
   m_Name: Talk to the Villiager
   m_EditorClassIdentifier: 
-  defaultObjectiveAmount: 0
-  objectiveType: 0
+  defaultObjectiveAmount: 1
+  objectiveType: 2
   objectiveTargetID: 
-  objectiveDesc: 
+  objectiveDesc: Talk to the Villiager
   objectiveComplete: 0
