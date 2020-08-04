@@ -100,17 +100,22 @@ public class BoltScript : MonoBehaviour
 
                 if (closestObj != null && closestDist <= seekDistance)
                 {
-                    GetComponent<Rigidbody>().velocity *= 0.8f;
+                    GetComponent<Rigidbody>().velocity *= 0.90f;
                     Vector3 seekpos = Vector3.zero;
 
                     if (closestObj.GetComponent<Rigidbody>() != null) {
                         seekpos = 0.1f * closestObj.GetComponent<Rigidbody>().velocity;
                     }
-                    GetComponent<Rigidbody>().AddForce(((closestObj.transform.position + Vector3.up + seekpos) - transform.position) * seekForce);
+                    GetComponent<Rigidbody>().AddForce(((closestObj.transform.position + Vector3.up + seekpos) - transform.position) * seekForce * (300 / GetComponent<Rigidbody>().velocity.magnitude));
+                }
+                else
+                {
+                    GetComponent<Rigidbody>().AddForce(new Vector3(UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-100, 100)));
+
                 }
             }
             
-            GetComponent<Rigidbody>().AddForce(new Vector3(UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-100, 100)));
+
 
 
             if (Time.time >= branchTime && itterationNum < maxItterations && branchAmount < maxBranches)
