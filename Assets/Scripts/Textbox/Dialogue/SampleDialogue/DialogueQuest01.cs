@@ -33,7 +33,7 @@ public class DialogueQuest01 : MonoBehaviour
         } else if (myQuest.questComplete)
         {
             TBcontroller.CreateTextBox("Thank you again!", Char1Sprite);
-            TBcontroller.CreateTextBox(":)", Char2Sprite);
+            TBcontroller.CreateTextBox("UwU", Char2Sprite);
         }
     }
 }

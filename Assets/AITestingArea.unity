@@ -2217,7 +2217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &971637071
 Transform:
   m_ObjectHideFlags: 0
@@ -2921,16 +2921,6 @@ PrefabInstance:
       propertyPath: state_patrol
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1437755590948665656, guid: 527ee2e0c838095409cbb0456a15106a,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1437755590948665656, guid: 527ee2e0c838095409cbb0456a15106a,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1437755592142238680, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
       propertyPath: linkedObjects.Array.size
@@ -2941,6 +2931,16 @@ PrefabInstance:
       propertyPath: linkedObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1097719201}
+    - target: {fileID: 1437755590948665656, guid: 527ee2e0c838095409cbb0456a15106a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437755590948665656, guid: 527ee2e0c838095409cbb0456a15106a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 527ee2e0c838095409cbb0456a15106a, type: 3}
 --- !u!1 &1259802913
@@ -3338,7 +3338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1304620192
 Transform:
   m_ObjectHideFlags: 0
@@ -4033,7 +4033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1545844049
 Transform:
   m_ObjectHideFlags: 0
@@ -4477,7 +4477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1754827652
 Transform:
   m_ObjectHideFlags: 0
@@ -4706,6 +4706,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.6566002
       objectReference: {fileID: 0}
+    - target: {fileID: 1437755592142238680, guid: 527ee2e0c838095409cbb0456a15106a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1437755590948665656, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -4715,11 +4720,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1437755592142238680, guid: 527ee2e0c838095409cbb0456a15106a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 527ee2e0c838095409cbb0456a15106a, type: 3}
