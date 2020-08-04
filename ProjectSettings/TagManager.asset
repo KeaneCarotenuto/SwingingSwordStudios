@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Textbox
+  - TextBoxService
+  - Interactable
+  - Body
+  - QuestManager
+  - DynamicUIElement
+  - PatrolPoint
   layers:
   - Default
   - TransparentFX
@@ -13,10 +20,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Bolts
+  - Minimap
+  - Bigmap
   - 
   - 
   - 
