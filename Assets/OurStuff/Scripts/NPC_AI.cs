@@ -225,10 +225,8 @@ public void StartRepositionState()
         // Find the patrol starting point
         for(int i = 0; i < myActor.linkedObjects.Length; i++)
         {
-            Debug.Log(myActor.linkedObjects[i].tag);
             if(myActor.linkedObjects[i].tag == "PatrolPoint")
             {
-                Debug.Log("GOT A PATROL POINT");
                 patrolStartPoint = myActor.linkedObjects[i];
                 patrolCurrentPoint = patrolStartPoint;
             }
