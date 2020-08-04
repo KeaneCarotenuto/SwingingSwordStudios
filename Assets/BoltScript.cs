@@ -60,6 +60,10 @@ public class BoltScript : MonoBehaviour
     //When bolt collides with something, make the bolt stick to the object, stop the bolt, 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.name.Contains("Player"))
+        {
+            return;
+        }
         transform.parent = other.transform;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         destroyTime = Time.time + afterHitAliveTime;
