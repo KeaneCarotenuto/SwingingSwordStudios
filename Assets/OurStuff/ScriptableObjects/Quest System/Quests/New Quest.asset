@@ -15,6 +15,7 @@ MonoBehaviour:
   questName: Second Test Quest
   questDesc: A test quest with more than one objective
   objectiveList:
-  - {fileID: 11400000, guid: c2d804d8aca2c4d4f847f408f450b830, type: 2}
+  - {fileID: 11400000, guid: 680ee44dc945b9947b756779f8d98054, type: 2}
   - {fileID: 11400000, guid: 26fc138518c1e0d49a792e71c27a2022, type: 2}
+  - {fileID: 11400000, guid: c2d804d8aca2c4d4f847f408f450b830, type: 2}
   questComplete: 0
