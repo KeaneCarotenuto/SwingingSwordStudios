@@ -5017,8 +5017,8 @@ MonoBehaviour:
   maxItterations: 2
   maxBoltAliveTime: 2
   afterHitAliveTime: 0.2
-  seekDistance: 10
-  seekForce: 300
+  seekDistance: 5
+  seekForce: 50
   boltToSpawn: {fileID: 3088174098002601034}
   toSeek:
   - {fileID: 1436756677958306384, guid: 527ee2e0c838095409cbb0456a15106a, type: 3}
