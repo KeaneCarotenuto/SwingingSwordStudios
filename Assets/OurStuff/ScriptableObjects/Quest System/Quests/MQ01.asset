@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a059e33b702241d4b804f1967e80a0c3, type: 3}
-  m_Name: New Quest
+  m_Name: MQ01
   m_EditorClassIdentifier: 
-  questName: Second Test Quest
-  questDesc: A test quest with more than one objective
+  questName: Kill the Bandits
+  questDesc: Kill.The.Bandits.
   objectiveList:
-  - {fileID: 11400000, guid: 680ee44dc945b9947b756779f8d98054, type: 2}
-  - {fileID: 11400000, guid: 26fc138518c1e0d49a792e71c27a2022, type: 2}
-  - {fileID: 11400000, guid: c2d804d8aca2c4d4f847f408f450b830, type: 2}
+  - {fileID: 11400000, guid: 071bfd43712317747bf9b8216f41c24d, type: 2}
+  - {fileID: 11400000, guid: 619597a2b5566c243899d3f1966bb759, type: 2}
+  - {fileID: 11400000, guid: 96c510f9a30b65a4d9faa49a0d8129a6, type: 2}
   questComplete: 0

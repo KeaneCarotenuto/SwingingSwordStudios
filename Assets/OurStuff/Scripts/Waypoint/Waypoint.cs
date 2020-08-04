@@ -17,6 +17,7 @@ public class Waypoint : MonoBehaviour
         if(other.tag == "Player")
         {
             questManager.OnPlayerAction.Invoke(waypointID, ObjectiveType.GOTO);
+            Destroy(gameObject);
         }
     }
 }
