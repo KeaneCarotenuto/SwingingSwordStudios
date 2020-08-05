@@ -5013,12 +5013,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d17548d63a4a71e42a5b2353a53e6aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBranches: 2
+  maxBranches: 3
   maxItterations: 2
   maxBoltAliveTime: 2
   afterHitAliveTime: 0.2
-  seekDistance: 10
-  seekForce: 300
+  seekDistance: 4
+  seekForce: 50
   boltToSpawn: {fileID: 3088174098002601034}
   toSeek:
   - {fileID: 1436756677958306384, guid: 527ee2e0c838095409cbb0456a15106a, type: 3}
