@@ -8,6 +8,9 @@ TagManager:
   - TextBoxService
   - Interactable
   - Body
+  - QuestManager
+  - DynamicUIElement
+  - PatrolPoint
   layers:
   - Default
   - TransparentFX
@@ -19,8 +22,8 @@ TagManager:
   - 
   - Ground
   - Bolts
-  - 
-  - 
+  - Minimap
+  - Bigmap
   - 
   - 
   - 
