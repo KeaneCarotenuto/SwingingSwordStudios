@@ -66,18 +66,21 @@ public class BoltScript : MonoBehaviour
     //When bolt collides with something, make the bolt stick to the object, stop the bolt, 
     private void OnTriggerEnter(Collider other)
     {
+        //Dont Hit player
         if (other.gameObject.tag == "Player")
         {
             return;
         }
+        
+        //Stop bolt on contact and set timer to be alive
         transform.parent = other.transform;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         destroyTime = Time.time + afterHitAliveTime;
 
+        //If bolt hits enemy, deal damage and destroy self.
         if (other.name.Contains("Bandit"))
         {
             Debug.Log(summoner);
-            other.GetComponent<Rigidbody>().AddForce(boltKnockback * (summoner.transform.position - transform.position));
             other.GetComponent<Actor>().TakeDamage(boltDamage);
             Destroy(gameObject);
         }
@@ -85,15 +88,19 @@ public class BoltScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //If alive for too long, destroy self
         if (Time.time - spawnTime > maxBoltAliveTime || Time.time >= destroyTime)
         {
             Destroy(gameObject);
         }
 
+        //Checks if the bolt is moving
         if (GetComponent<Rigidbody>().velocity.magnitude >= maxBoltAliveTime)
         {
+            //If there is anything for the bolt to seek, do this:
             if (seeking.Count > 0)
             {
+                //Find cloest object to seek
                 float closestDist = 0;
                 GameObject closestObj = null;
 
@@ -115,32 +122,36 @@ public class BoltScript : MonoBehaviour
                     }
                 }
 
+                //If closest object is within seeking distance, seek
                 if (closestObj != null && closestDist <= seekDistance)
                 {
+                    //Slow down slightly to counteract current speed
                     GetComponent<Rigidbody>().velocity *= 0.90f;
                     Vector3 seekpos = Vector3.zero;
 
+                    //predict movement
                     if (closestObj.GetComponent<Rigidbody>() != null) {
                         seekpos = 0.1f * closestObj.GetComponent<Rigidbody>().velocity;
                     }
+                    //seek
                     GetComponent<Rigidbody>().AddForce(((closestObj.transform.position + Vector3.up + seekpos) - transform.position) * seekForce * (300 / GetComponent<Rigidbody>().velocity.magnitude));
                 }
                 else
                 {
+                    //otherwise randomly move
                     GetComponent<Rigidbody>().AddForce(new Vector3(UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-100, 100)));
 
                 }
             }
-            
 
-
-
+            //handles spawning more bolts from this bolt
             if (Time.time >= branchTime && itterationNum < maxItterations && branchAmount < maxBranches)
             {
                 branchTime = Time.time + timeBetweenBranch;
 
                 branchAmount += 1;
 
+                //Spawn bolt and give it it's needed characteristics
                 GameObject tempBolt = Instantiate(boltToSpawn, transform.position, transform.rotation, GameObject.Find(boltContainer.name).transform);
                 tempBolt.GetComponent<BoltScript>().SetSummoner(summoner);
                 tempBolt.GetComponent<Rigidbody>().AddForce(transform.forward * 6000);

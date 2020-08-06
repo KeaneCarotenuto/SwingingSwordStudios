@@ -5013,7 +5013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boltDamage: 5
-  boltKnockback: 1000
+  boltKnockback: 10
   maxBranches: 3
   maxItterations: 2
   maxBoltAliveTime: 2
