@@ -3905,6 +3905,41 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
+        type: 3}
+      propertyPath: manaIncreasePerSecond
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
+        type: 3}
+      propertyPath: staminaIncreasePerSecond
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743700165632431112, guid: 31cd51b4ab3331749a5d3492f715a13f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743700166582115773, guid: 31cd51b4ab3331749a5d3492f715a13f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743700166921116723, guid: 31cd51b4ab3331749a5d3492f715a13f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743700166125691862, guid: 31cd51b4ab3331749a5d3492f715a13f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743700165632431113, guid: 31cd51b4ab3331749a5d3492f715a13f,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31cd51b4ab3331749a5d3492f715a13f, type: 3}
 --- !u!1001 &1451787726856664169
