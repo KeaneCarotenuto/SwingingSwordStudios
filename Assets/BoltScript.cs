@@ -143,7 +143,7 @@ public class BoltScript : MonoBehaviour
 
                 GameObject tempBolt = Instantiate(boltToSpawn, transform.position, transform.rotation, GameObject.Find(boltContainer.name).transform);
                 tempBolt.GetComponent<BoltScript>().SetSummoner(summoner);
-                //tempBolt.GetComponent<Rigidbody>().AddForce(transform.forward * 6000);
+                tempBolt.GetComponent<Rigidbody>().AddForce(transform.forward * 6000);
                 tempBolt.GetComponent<BoltScript>().itterationNum = itterationNum + 1;
                 tempBolt.name = tempBolt.GetComponent<BoltScript>().itterationNum + "Bolt" + branchAmount;
             }
