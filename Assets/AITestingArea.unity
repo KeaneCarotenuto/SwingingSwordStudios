@@ -3855,6 +3855,11 @@ PrefabInstance:
       propertyPath: tbcontroller
       value: 
       objectReference: {fileID: 2134044250}
+    - target: {fileID: 9163825201151227605, guid: 31cd51b4ab3331749a5d3492f715a13f,
+        type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7475752348430312590, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: tbcontroller
