@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class BoltScript : MonoBehaviour
 {
+    public float boltDamage = 5f;
+    public float boltKnockback = 5f;
+    
     //Used to control how the lightning splits off and branches.
     private float branchTime;
     private float timeBetweenBranch = 0.1f;     //how long to wait before splitting off
@@ -26,6 +29,9 @@ public class BoltScript : MonoBehaviour
     public GameObject boltToSpawn;
     public List<GameObject> toSeek;
     public List<GameObject> seeking;
+
+    public GameObject summoner;
+    public GameObject boltContainer;
 
     private void Awake()
     {
@@ -60,14 +66,21 @@ public class BoltScript : MonoBehaviour
     //When bolt collides with something, make the bolt stick to the object, stop the bolt, 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Contains("Player"))
+        if (other.gameObject.tag == "Player")
         {
             return;
         }
         transform.parent = other.transform;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         destroyTime = Time.time + afterHitAliveTime;
-        Debug.Log("Hit: " + Time.time + " Destroy at: " + destroyTime);
+
+        if (other.name.Contains("Bandit"))
+        {
+            Debug.Log(summoner);
+            other.GetComponent<Rigidbody>().AddForce(boltKnockback * (summoner.transform.position - transform.position));
+            other.GetComponent<Actor>().TakeDamage(boltDamage);
+            Destroy(gameObject);
+        }
     }
 
     private void FixedUpdate()
@@ -128,10 +141,9 @@ public class BoltScript : MonoBehaviour
 
                 branchAmount += 1;
 
-                Debug.Log("Spawn");
-
-                GameObject tempBolt = Instantiate(boltToSpawn, transform.position, transform.rotation, GameObject.Find("BoltContainer").transform);
-                tempBolt.GetComponent<Rigidbody>().AddForce(transform.forward * 6000);
+                GameObject tempBolt = Instantiate(boltToSpawn, transform.position, transform.rotation, GameObject.Find(boltContainer.name).transform);
+                tempBolt.GetComponent<BoltScript>().SetSummoner(summoner);
+                //tempBolt.GetComponent<Rigidbody>().AddForce(transform.forward * 6000);
                 tempBolt.GetComponent<BoltScript>().itterationNum = itterationNum + 1;
                 tempBolt.name = tempBolt.GetComponent<BoltScript>().itterationNum + "Bolt" + branchAmount;
             }
@@ -141,6 +153,16 @@ public class BoltScript : MonoBehaviour
     public void SetBranch(int _branch)
     {
         itterationNum = _branch;
+    }
+
+    public void SetSummoner(GameObject _summoner)
+    {
+        summoner = _summoner;
+    }
+
+    GameObject GetSummoner()
+    {
+        return summoner;
     }
 }
 
