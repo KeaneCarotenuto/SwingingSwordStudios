@@ -10,6 +10,9 @@ public class PlayerScript : MonoBehaviour
     public float manaMax = 100;
     public float stamina = 100;
     public float staminaMax = 100;
+    public float healthIncreasePerSecond = 1;
+    public float manaIncreasePerSecond = 5;
+    public float staminaIncreasePerSecond = 5;
 
     public ResourceBar healthbar;
     public ResourceBar manabar;
@@ -60,6 +63,9 @@ public class PlayerScript : MonoBehaviour
         {
             UpdateStaminaBar(20);
         }
+        HealthRegen();
+        ManaRegen();
+        StaminaRegen();
     }
 
     //Function to update resource bar after performing an action
@@ -79,4 +85,37 @@ public class PlayerScript : MonoBehaviour
         staminabar.SetResource(stamina);
     }
 
+    //Resource regeneration over time
+    void HealthRegen()
+    {
+        health += healthIncreasePerSecond * Time.deltaTime;
+
+        if (health > 100)
+        {
+            health = 100;
+        }
+        healthbar.SetResource(health);
+    }
+
+    void ManaRegen()
+    {
+        mana += manaIncreasePerSecond * Time.deltaTime;
+
+        if (mana > 100)
+        {
+            mana = 100;
+        }
+        manabar.SetResource(mana);
+    }
+
+    void StaminaRegen()
+    {
+        stamina += staminaIncreasePerSecond * Time.deltaTime;
+
+        if (stamina > 100)
+        {
+            stamina = 100;
+        }
+        staminabar.SetResource(stamina);
+    }
 }
