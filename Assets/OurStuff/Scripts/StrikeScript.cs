@@ -22,16 +22,18 @@ public class StrikeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
         //First Node
         nodes.Insert(0, target + Vector3.up * startHeight);
+
+        transform.position = nodes[0];
 
         float spacing = (startHeight / (turnAmount + 1));
 
         //Middle Nodes
         for (int i = 1; i <= turnAmount; i++)
         {
-            nodes.Add(new Vector3(nodes[0].x + Random.Range(-HorizDistance, HorizDistance), nodes[0].y - 1 * spacing, nodes[0].z + Random.Range(-HorizDistance, HorizDistance)));
+            nodes.Add(new Vector3(nodes[0].x + Random.Range(-HorizDistance, HorizDistance), nodes[0].y - i * spacing, nodes[0].z + Random.Range(-HorizDistance, HorizDistance)));
         }
 
         //Last Node
@@ -43,20 +45,20 @@ public class StrikeScript : MonoBehaviour
         {
             distance += Vector3.Distance(prevNode, _node);
             prevNode = _node;
-            Debug.Log(distance);
         }
 
-        interSwapTime = (Speed / distance) / turnAmount;
-        swapTime = Time.time + interSwapTime;
+        //interSwapTime = (distance / (turnAmount)) / (Speed);
+        swapTime = Time.time;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Time.time > swapTime)
+        if (Time.time > swapTime && currentNode < nodes.Count)
         {
-            GetComponent<Rigidbody>().velocity = nodes[currentNode] - transform.position;
-            swapTime = Time.time + interSwapTime;
+            GetComponent<Rigidbody>().velocity = (nodes[currentNode] - transform.position).normalized * Speed;
+            swapTime = Time.time + (Vector3.Distance(nodes[currentNode], nodes[currentNode+1]))/Speed;
+            currentNode++;
         }
     }
 }

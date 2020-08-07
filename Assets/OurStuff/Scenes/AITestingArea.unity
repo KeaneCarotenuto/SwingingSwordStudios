@@ -4360,17 +4360,17 @@ PrefabInstance:
     - target: {fileID: 7675228923903435592, guid: 5c2dead37265bcf42ac879cb7b5bf18c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 98.7
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7675228923903435592, guid: 5c2dead37265bcf42ac879cb7b5bf18c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.62
+      value: 29.97
       objectReference: {fileID: 0}
     - target: {fileID: 7675228923903435592, guid: 5c2dead37265bcf42ac879cb7b5bf18c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100.47
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7675228923903435592, guid: 5c2dead37265bcf42ac879cb7b5bf18c,
         type: 3}
@@ -4415,7 +4415,41 @@ PrefabInstance:
     - target: {fileID: 4190905663225668430, guid: 5c2dead37265bcf42ac879cb7b5bf18c,
         type: 3}
       propertyPath: HorizDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4190905663225668430, guid: 5c2dead37265bcf42ac879cb7b5bf18c,
+        type: 3}
+      propertyPath: startHeight
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4190905663225668430, guid: 5c2dead37265bcf42ac879cb7b5bf18c,
+        type: 3}
+      propertyPath: turnAmount
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4190905663225668430, guid: 5c2dead37265bcf42ac879cb7b5bf18c,
+        type: 3}
+      propertyPath: Speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084828581, guid: 5c2dead37265bcf42ac879cb7b5bf18c, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155846346361015513, guid: 5c2dead37265bcf42ac879cb7b5bf18c,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155846346361015513, guid: 5c2dead37265bcf42ac879cb7b5bf18c,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155846346361015513, guid: 5c2dead37265bcf42ac879cb7b5bf18c,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c2dead37265bcf42ac879cb7b5bf18c, type: 3}
