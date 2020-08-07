@@ -3905,6 +3905,7 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: manaIncreasePerSecond
@@ -3915,6 +3916,8 @@ PrefabInstance:
       propertyPath: staminaIncreasePerSecond
       value: 5
       objectReference: {fileID: 0}
+=======
+>>>>>>> Keane
     - target: {fileID: 973085347451871666, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: m_UiScaleMode
@@ -3930,6 +3933,7 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 1080
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 2743700166582115773, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -3945,6 +3949,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.94
       objectReference: {fileID: 0}
+=======
+>>>>>>> Keane
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31cd51b4ab3331749a5d3492f715a13f, type: 3}
 --- !u!1001 &1451787726856664169
@@ -4437,5 +4443,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 4190905663225668430, guid: 5c2dead37265bcf42ac879cb7b5bf18c,
+        type: 3}
+      propertyPath: HorizDistance
+      value: 10
+      objectReference: {fileID: 0}
+>>>>>>> Keane
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c2dead37265bcf42ac879cb7b5bf18c, type: 3}
