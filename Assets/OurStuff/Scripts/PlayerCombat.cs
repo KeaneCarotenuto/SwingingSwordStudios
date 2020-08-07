@@ -6,6 +6,7 @@ public class PlayerCombat : MonoBehaviour
 {
     public GameObject PCamera;
     public GameObject Bolt;
+    public GameObject Strike;
     public float boltAmount;
 
     private float nextActionTime;
@@ -29,6 +30,20 @@ public class PlayerCombat : MonoBehaviour
             tempBolt.GetComponent<Rigidbody>().AddForce(PCamera.transform.forward * 30000);
             tempBolt.name = "OriginalBolt";
 
+        }
+
+        if (Input.GetMouseButton(1) && Time.time >= nextActionTime)
+        {
+            nextActionTime = Time.time + period;
+            RaycastHit hit;
+            // Does the ray intersect any objects excluding the player layer
+            if (Physics.Raycast(transform.position, PCamera.transform.forward, out hit, Mathf.Infinity))
+            {
+                GameObject tempStrike = Instantiate(Strike, hit.point, Quaternion.identity, GameObject.Find("BoltContainer").transform);
+                tempStrike.GetComponent<StrikeScript>().target = hit.point;
+            }
+
+            GameObject tempBolt = Instantiate(Strike, (PCamera.transform.position) - new Vector3(0, 0.5f, 0), PCamera.transform.rotation, GameObject.Find("BoltContainer").transform);
         }
     }
 }
