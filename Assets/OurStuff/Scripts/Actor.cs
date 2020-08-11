@@ -34,7 +34,7 @@ public class Actor : MonoBehaviour
     public GameObject healthBarUI;
     // TEMP, COMBAT SHIT
     public GameObject projectilePrefab;
-    bool bCanAttack = true;
+    public bool bCanAttack = true;
 
     public GameObject[] linkedObjects;
 
