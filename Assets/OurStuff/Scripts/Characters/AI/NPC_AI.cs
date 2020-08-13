@@ -155,7 +155,10 @@ public void StartRepositionState()
     {
         StartAttackState();
         // Stare at the target
-        transform.LookAt(target.transform);
+        if (myActor.attackRange > 5)
+        {
+            transform.LookAt(target.transform);
+        }
         // Then woop their ass
         myActor.Attack();
         navAgent.isStopped = true;

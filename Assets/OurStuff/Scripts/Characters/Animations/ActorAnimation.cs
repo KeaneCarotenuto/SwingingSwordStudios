@@ -27,6 +27,20 @@ public class ActorAnimation : MonoBehaviour
 		animator.SetBool("SprintSlide", false);
 	}
 
+	public void DefenseIdle()
+	{
+		// Keep updating!
+		animator = GetComponent<Animator>();
+		animator.SetBool("Combat", true);
+	}
+
+	public void CombatMove()
+	{
+		animator = GetComponent<Animator>();
+		animator.SetBool("Combat", true);
+		animator.SetBool("Moving", true);
+	}
+
 	public void Walk()
 	{
 		animator = GetComponent<Animator>();

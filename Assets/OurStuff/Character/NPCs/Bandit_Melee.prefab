@@ -313,10 +313,10 @@ GameObject:
   - component: {fileID: 1342755581085977496}
   - component: {fileID: 1437755592142238682}
   - component: {fileID: 1437755592142238681}
-  - component: {fileID: 1437755592142238685}
   - component: {fileID: 1437755592142238686}
   - component: {fileID: 1437755592142238687}
   - component: {fileID: 1437755592142238680}
+  - component: {fileID: 2778354447599086657}
   m_Layer: 0
   m_Name: Bandit_Melee
   m_TagString: Interactable
@@ -393,28 +393,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6002195, y: 1.8550094, z: 0.47289795}
   m_Center: {x: -0.0046007764, y: 0.9288305, z: 0.02024525}
---- !u!114 &1437755592142238685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436756677958306384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b617526272978458713b3afcc6bcd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state_combat: 0
-  state_scan: 0
-  state_reposition: 0
-  state_attack: 0
-  state_patrol: 0
-  state_idle: 1
-  target: {fileID: 0}
-  bTargetWithinRange: 0
-  projectile: {fileID: 8412952934646040007, guid: 380244c4ea748c747b28ef1607595c19,
-    type: 3}
 --- !u!114 &1437755592142238686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,7 +460,29 @@ MonoBehaviour:
   healthBarUI: {fileID: 1437755591045889952}
   projectilePrefab: {fileID: 1906498118616361403, guid: 1eb8556ad2992154190e419b7a75099c,
     type: 3}
+  bCanAttack: 1
   linkedObjects: []
+--- !u!114 &2778354447599086657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436756677958306384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b617526272978458713b3afcc6bcd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state_combat: 0
+  state_scan: 0
+  state_reposition: 0
+  state_attack: 0
+  state_patrol: 0
+  state_idle: 1
+  target: {fileID: 0}
+  bTargetWithinRange: 0
+  projectile: {fileID: 191248, guid: 33dcf8e45a480524f87f4af6f7f6df03, type: 3}
 --- !u!1 &1436756678115397574
 GameObject:
   m_ObjectHideFlags: 0

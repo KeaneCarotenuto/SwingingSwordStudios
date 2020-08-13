@@ -1926,12 +1926,12 @@ GameObject:
   - component: {fileID: 1105278431650281970}
   - component: {fileID: 1010845779367018912}
   - component: {fileID: 1010845779367018913}
-  - component: {fileID: 1010845779367018941}
   - component: {fileID: 1010845779367018940}
   - component: {fileID: 1010845779367018915}
   - component: {fileID: 1010845779367018914}
+  - component: {fileID: -7396932570944379366}
   m_Layer: 0
-  m_Name: Bandit_Ranged (1)
+  m_Name: Bandit_Ranged
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2006,28 +2006,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6002195, y: 1.8550094, z: 0.47289795}
   m_Center: {x: -0.0046007764, y: 0.9288305, z: 0.02024525}
---- !u!114 &1010845779367018941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010129443563763770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b617526272978458713b3afcc6bcd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state_combat: 0
-  state_scan: 0
-  state_reposition: 0
-  state_attack: 0
-  state_patrol: 0
-  state_idle: 1
-  target: {fileID: 0}
-  bTargetWithinRange: 0
-  projectile: {fileID: 8412952934646040007, guid: 380244c4ea748c747b28ef1607595c19,
-    type: 3}
 --- !u!114 &1010845779367018940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,7 +2073,29 @@ MonoBehaviour:
   healthBarUI: {fileID: 1010845778354091284}
   projectilePrefab: {fileID: 1906498118616361403, guid: 1eb8556ad2992154190e419b7a75099c,
     type: 3}
+  bCanAttack: 1
   linkedObjects: []
+--- !u!114 &-7396932570944379366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010129443563763770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b617526272978458713b3afcc6bcd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state_combat: 0
+  state_scan: 0
+  state_reposition: 0
+  state_attack: 0
+  state_patrol: 0
+  state_idle: 1
+  target: {fileID: 0}
+  bTargetWithinRange: 0
+  projectile: {fileID: 191248, guid: 33dcf8e45a480524f87f4af6f7f6df03, type: 3}
 --- !u!1 &1010129443825736608
 GameObject:
   m_ObjectHideFlags: 0

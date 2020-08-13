@@ -279,9 +279,9 @@ public class Actor : MonoBehaviour
     public void StartCombat()
     {
         // Pick a fight with the player
-        if(GetComponent<NPC_AI>() != null)
+        if(GetComponent<ActorBehaviour>() != null)
         {
-            NPC_AI ai = GetComponent<NPC_AI>();
+            ActorBehaviour ai = GetComponent<ActorBehaviour>();
             ai.StartCombatState();
         }
     }
