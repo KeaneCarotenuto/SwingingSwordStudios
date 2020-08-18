@@ -11,7 +11,7 @@ using UnityEngine.AI;
 public class Actor : MonoBehaviour
 {
     /*--- Variables ---*/
-    public string name = "John Cena";
+    public string myName = "John Cena";
     public Faction faction;
     // Actor Values
 
@@ -282,7 +282,7 @@ public class Actor : MonoBehaviour
         if(GetComponent<ActorBehaviour>() != null)
         {
             ActorBehaviour ai = GetComponent<ActorBehaviour>();
-            //ai.StartCombatState();
+            ai.EnterCombat();
         }
     }
     public void Attack()

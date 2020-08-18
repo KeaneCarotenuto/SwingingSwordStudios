@@ -56,7 +56,14 @@ public class ActorBehaviour : MonoBehaviour
 
     public void EnterCombat()
     {
+        if (!bAllowCombat)
+        {
+            return;
+        }
 
+
+        myAnim.PlayCombatEnter();
+        DoCombatRoutine();
     }
 
 
@@ -88,6 +95,13 @@ public class ActorBehaviour : MonoBehaviour
     private void DoCombatRoutine()
     {
 
+    }
+
+    private void Dodge(int _iDirection)
+    {
+        // _iDirection
+        // 1: Backward, 2: Right, 3: Forward, 4: Left
+        //myAnim.PlayDodge(_iDirection);
     }
 
     private void EvaluateAI()

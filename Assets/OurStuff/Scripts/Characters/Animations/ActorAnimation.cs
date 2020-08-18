@@ -5,63 +5,53 @@ using UnityEngine;
 public class ActorAnimation : MonoBehaviour
 {
 	public Animator animator;
+	public bool bIsInCombat = false;
+
+	public bool testDodge = false;
 
 	// Use this for initialization
 	void Start()
 	{
 		animator = GetComponent<Animator>();
-		Walk();
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
+		if (bIsInCombat)
+		{
+			PlayCombatEnter();
+		} else
+		{
+			PlaySandboxIdle();
+		}
 
+		if(testDodge)
+		{
+			testDodge = false;
+			int random = Random.Range(1, 5);
+			PlayDodge(random);
+		}
 	}
 
-	public void Idle()
+	void ResetToSandbox()
 	{
-		animator = GetComponent<Animator>();
-		animator.SetBool("Walk", false);
-		animator.SetBool("SprintJump", false);
-		animator.SetBool("SprintSlide", false);
+		animator.SetBool("isInCombat", false);
+		animator.SetInteger("iCombatState", 0);
+	}
+	public void PlaySandboxIdle()
+	{
+		ResetToSandbox();
 	}
 
-	public void DefenseIdle()
+	public void PlayCombatEnter()
 	{
-		// Keep updating!
-		animator = GetComponent<Animator>();
-		animator.SetBool("Combat", true);
+		animator.SetBool("isInCombat", true);
+		animator.SetInteger("iCombatState", 1);
 	}
 
-	public void CombatMove()
+	public void PlayDodge(int _iDirection)
 	{
-		animator = GetComponent<Animator>();
-		animator.SetBool("Combat", true);
-		animator.SetBool("Moving", true);
-	}
-
-	public void Walk()
-	{
-		animator = GetComponent<Animator>();
-		animator.SetBool("Walk", true);
-		animator.SetBool("SprintJump", false);
-		animator.SetBool("SprintSlide", false);
-	}
-
-	public void SprintJump()
-	{
-		animator = GetComponent<Animator>();
-		animator.SetBool("Walk", false);
-		animator.SetBool("SprintJump", true);
-		animator.SetBool("SprintSlide", false);
-	}
-
-	public void SprintSlide()
-	{
-		animator = GetComponent<Animator>();
-		animator.SetBool("Walk", false);
-		animator.SetBool("SprintJump", false);
-		animator.SetBool("SprintSlide", true);
+		animator.SetInteger("DodgeDirection", _iDirection);
+		animator.SetTrigger("isDodging");
 	}
 }
