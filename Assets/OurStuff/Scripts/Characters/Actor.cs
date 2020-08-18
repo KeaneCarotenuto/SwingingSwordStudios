@@ -282,7 +282,7 @@ public class Actor : MonoBehaviour
         if(GetComponent<ActorBehaviour>() != null)
         {
             ActorBehaviour ai = GetComponent<ActorBehaviour>();
-            ai.StartCombatState();
+            //ai.StartCombatState();
         }
     }
     public void Attack()
