@@ -30,7 +30,10 @@ public class InteractOption : MonoBehaviour
         }
         else
         {
-            InteractPrompt.SetActive(false);
+            if (InteractPrompt != null)
+            {
+                InteractPrompt.SetActive(false);
+            }
         }
         if (Input.GetKey(KeyCode.E))
         {
@@ -57,7 +60,7 @@ public class InteractOption : MonoBehaviour
     }
     private void InvokeKeyPress()
     {
-        if (!TBcontroller.InDialogue)
+        if (!TBcontroller.InDialogue && InteractableObject != null)
         {
             InteractableObject.GetComponent<TriggerDialogue>().Trigger();
 
