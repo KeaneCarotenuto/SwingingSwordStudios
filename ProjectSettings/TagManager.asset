@@ -11,6 +11,8 @@ TagManager:
   - QuestManager
   - DynamicUIElement
   - PatrolPoint
+  - Projectile
+  - En
   layers:
   - Default
   - TransparentFX

@@ -38,19 +38,22 @@ public class Actor : MonoBehaviour
 
     public GameObject[] linkedObjects;
 
+    public bool isDead = false;
     NavMeshAgent navAgent;
+    ActorAnimation myAnim;
     /*--- ---*/
     void Start()
     {
         SetDefaultAV();
         navAgent = GetComponent<NavMeshAgent>();
+        myAnim = GetComponent<ActorAnimation>();
     }
 
 
     void Update()
     {
         UpdateHealthBar();
-        if(health <= 0)
+        if(health <= 0 && !isDead)
         {
             // dead
             Kill();
@@ -261,6 +264,8 @@ public class Actor : MonoBehaviour
         mana = manaMax;
         staminaMax = 100;
         stamina = staminaMax;
+        attackSpeed = 2f;
+        moveSpeed = 5f;
     }
 
     /*--- Actions ---*/
@@ -272,7 +277,11 @@ public class Actor : MonoBehaviour
             QuestTarget quest = GetComponent<QuestTarget>();
             quest.Trigger();
         }
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        navAgent.angularSpeed = 0;
+        navAgent.isStopped = true;
+        isDead = true;
+        myAnim.PlayDeath();
     }
     public void Disable() { }
 
@@ -290,10 +299,21 @@ public class Actor : MonoBehaviour
         // Fire a projectile in front of this actor. TEMPORARY, WILL CHANGE LATER
         if (bCanAttack)
         {
-            Vector3 spawnPoint = transform.position;
-            spawnPoint.y += 2.5f;
-            GameObject projectile = Instantiate(projectilePrefab, spawnPoint, transform.rotation, GameObject.Find("BoltContainer").transform);
-            projectile.GetComponent<Rigidbody>().AddForce(transform.forward * 5000);
+            // Spawn projectile if ranged enemy. TEMPORARY
+            if (attackRange > 5)
+            {
+                Debug.Log("HELLO, PLS NO ATTACK PLS");
+                Vector3 spawnPoint = transform.position;
+                spawnPoint.y += 2.5f;
+                GameObject projectile = Instantiate(projectilePrefab, spawnPoint, transform.rotation, GameObject.Find("BoltContainer").transform);
+                projectile.GetComponent<Rigidbody>().AddForce(transform.forward * 5000);
+            } else
+            {
+                Debug.Log("HELLO, PLS ATTACK");
+                myAnim.PlayAttack();
+
+              
+            }
             bCanAttack = false;
             StartCoroutine("StartAttackCooldown");
         }
@@ -497,6 +517,7 @@ public class Actor : MonoBehaviour
     {
         DamageAV("health", _iDamage);
         StartCombat();
+        myAnim.PlayGetHit();
     }
 
     /*--- Calculate Functions ---*/

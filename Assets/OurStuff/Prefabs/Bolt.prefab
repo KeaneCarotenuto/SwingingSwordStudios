@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 624473727}
   m_Layer: 9
   m_Name: Bolt
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5018,8 +5018,8 @@ MonoBehaviour:
   maxItterations: 2
   maxBoltAliveTime: 2
   afterHitAliveTime: 0.2
-  seekDistance: 4
-  seekForce: 50
+  seekDistance: 5
+  seekForce: 25
   boltToSpawn: {fileID: 3088174098002601034}
   toSeek:
   - {fileID: 1436756677958306384, guid: 527ee2e0c838095409cbb0456a15106a, type: 3}

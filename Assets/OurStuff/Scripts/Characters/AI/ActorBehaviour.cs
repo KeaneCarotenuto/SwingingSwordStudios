@@ -8,6 +8,7 @@ public class ActorBehaviour : MonoBehaviour
     public enum AISandboxActions { IDLE, PATROLLING, TRAVELLING}
 
     public enum AIStates { SANDBOX, COMBAT, DEAD }
+    public enum AICombatActions { HOLD, REPOSITIONING, DODGING, STRAFING, ATTACKING }
 
     Actor myActor;
     ActorAnimation myAnim;
@@ -28,9 +29,19 @@ public class ActorBehaviour : MonoBehaviour
 
     public AISandboxActions sandboxAction;
     public AIStates state;
+    public AICombatActions combatAction;
 
     public bool bAllowCombat = true;
     public bool bAllowSandbox = true;
+
+    public bool bPartyMode = false;
+
+    private float nextDodgeTime;
+    public float dodgeCooldown = 1;
+
+    private bool bTargetInRange = false;
+
+    private float attackCooldown;
     /*--- ---*/
     void Start()
     {
@@ -40,11 +51,25 @@ public class ActorBehaviour : MonoBehaviour
         combatTarget = GameObject.FindWithTag("Player");// Player for now. TEMP
         state = AIStates.SANDBOX;
         sandboxAction = AISandboxActions.IDLE;
+        combatAction = AICombatActions.HOLD;
+        nextDodgeTime = Time.time + dodgeCooldown;
+        attackCooldown = Time.time + myActor.attackSpeed;
     }
 
     void Update()
     {
-        EvaluateAI();
+        if (!myActor.isDead)
+        {
+            if (!bPartyMode)
+            {
+                EvaluateAI();
+            }
+            else
+            {
+                dodgeCooldown = 0.1f;
+                myAnim.PlayDodge(Random.Range(1, 5));
+            }
+        }
     }
 
     /*--- States ---*/
@@ -61,9 +86,9 @@ public class ActorBehaviour : MonoBehaviour
             return;
         }
 
-
+        Debug.Log("ENTER COMBAT");
         myAnim.PlayCombatEnter();
-        DoCombatRoutine();
+        state = AIStates.COMBAT;
     }
 
 
@@ -91,17 +116,71 @@ public class ActorBehaviour : MonoBehaviour
         }
     }
 
+    public void CheckForDodging()
+    {
+        Debug.Log("EYY");
+        if (Time.time >= nextDodgeTime)
+        {
+            nextDodgeTime = Time.time + dodgeCooldown;
+            Dodge(Random.Range(1, 5));
+        }
 
+    }
+
+    private bool MoveCloserToTarget()
+    {
+        Debug.Log("Moving closer");
+        myAnim.PlayRun(2);
+        float distance = Vector3.Distance(combatTarget.transform.position, transform.position);
+        navAgent.isStopped = false;
+        navAgent.SetDestination(combatTarget.transform.position);
+        if(distance <= myActor.attackRange)
+        {
+            return bTargetInRange = true;
+        } else
+        {
+            return bTargetInRange = false;
+        }
+    }
     private void DoCombatRoutine()
     {
+        // Check if we want to dodge
+        // Temporary to check the player only
+        //CheckForDodging();
+        /* ---- SPAGHETTI CODE ALERT ------*/
+        float distance = Vector3.Distance(combatTarget.transform.position, transform.position);
+        if(distance > myActor.attackRange)
+        {
+            combatAction = AICombatActions.HOLD;
+        }
 
+        if (combatAction != AICombatActions.ATTACKING)
+        {
+            if (MoveCloserToTarget())
+            {
+                PrepareToAttack();
+            }
+        }
+    }
+
+    void PrepareToAttack()
+    {
+        combatAction = AICombatActions.ATTACKING;
+        // Stare at the target
+        if (myActor.attackRange > 5)
+        {
+            transform.LookAt(combatTarget.transform);
+        }
+        // Then woop their ass
+        myActor.Attack();
+        navAgent.isStopped = true;
     }
 
     private void Dodge(int _iDirection)
     {
         // _iDirection
         // 1: Backward, 2: Right, 3: Forward, 4: Left
-        //myAnim.PlayDodge(_iDirection);
+        myAnim.PlayDodge(_iDirection);
     }
 
     private void EvaluateAI()
@@ -113,7 +192,8 @@ public class ActorBehaviour : MonoBehaviour
                 DoSandboxRoutine();
                 break;
             case AIStates.COMBAT:
-
+                Debug.Log("EVALUATE TO COMBAT");
+                DoCombatRoutine();
                 break;
             default:
 
@@ -156,6 +236,13 @@ public class ActorBehaviour : MonoBehaviour
     void Idle()
     {
 
+    }
+
+    void Reposition()
+    {
+        // Move to a better position to attack
+        navAgent.isStopped = false;
+        navAgent.SetDestination(combatTarget.transform.position);
     }
 
     /*--- Do Actions ---*/
