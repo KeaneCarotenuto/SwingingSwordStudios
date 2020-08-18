@@ -73,16 +73,28 @@ public class PlayerScript : MonoBehaviour
     {
         health -= cost;
         healthbar.SetResource(health);
+        if(health < 0)
+        {
+            health = 0;
+        }
     }
     void UpdateManaBar(int cost)
     {
         mana -= cost;
         manabar.SetResource(mana);
+        if (mana < 0)
+        {
+            mana = 0;
+        }
     }
     void UpdateStaminaBar(int cost)
     {
         stamina -= cost;
         staminabar.SetResource(stamina);
+        if (stamina < 0)
+        {
+            stamina = 0;
+        }
     }
 
     //Resource regeneration over time
