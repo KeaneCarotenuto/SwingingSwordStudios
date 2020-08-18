@@ -41,7 +41,6 @@ public class BoltScript : MonoBehaviour
             {
                 if (gameObj.name.Contains("Bandit"))
                 {
-                    //Debug.Log(gameObj.transform.position);
                     seeking.Add(gameObj);
                 }
             }
@@ -80,7 +79,6 @@ public class BoltScript : MonoBehaviour
         //If bolt hits enemy, deal damage and destroy self.
         if (other.name.Contains("Bandit"))
         {
-            Debug.Log(summoner);
             other.GetComponent<Actor>().TakeDamage(boltDamage);
             Destroy(gameObject);
         }
