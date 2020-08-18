@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class StrikeScript : MonoBehaviour
 {
+    public float damage;
+
     public float startHeight;
-    public float turnAmount;
+    public int turnAmount;
     public float HorizDistance;
     public bool randomVertSpacing;
     [Range(0, 5)] public float Speed;
@@ -17,13 +19,16 @@ public class StrikeScript : MonoBehaviour
 
     private float interSwapTime;
     private float startTime;
+    private float endTime;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        //Time.timeScale = 0.5f;
-        
-        //First Node
+        startHeight *= Random.Range(1.0f, 2f);
+        turnAmount = (int)(turnAmount * Random.Range(0.5f, 2f));
+        HorizDistance *= Random.Range(0.5f, 1.5f);
+        Speed *= Random.Range(0.5f, 2f);
+
         nodes.Insert(0, target + Vector3.up * startHeight);
 
         transform.position = nodes[0];
@@ -47,27 +52,58 @@ public class StrikeScript : MonoBehaviour
             prevNode = _node;
         }
 
-        startTime = Time.time + 0.5f;
+        startTime = Time.time;
+
+        endTime = Time.time + 10;
     }
 
     private void OnDrawGizmos()
     {
         foreach (Vector3 _node in nodes)
         {
-            Gizmos.DrawWireSphere(_node, 0.5f);
+            //Gizmos.DrawWireSphere(_node, 0.5f);
         }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Time.time >= startTime)
+        if (Time.time >= startTime && currentNode < nodes.Count)
         {
-            transform.position = Vector3.Lerp(transform.position, nodes[currentNode], Speed);
+            
 
             if (Vector3.Distance(transform.position, nodes[currentNode]) < 2f && currentNode < nodes.Count-1)
             {
                 currentNode++;
+            }
+
+            transform.position = Vector3.Lerp(transform.position, nodes[currentNode], Speed);
+        }
+        
+        if (currentNode == nodes.Count - 1)
+        {
+            currentNode++;
+            endTime = Time.time + 2;
+
+            ExplosionDamage(transform.position, 10);
+        }
+
+
+
+        if (Time.time >= endTime)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void ExplosionDamage(Vector3 center, float radius)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject.name.Contains("Bandit"))
+            {
+                hitCollider.GetComponent<Actor>().TakeDamage(damage);
             }
         }
     }

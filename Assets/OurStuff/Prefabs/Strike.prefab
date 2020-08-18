@@ -45,18 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9e2fe2956eee74d81bb780abc1254f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 50
   startHeight: 50
   turnAmount: 20
   HorizDistance: 3
   randomVertSpacing: 0
   Speed: 1.15
-  boltToUse: {fileID: 3088174098002601034, guid: ee4e950cd7c2d3049ac7365c89cd7755,
-    type: 3}
   target: {x: 100, y: 0, z: 400}
   nodes: []
-  currentNode: 0
-  interSwapTime: 0
-  swapTime: 0
 --- !u!96 &1084828581
 TrailRenderer:
   serializedVersion: 2
