@@ -95,6 +95,8 @@ public class BoltScript : MonoBehaviour
         //Checks if the bolt is moving
         if (GetComponent<Rigidbody>().velocity.magnitude >= maxBoltAliveTime)
         {
+            bool moveRandom = true;
+
             //If there is anything for the bolt to seek, do this:
             if (seeking.Count > 0)
             {
@@ -123,6 +125,8 @@ public class BoltScript : MonoBehaviour
                 //If closest object is within seeking distance, seek
                 if (closestObj != null && closestDist <= seekDistance)
                 {
+                    moveRandom = false;
+
                     //Slow down slightly to counteract current speed
                     GetComponent<Rigidbody>().velocity *= 0.90f;
                     Vector3 seekpos = Vector3.zero;
@@ -134,12 +138,13 @@ public class BoltScript : MonoBehaviour
                     //seek
                     GetComponent<Rigidbody>().AddForce(((closestObj.transform.position + Vector3.up + seekpos) - transform.position) * seekForce * (300 / GetComponent<Rigidbody>().velocity.magnitude));
                 }
-                else
-                {
-                    //otherwise randomly move
-                    GetComponent<Rigidbody>().AddForce(new Vector3(UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-100, 100)));
+            }
 
-                }
+            if (moveRandom)
+            {
+                //otherwise randomly move
+                GetComponent<Rigidbody>().AddForce(new Vector3(UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-100, 100), UnityEngine.Random.Range(-100, 100)));
+
             }
 
             //handles spawning more bolts from this bolt

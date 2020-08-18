@@ -435,12 +435,6 @@ MonoBehaviour:
   myStage: 2
   waypointID: 3
   questManagerObj: {fileID: 1921624704}
---- !u!1 &145234231 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1451787726985112926, guid: 57a798dda2086014c9e344df2120b37b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1451787726856664169}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &156660336
 GameObject:
   m_ObjectHideFlags: 0
@@ -3944,41 +3938,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5396703784818812384, guid: a4b637ade6c5ffd44ab63d6433c0b071,
-        type: 3}
-      propertyPath: InteractPrompt
-      value: 
-      objectReference: {fileID: 5336039701852984331}
-    - target: {fileID: 5396703784818812384, guid: a4b637ade6c5ffd44ab63d6433c0b071,
-        type: 3}
-      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2134044250}
-    - target: {fileID: 5396703784818812384, guid: a4b637ade6c5ffd44ab63d6433c0b071,
-        type: 3}
-      propertyPath: TBcontroller
-      value: 
-      objectReference: {fileID: 2134044250}
-    - target: {fileID: 5546902861408140949, guid: a4b637ade6c5ffd44ab63d6433c0b071,
-        type: 3}
-      propertyPath: tbcontroller
-      value: 
-      objectReference: {fileID: 2134044250}
-    - target: {fileID: 6082614407073590478, guid: a4b637ade6c5ffd44ab63d6433c0b071,
-        type: 3}
-      propertyPath: tbcontroller
-      value: 
-      objectReference: {fileID: 2134044250}
-    - target: {fileID: 7124082405691977130, guid: a4b637ade6c5ffd44ab63d6433c0b071,
-        type: 3}
-      propertyPath: BigMiniMap
-      value: 
-      objectReference: {fileID: 145234231}
-    - target: {fileID: 4492317829218036208, guid: a4b637ade6c5ffd44ab63d6433c0b071,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1568774907710039680, guid: a4b637ade6c5ffd44ab63d6433c0b071,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -4008,11 +3967,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3735450792791260603, guid: a4b637ade6c5ffd44ab63d6433c0b071,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b637ade6c5ffd44ab63d6433c0b071, type: 3}
@@ -4094,12 +4048,6 @@ GameObject:
 --- !u!224 &5336039700644593709 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8189987449368968487, guid: 74918e7b94412824aa1086fc31915e42,
-    type: 3}
-  m_PrefabInstance: {fileID: 4298059016577678602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5336039701852984331 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8189987448161495297, guid: 74918e7b94412824aa1086fc31915e42,
     type: 3}
   m_PrefabInstance: {fileID: 4298059016577678602}
   m_PrefabAsset: {fileID: 0}
