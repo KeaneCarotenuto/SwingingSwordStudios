@@ -82,8 +82,9 @@ public class StrikeScript : MonoBehaviour
         
         if (currentNode == nodes.Count - 1)
         {
+            transform.position = Vector3.Lerp(transform.position, target, Speed);
             currentNode++;
-            endTime = Time.time + 2;
+            endTime = Time.time + 5;
 
             ExplosionDamage(transform.position, 10);
         }
