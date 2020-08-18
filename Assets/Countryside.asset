@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c509dbaa7b6f416409e3195321a2187e, type: 3}
+  m_Name: Countryside
+  m_EditorClassIdentifier: 
+  PaletteLayers:
+  - {fileID: 8574412962073106934, guid: c0395ea5d31a35441882a8013a3847fc, type: 2}
+  - {fileID: 8574412962073106934, guid: 5d8bc3f8f1817e44eb443d1f7260503d, type: 2}
+  - {fileID: 8574412962073106934, guid: c69a19266cc7ed34da319631adcb1cae, type: 2}
+  - {fileID: 8574412962073106934, guid: 1a0f3ea0ea4535f4d971c17a44028932, type: 2}
+  - {fileID: 8574412962073106934, guid: 716937fe861ba6748bfd599e6802e70a, type: 2}
+  - {fileID: 8574412962073106934, guid: 36808db89885733418114c574d362a10, type: 2}
