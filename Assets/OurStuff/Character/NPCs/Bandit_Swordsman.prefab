@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 1437755592142238680}
   - component: {fileID: -5437423745385192324}
   m_Layer: 0
-  m_Name: Bandit_Melee
+  m_Name: Bandit_Swordsman
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -355,7 +355,7 @@ Animator:
   m_GameObject: {fileID: 1436756677958306384}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fe55e5a0c1bcd72488aa4508bea6f93b, type: 3}
-  m_Controller: {fileID: 9100000, guid: 4675f30ca1f2ec4419c0a84c62a76e47, type: 2}
+  m_Controller: {fileID: 9100000, guid: aca9f027c7c050d4f8c893eb5cb3849d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -406,8 +406,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  bIsInCombat: 0
-  testDodge: 0
 --- !u!195 &1437755592142238687
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -477,15 +475,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932f4ddf7e8a8ae40bc18ef1dd4788ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIdleInArea: 0
-  bIdleRadius: 20
-  sandboxAction: 0
   state: 0
-  combatAction: 0
-  bAllowCombat: 1
-  bAllowSandbox: 1
-  bPartyMode: 0
-  dodgeCooldown: 1
+  combatActions: 0
+  sandboxActions: 0
 --- !u!1 &1436756678115397574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,7 +2348,7 @@ GameObject:
   m_Layer: 0
   m_Name: Hand.R
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2376,6 +2368,7 @@ Transform:
   - {fileID: 1440548156343024680}
   - {fileID: 1440548158190367652}
   - {fileID: 1440548157535065622}
+  - {fileID: 6436943624154470254}
   m_Father: {fileID: 1440548159024696888}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3380,3 +3373,78 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &6436943624154788616
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1440548156366905582}
+    m_Modifications:
+    - target: {fileID: 108396, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_Name
+      value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.214
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.219
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.198
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.05346506
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.44371098
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.532813
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.71859056
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -23.328001
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -310.843
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -297.676
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.56891
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.56891
+      objectReference: {fileID: 0}
+    - target: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.56891
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 10a3eabd5f49bd841affcdfd2935f6cd, type: 3}
+--- !u!4 &6436943624154470254 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 484454, guid: 10a3eabd5f49bd841affcdfd2935f6cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6436943624154788616}
+  m_PrefabAsset: {fileID: 0}

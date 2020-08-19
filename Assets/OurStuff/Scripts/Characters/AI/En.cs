@@ -23,8 +23,7 @@ public class En : MonoBehaviour
 
         if (other.tag == "Projectile")
         {
-            Debug.Log("PROJECTILE INCOMING");
-            myAi.CheckForDodging();
+         //   myAi.CheckForDodging();
         }
     }
 }

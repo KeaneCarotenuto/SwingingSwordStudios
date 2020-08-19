@@ -281,7 +281,7 @@ public class Actor : MonoBehaviour
         navAgent.angularSpeed = 0;
         navAgent.isStopped = true;
         isDead = true;
-        myAnim.PlayDeath();
+       // myAnim.PlayDeath();
     }
     public void Disable() { }
 
@@ -291,29 +291,25 @@ public class Actor : MonoBehaviour
         if(GetComponent<ActorBehaviour>() != null)
         {
             ActorBehaviour ai = GetComponent<ActorBehaviour>();
-            ai.EnterCombat();
+        //    ai.EnterCombat();
         }
     }
     public void Attack()
     {
+        Debug.Log("ATATACK ? ");
         // Fire a projectile in front of this actor. TEMPORARY, WILL CHANGE LATER
         if (bCanAttack)
         {
             // Spawn projectile if ranged enemy. TEMPORARY
             if (attackRange > 5)
             {
-                Debug.Log("HELLO, PLS NO ATTACK PLS");
                 Vector3 spawnPoint = transform.position;
                 spawnPoint.y += 2.5f;
                 GameObject projectile = Instantiate(projectilePrefab, spawnPoint, transform.rotation, GameObject.Find("BoltContainer").transform);
                 projectile.GetComponent<Rigidbody>().AddForce(transform.forward * 5000);
-            } else
-            {
-                Debug.Log("HELLO, PLS ATTACK");
-                myAnim.PlayAttack();
-
-              
             }
+            Debug.Log("SSSS");
+            myAnim.PlayAttackAnim();
             bCanAttack = false;
             StartCoroutine("StartAttackCooldown");
         }
@@ -517,7 +513,7 @@ public class Actor : MonoBehaviour
     {
         DamageAV("health", _iDamage);
         StartCombat();
-        myAnim.PlayGetHit();
+       // myAnim.PlayGetHit();
     }
 
     /*--- Calculate Functions ---*/

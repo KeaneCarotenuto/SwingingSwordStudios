@@ -1180,27 +1180,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questManager: {fileID: 0}
   waypointID: 2
---- !u!114 &410980876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 410980874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 932f4ddf7e8a8ae40bc18ef1dd4788ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bIdleInArea: 0
-  bIdleRadius: 20
-  sandboxAction: 0
-  state: 0
-  combatAction: 0
-  bAllowCombat: 1
-  bAllowSandbox: 1
-  bPartyMode: 0
-  dodgeCooldown: 1
 --- !u!4 &410980882 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1440548157051320698, guid: 527ee2e0c838095409cbb0456a15106a,
@@ -1239,15 +1218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932f4ddf7e8a8ae40bc18ef1dd4788ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIdleInArea: 0
-  bIdleRadius: 20
-  sandboxAction: 0
   state: 0
-  combatAction: 0
-  bAllowCombat: 1
-  bAllowSandbox: 1
-  bPartyMode: 0
-  dodgeCooldown: 1
+  combatActions: 0
+  sandboxActions: 0
 --- !u!4 &515264777 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1440548157051320698, guid: 527ee2e0c838095409cbb0456a15106a,
@@ -1604,15 +1577,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1717639944}
     m_Modifications:
+    - target: {fileID: -5437423745385192324, guid: 527ee2e0c838095409cbb0456a15106a,
+        type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5437423745385192324, guid: 527ee2e0c838095409cbb0456a15106a,
+        type: 3}
+      propertyPath: combatActions
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1436756677958306384, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
       propertyPath: m_Name
-      value: Bandit_Melee (1)
+      value: Bandit_Swordsman
       objectReference: {fileID: 0}
     - target: {fileID: 1440548157051320698, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.43
+      value: -19.84
       objectReference: {fileID: 0}
     - target: {fileID: 1440548157051320698, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
@@ -1627,12 +1610,12 @@ PrefabInstance:
     - target: {fileID: 1440548157051320698, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1440548157051320698, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.1955425
+      value: 0.26891991
       objectReference: {fileID: 0}
     - target: {fileID: 1440548157051320698, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
@@ -1642,7 +1625,7 @@ PrefabInstance:
     - target: {fileID: 1440548157051320698, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.98069525
+      value: -0.96316254
       objectReference: {fileID: 0}
     - target: {fileID: 1440548157051320698, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
@@ -1657,7 +1640,7 @@ PrefabInstance:
     - target: {fileID: 1440548157051320698, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -337.447
+      value: -391.2
       objectReference: {fileID: 0}
     - target: {fileID: 1440548157051320698, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
@@ -1688,7 +1671,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: aca9f027c7c050d4f8c893eb5cb3849d, type: 2}
+      objectReference: {fileID: 9100000, guid: b0c1a11381f524348bf6b728d3b82176, type: 2}
     - target: {fileID: 1437755592142238680, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
       propertyPath: projectilePrefab
@@ -1700,11 +1683,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2778354447599086657, guid: 527ee2e0c838095409cbb0456a15106a,
+    - target: {fileID: 1437755592142238680, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 140650, guid: 8df54da4fc1792b44bbd595abdf84efa, type: 3}
+      propertyPath: attackSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1437755592142238685, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
       propertyPath: state_idle
@@ -1715,6 +1698,11 @@ PrefabInstance:
       propertyPath: state_combat
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2778354447599086657, guid: 527ee2e0c838095409cbb0456a15106a,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 140650, guid: 8df54da4fc1792b44bbd595abdf84efa, type: 3}
     m_RemovedComponents:
     - {fileID: 2778354447599086657, guid: 527ee2e0c838095409cbb0456a15106a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 527ee2e0c838095409cbb0456a15106a, type: 3}
@@ -2158,15 +2146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932f4ddf7e8a8ae40bc18ef1dd4788ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIdleInArea: 0
-  bIdleRadius: 20
-  sandboxAction: 0
   state: 0
-  combatAction: 0
-  bAllowCombat: 1
-  bAllowSandbox: 1
-  bPartyMode: 0
-  dodgeCooldown: 1
+  combatActions: 0
+  sandboxActions: 0
 --- !u!4 &1160101070 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1011351806212885264, guid: 85f81a719c3f4b74096cb4c923de6cac,
@@ -2402,11 +2384,6 @@ PrefabInstance:
       propertyPath: linkedObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1097719201}
-    - target: {fileID: 2778354447599086657, guid: 527ee2e0c838095409cbb0456a15106a,
-        type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 140650, guid: 8df54da4fc1792b44bbd595abdf84efa, type: 3}
     - target: {fileID: 1437755592142238685, guid: 527ee2e0c838095409cbb0456a15106a,
         type: 3}
       propertyPath: state_idle
@@ -2422,6 +2399,11 @@ PrefabInstance:
       propertyPath: state_patrol
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2778354447599086657, guid: 527ee2e0c838095409cbb0456a15106a,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 140650, guid: 8df54da4fc1792b44bbd595abdf84efa, type: 3}
     m_RemovedComponents:
     - {fileID: 2778354447599086657, guid: 527ee2e0c838095409cbb0456a15106a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 527ee2e0c838095409cbb0456a15106a, type: 3}
@@ -2630,15 +2612,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932f4ddf7e8a8ae40bc18ef1dd4788ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIdleInArea: 0
-  bIdleRadius: 20
-  sandboxAction: 0
   state: 0
-  combatAction: 0
-  bAllowCombat: 1
-  bAllowSandbox: 1
-  bPartyMode: 0
-  dodgeCooldown: 1
+  combatActions: 0
+  sandboxActions: 0
 --- !u!4 &1286939602 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1440548157051320698, guid: 527ee2e0c838095409cbb0456a15106a,
@@ -3090,15 +3066,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932f4ddf7e8a8ae40bc18ef1dd4788ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIdleInArea: 0
-  bIdleRadius: 20
-  sandboxAction: 0
   state: 0
-  combatAction: 0
-  bAllowCombat: 1
-  bAllowSandbox: 1
-  bPartyMode: 0
-  dodgeCooldown: 1
+  combatActions: 0
+  sandboxActions: 0
 --- !u!4 &1352807032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1011351806212885264, guid: 85f81a719c3f4b74096cb4c923de6cac,
@@ -3331,15 +3301,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932f4ddf7e8a8ae40bc18ef1dd4788ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIdleInArea: 0
-  bIdleRadius: 20
-  sandboxAction: 0
   state: 0
-  combatAction: 0
-  bAllowCombat: 1
-  bAllowSandbox: 1
-  bPartyMode: 0
-  dodgeCooldown: 1
+  combatActions: 0
+  sandboxActions: 0
 --- !u!4 &1462723155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1011351806212885264, guid: 85f81a719c3f4b74096cb4c923de6cac,
@@ -4517,15 +4481,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932f4ddf7e8a8ae40bc18ef1dd4788ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIdleInArea: 0
-  bIdleRadius: 20
-  sandboxAction: 0
   state: 0
-  combatAction: 0
-  bAllowCombat: 1
-  bAllowSandbox: 1
-  bPartyMode: 0
-  dodgeCooldown: 1
+  combatActions: 0
+  sandboxActions: 0
 --- !u!4 &2064919960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1011351806212885264, guid: 85f81a719c3f4b74096cb4c923de6cac,
@@ -4686,6 +4644,10 @@ PrefabInstance:
       propertyPath: staminaIncreasePerSecond
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 133592572, guid: 31cd51b4ab3331749a5d3492f715a13f, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2743700165632431112, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4715,10 +4677,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RaycastTarget
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 133592572, guid: 31cd51b4ab3331749a5d3492f715a13f, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31cd51b4ab3331749a5d3492f715a13f, type: 3}
