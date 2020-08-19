@@ -1929,7 +1929,7 @@ GameObject:
   - component: {fileID: 1010845779367018940}
   - component: {fileID: 1010845779367018915}
   - component: {fileID: 1010845779367018914}
-  - component: {fileID: -7396932570944379366}
+  - component: {fileID: 2143596275104318861}
   m_Layer: 0
   m_Name: Bandit_Ranged
   m_TagString: Interactable
@@ -2019,6 +2019,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  bIsInCombat: 0
+  testDodge: 0
 --- !u!195 &1010845779367018915
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2053,7 +2055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b8d8cf80d6a4c4eb2d58aea0bb84e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  myName: John Cena
   faction: {fileID: 0}
   health: 1500
   healthMax: 1500
@@ -2075,7 +2077,8 @@ MonoBehaviour:
     type: 3}
   bCanAttack: 1
   linkedObjects: []
---- !u!114 &-7396932570944379366
+  isDead: 0
+--- !u!114 &2143596275104318861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2084,18 +2087,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1010129443563763770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b617526272978458713b3afcc6bcd5, type: 3}
+  m_Script: {fileID: 11500000, guid: 932f4ddf7e8a8ae40bc18ef1dd4788ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state_combat: 0
-  state_scan: 0
-  state_reposition: 0
-  state_attack: 0
-  state_patrol: 0
-  state_idle: 1
-  target: {fileID: 0}
-  bTargetWithinRange: 0
-  projectile: {fileID: 191248, guid: 33dcf8e45a480524f87f4af6f7f6df03, type: 3}
+  bIdleInArea: 0
+  bIdleRadius: 20
+  sandboxAction: 0
+  state: 0
+  combatAction: 0
+  bAllowCombat: 1
+  bAllowSandbox: 1
+  bPartyMode: 0
+  dodgeCooldown: 1
 --- !u!1 &1010129443825736608
 GameObject:
   m_ObjectHideFlags: 0
