@@ -54,7 +54,31 @@ public class ActorAnimation : MonoBehaviour
 		}
 		
 		animator.SetTrigger("Attack");
+	}
 
-		
+
+	public void PlayDeath()
+	{
+		animator.ResetTrigger("GetHit");
+		animator.ResetTrigger("Dodge");
+		animator.SetTrigger("Death");
+		animator.SetBool("Dead", true);
+	}
+
+	public void PlayGetHit()
+	{
+		animator.ResetTrigger("Death");
+		animator.ResetTrigger("Dodge");
+		animator.SetTrigger("GetHit");
+	}
+
+	public void PlayDodge()
+	{
+		int random = Random.Range(0, 3);
+		animator.ResetTrigger("Death");
+		animator.ResetTrigger("GetHit");
+
+		animator.SetInteger("dodgeIndex", random);
+		animator.SetTrigger("Dodge");
 	}
 }

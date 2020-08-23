@@ -20,9 +20,15 @@ public class ActorBehaviour : MonoBehaviour
     ActorAnimation myAnim;
     Actor myActor;
 
+    GameObject combatTarget;
+
+    float nextDodgeTime;
+    float dodgeCooldown = 2;
     void Start()
     {
         ResetAI();
+        combatTarget = GameObject.FindWithTag("Player");
+        nextDodgeTime = Time.time + dodgeCooldown ;
     }
 
     public void ResetAI()
@@ -47,7 +53,7 @@ public class ActorBehaviour : MonoBehaviour
         {
             Debug.Log(myActor.myName + " is missing an ActorAnimation Class, please fix");
         }
-
+        myNavAgent.updatePosition = false;
        // myActor 
     }
 
@@ -121,10 +127,29 @@ public class ActorBehaviour : MonoBehaviour
         }
     }
 
+    public void EnterCombat()
+    {
+        state = AIStates.COMBAT;
+        combatActions = AICombatActions.ATTACKING;
+    }
+
+    public void CheckForDodging()
+    {
+        if (Time.time >= nextDodgeTime)
+        {
+            nextDodgeTime = Time.time + dodgeCooldown;
+            myAnim.PlayDodge();
+        }
+    }
+
     private void DoAttacking()
     {
         Debug.Log("EARE YOU ATTACKING");
         myActor.Attack();
+        Vector3 pos = new Vector3();
+        pos = combatTarget.transform.position;
+        pos.y -= 1f;
+        transform.LookAt(pos);
     }
 
     private void DoDeathRoutine()
