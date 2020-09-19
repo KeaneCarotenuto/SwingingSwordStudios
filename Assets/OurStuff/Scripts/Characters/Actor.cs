@@ -280,6 +280,7 @@ public class Actor : MonoBehaviour
         //Destroy(gameObject);
         navAgent.angularSpeed = 0;
         navAgent.isStopped = true;
+        health = 0;
         isDead = true;
         myAnim.PlayDeath();
     }

@@ -21,6 +21,7 @@ public class ActorBehaviour : MonoBehaviour
     Actor myActor;
 
     GameObject combatTarget;
+    public GameObject actionTarget;
 
     float nextDodgeTime;
     float dodgeCooldown = 2;
@@ -29,6 +30,7 @@ public class ActorBehaviour : MonoBehaviour
         ResetAI();
         combatTarget = GameObject.FindWithTag("Player");
         nextDodgeTime = Time.time + dodgeCooldown ;
+        actionTarget = combatTarget;
     }
 
     public void ResetAI()
@@ -62,7 +64,9 @@ public class ActorBehaviour : MonoBehaviour
     {
         if (!myActor.isDead)
         {
-            EvaluateAI();
+            DoFollowTarget();
+            //EvaluateAI();
+            
         }
     }
 
@@ -102,6 +106,14 @@ public class ActorBehaviour : MonoBehaviour
     private void DoIdleRoutine()
     {
         myAnim.PlayIdleAnim();
+    }
+
+    private void DoFollowTarget()
+    {
+        Debug.Log("HELLOOOOO");
+        myNavAgent.isStopped = false;
+        myNavAgent.SetDestination(actionTarget.transform.position);
+        
     }
 
     private void DoSandboxRoutine()
