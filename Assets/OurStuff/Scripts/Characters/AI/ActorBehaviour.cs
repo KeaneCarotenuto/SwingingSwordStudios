@@ -110,9 +110,9 @@ public class ActorBehaviour : MonoBehaviour
 
     private void DoFollowTarget()
     {
-        Debug.Log("HELLOOOOO");
-        myNavAgent.isStopped = false;
         myNavAgent.SetDestination(actionTarget.transform.position);
+        myNavAgent.isStopped = false;
+        
         
     }
 
