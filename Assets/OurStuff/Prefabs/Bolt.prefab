@@ -5014,7 +5014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boltDamage: 5
   boltKnockback: 10
-  maxBranches: 3
+  maxBranches: 2
   maxItterations: 2
   maxBoltAliveTime: 2
   afterHitAliveTime: 0.2

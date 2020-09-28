@@ -35,6 +35,7 @@ public class BoltScript : MonoBehaviour
 
     private void Awake()
     {
+
         foreach (GameObject _obj in toSeek)
         {
             foreach (GameObject gameObj in FindObjectsOfType(_obj.GetType()))
