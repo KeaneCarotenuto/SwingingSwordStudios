@@ -240,16 +240,16 @@ public void StartRepositionState()
     {
         if (state_attack || state_idle)
         {
-            myAnim.Idle();
+          //  myAnim.Idle();
         }
         else
         {
             if (state_patrol)
             {
-                myAnim.Walk();
+              //  myAnim.Walk();
             }
             else { 
-                myAnim.SprintJump();
+            //    myAnim.SprintJump();
             }
         }
     }

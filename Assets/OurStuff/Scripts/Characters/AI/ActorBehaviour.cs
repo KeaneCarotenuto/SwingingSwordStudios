@@ -5,195 +5,182 @@ using UnityEngine.AI;
 
 public class ActorBehaviour : MonoBehaviour
 {
-    public enum AISandboxActions { IDLE, PATROLLING, TRAVELLING}
+    public enum AICombatActions { IDLE, HOLD, MOVING, STRAFING, ATTACKING, EVADING, DYING, FALLING}
+    public enum AISandboxActions { IDLE, DYING}
 
-    public enum AIStates { SANDBOX, COMBAT, DEAD }
+    public enum AIStates { IDLE, SANDBOX, COMBAT, DEATH, GUARDING, YIELDING, FLEEING }
 
-    Actor myActor;
-    ActorAnimation myAnim;
-    NavMeshAgent navAgent;
 
-    /* -- Targets -- */
-    GameObject combatTarget;
-    GameObject patrolTarget;
-    GameObject patrolCurrentTarget;
-    GameObject travelTarget;
-    GameObject idleTarget;
-
-    public bool bIdleInArea = false;
-    // if bIdleInArea is true, then this actor will idle around within x amount of radius of the idleTarget. 
-    // If there are idle markers nearby, will use their animation!
-    // If that is false, then actor will idle on the idleTarget only. If the idleTarget is an idle marker, play animation!
-    public float bIdleRadius = 20f;
-
-    public AISandboxActions sandboxAction;
     public AIStates state;
+    AIStates prevState;
+    public AICombatActions combatActions;
+    public AISandboxActions sandboxActions;
 
-    public bool bAllowCombat = true;
-    public bool bAllowSandbox = true;
-    /*--- ---*/
+    NavMeshAgent myNavAgent;
+    ActorAnimation myAnim;
+    Actor myActor;
+
+    GameObject combatTarget;
+    public GameObject actionTarget;
+
+    float nextDodgeTime;
+    float dodgeCooldown = 2;
     void Start()
     {
+        ResetAI();
+        combatTarget = GameObject.FindWithTag("Player");
+        nextDodgeTime = Time.time + dodgeCooldown ;
+        actionTarget = combatTarget;
+    }
+
+    public void ResetAI()
+    {
+        state = AIStates.IDLE;
+        combatActions = AICombatActions.IDLE;
+        sandboxActions = AISandboxActions.IDLE;
+
         myActor = GetComponent<Actor>();
-        myAnim = GetComponent<ActorAnimation>();
-        navAgent = GetComponent<NavMeshAgent>();
-        combatTarget = GameObject.FindWithTag("Player");// Player for now. TEMP
-        state = AIStates.SANDBOX;
-        sandboxAction = AISandboxActions.IDLE;
-    }
-
-    void Update()
-    {
-        EvaluateAI();
-    }
-
-    /*--- States ---*/
-
-    public void EnterSandbox()
-    {
-        sandboxAction = AISandboxActions.IDLE;
-    }
-
-    public void EnterCombat()
-    {
-
-    }
-
-
-    private void DoSandboxRoutine()
-    {
-        // Do sandboxing things
-
-        switch (sandboxAction)
+        if(myActor == null)
         {
-            case AISandboxActions.IDLE:
-                // Assigned to IDLing. Easy Breazy
-                Idle();
-                break;
-            case AISandboxActions.TRAVELLING:
-                // Assigned to travelling to x position
-                Travel();
-                break;
-            case AISandboxActions.PATROLLING:
-                // Assigned to patrol job
-                Patrol();
-                break;
-            default:
-
-                break;
+            Debug.Log("An object has actorbehaviourscript but doesn't have an actor script attach! Pls fix");
         }
+        myNavAgent = GetComponent<NavMeshAgent>();
+        if(myNavAgent == null)
+        {
+            Debug.Log(myActor.myName + " is missing a navmesh agent!");
+        }
+
+        myAnim = GetComponent<ActorAnimation>();
+        if(myAnim == null)
+        {
+            Debug.Log(myActor.myName + " is missing an ActorAnimation Class, please fix");
+        }
+        myNavAgent.updatePosition = false;
+       // myActor 
     }
 
 
-    private void DoCombatRoutine()
+    public void Update()
     {
-
+        if (!myActor.isDead)
+        {
+            DoFollowTarget();
+            //EvaluateAI();
+            
+        }
     }
 
     private void EvaluateAI()
     {
-        // What to do!?
         switch (state)
         {
+            case AIStates.IDLE:
+                DoIdleRoutine();
+                break;
             case AIStates.SANDBOX:
                 DoSandboxRoutine();
                 break;
             case AIStates.COMBAT:
-
+                DoCombatRoutine();
+                break;
+            case AIStates.DEATH:
+                DoDeathRoutine();
+                break;
+            case AIStates.GUARDING:
+                DoGuardingRoutine();
+                break;
+            case AIStates.YIELDING:
+                DoYieldingRoutine();
+                break;
+            case AIStates.FLEEING:
+                DoFleeingRoutine();
                 break;
             default:
-
+                state = AIStates.IDLE;
                 break;
         }
-    }
-
-    /*--- MOVEMENT ---*/
-    void Patrol()
-    {
-        navAgent.isStopped = false;
-        Vector3 targetPos = patrolCurrentTarget.transform.position;
-        navAgent.SetDestination(targetPos);
-        float distance = Vector3.Distance(targetPos, transform.position);
-        if (distance < 5f)
-        {
-            StartIdle(patrolCurrentTarget);
-            StartCoroutine("WaitAtPatrolPoint");
-        }
-    }
-
-    void SetNextPatrolPoint()
-    {
-        if (patrolTarget.GetComponent<PatrolPoint>().GetNextPoint() == null)
-        {
-            // If it's null, then we reached the end of the patrol points. Go back at the start
-            patrolCurrentTarget = patrolTarget;
-        }
-        else
-        {
-            patrolCurrentTarget = patrolCurrentTarget.GetComponent<PatrolPoint>().GetNextPoint().gameObject;
-        }
-    }
-
-    void Travel()
-    {
-
-    }
-
-    void Idle()
-    {
-
-    }
-
-    /*--- Do Actions ---*/
-    public void StartPatrol(GameObject _patrolStartPoint)
-    {
-        patrolTarget = _patrolStartPoint;
-        sandboxAction = AISandboxActions.PATROLLING;
-    }
-
-    public void StartIdle(GameObject _idleMarker)
-    {
-
-    }
-    /*--- Utilities ---*/
-    public void ResetAI()
-    {
-        // Remove all AI Packages, effectively making this actor not do anything
     }
 
     
-    public void ApplyAIPackage(AIPackage _package)
+    /* -- Routines -- */
+    private void DoIdleRoutine()
     {
-        Debug.Log("APPLYING AI PACKAGE: " + _package.packageName);
-        switch (_package.packageType)
+        myAnim.PlayIdleAnim();
+    }
+
+    private void DoFollowTarget()
+    {
+        myNavAgent.SetDestination(actionTarget.transform.position);
+        myNavAgent.isStopped = false;
+        
+        
+    }
+
+    private void DoSandboxRoutine()
+    {
+        // Play Enter Idle Animation if first time
+        // if (prevState != state)
+        //{
+        //   myAnim.PlayEnterSandboxAnim();
+
+        // }
+        //   prevState = state;
+        myAnim.PlaySandboxIdleAnim();
+    }
+
+    private void DoCombatRoutine()
+    {
+        myAnim.PlayCombatIdleAnim();
+        switch (combatActions)
         {
-            case AIPackage.PackageType.PATROL:
-                StartPatrol(_package.target);
-                break;
-            case AIPackage.PackageType.TRAVEL:
-
-                break;
-            case AIPackage.PackageType.IDLE:
-
-                break;
-            case AIPackage.PackageType.ATTACK:
-
-                break;
-            default:
-
+            case AICombatActions.ATTACKING:
+                DoAttacking();
                 break;
         }
     }
-    
-    // IENumerators
-    IEnumerator WaitAtPatrolPoint()
+
+    public void EnterCombat()
     {
-        yield return new WaitForSeconds(patrolCurrentTarget.GetComponent<PatrolPoint>().waitTime);   //Wait
-        // After the wait, resume patrol and onto the next node
-        SetNextPatrolPoint();
-        StartPatrol(patrolCurrentTarget);
+        state = AIStates.COMBAT;
+        combatActions = AICombatActions.ATTACKING;
     }
 
+    public void CheckForDodging()
+    {
+        if (Time.time >= nextDodgeTime)
+        {
+            nextDodgeTime = Time.time + dodgeCooldown;
+            myAnim.PlayDodge();
+        }
+    }
 
+    private void DoAttacking()
+    {
+        Debug.Log("EARE YOU ATTACKING");
+        myActor.Attack();
+        Vector3 pos = new Vector3();
+        pos = combatTarget.transform.position;
+        pos.y -= 1f;
+        transform.LookAt(pos);
+    }
 
+    private void DoDeathRoutine()
+    {
+
+    }
+
+    private void DoGuardingRoutine()
+    {
+
+    } 
+
+    private void DoYieldingRoutine()
+    {
+
+    }
+
+    private void DoFleeingRoutine()
+    {
+
+    }
 }
