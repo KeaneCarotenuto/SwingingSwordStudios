@@ -22,7 +22,34 @@ public class QuestManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            foreach (Quest _quest in activeQuests)
+            {
+                _quest.currentObjectiveIndex = 0;
+                _quest.questComplete = false;
+                
+                foreach (questObjective _obj in _quest.objectiveList)
+                {
+                    _obj.objectiveComplete = false;
+                }
+            }
+
+            foreach (Quest _quest in completedQuests)
+            {
+                _quest.currentObjectiveIndex = 0;
+                _quest.questComplete = false;
+
+                foreach (questObjective _obj in _quest.objectiveList)
+                {
+                    _obj.objectiveComplete = false;
+                }
+
+                activeQuests.Add(_quest);
+                completedQuests.Remove(_quest);
+
+            }
+        }
     }
 
     void CheckQuestStatus(string _targetID, ObjectiveType _type)
