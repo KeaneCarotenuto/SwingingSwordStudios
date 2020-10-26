@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 2496462214325559218}
   - component: {fileID: 4475934634641702008}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1549,6 +1549,16 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.5019608
       objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3139716150110543050, guid: 589f7480599cf474e8435d1eb4e4ce35,
         type: 3}
       propertyPath: m_Color.r
@@ -1732,6 +1742,16 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.5019608
       objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3139716150110543050, guid: 589f7480599cf474e8435d1eb4e4ce35,
         type: 3}
       propertyPath: m_Color.r
@@ -1749,15 +1769,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 589f7480599cf474e8435d1eb4e4ce35, type: 3}
---- !u!1 &2743700165549215939 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3139716151248905030, guid: 589f7480599cf474e8435d1eb4e4ce35,
-    type: 3}
-  m_PrefabInstance: {fileID: 973085348055921541}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2743700165549215948 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3139716151248905033, guid: 589f7480599cf474e8435d1eb4e4ce35,
+    type: 3}
+  m_PrefabInstance: {fileID: 973085348055921541}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2743700165549215939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3139716151248905030, guid: 589f7480599cf474e8435d1eb4e4ce35,
     type: 3}
   m_PrefabInstance: {fileID: 973085348055921541}
   m_PrefabAsset: {fileID: 0}
@@ -1914,6 +1934,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3139716150110543050, guid: 589f7480599cf474e8435d1eb4e4ce35,
         type: 3}
