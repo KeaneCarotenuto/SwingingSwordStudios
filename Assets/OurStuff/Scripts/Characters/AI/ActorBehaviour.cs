@@ -55,7 +55,7 @@ public class ActorBehaviour : MonoBehaviour
         {
             Debug.Log(myActor.myName + " is missing an ActorAnimation Class, please fix");
         }
-        myNavAgent.updatePosition = false;
+        myNavAgent.updatePosition = true;
        // myActor 
     }
 
@@ -64,6 +64,7 @@ public class ActorBehaviour : MonoBehaviour
     {
         if (!myActor.isDead)
         {
+            //myNavAgent.SetDestination(transform.position + transform.forward);
             DoFollowTarget();
             //EvaluateAI();
             
