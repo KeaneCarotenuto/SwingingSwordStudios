@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/OurStuff/Scenes/MainMenu.unity
+    guid: 68a1ad0ef491c104eb3855c4a71c662e
+  - enabled: 1
+    path: Assets/OurStuff/Scenes/LandOfTheGod.unity
+    guid: fab1de1bee431304b8b97fc4177ebda8
   m_configObjects: {}

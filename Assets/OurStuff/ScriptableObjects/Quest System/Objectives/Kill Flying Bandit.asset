@@ -16,5 +16,5 @@ MonoBehaviour:
   objectiveType: 0
   objectiveTargetID: 10
   objectiveDesc: Kill 5 Enemies
-  objectiveComplete: 0
+  objectiveComplete: 1
   objectiveIndex: 0
