@@ -21,7 +21,7 @@ public class questObjective : ScriptableObject
     [SerializeField]
     public string objectiveDesc;
     [SerializeField]
-    private bool objectiveComplete;
+    public bool objectiveComplete;
     public int objectiveIndex;
 
     public void Initialise()

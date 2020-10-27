@@ -5,63 +5,80 @@ using UnityEngine;
 public class ActorAnimation : MonoBehaviour
 {
 	public Animator animator;
+	bool bDoOnce = false;
 
-	// Use this for initialization
 	void Start()
 	{
 		animator = GetComponent<Animator>();
-		Walk();
+		if(animator == null)
+		{
+			Debug.Log("Error, no animator for this npc");
+		}
+	}
+	public void PlayIdleAnim()
+	{
+		animator.SetInteger("state", 0);
+		animator.SetInteger("combatState", 0);
+		animator.SetInteger("sandboxState", 0);
+	}	
+	
+	public void PlaySandboxIdleAnim()
+	{
+		animator.SetInteger("state", 1);
+		animator.SetInteger("combatState", 0);
+		animator.SetInteger("sandboxState", 1);
 	}
 
-	// Update is called once per frame
-	void Update()
+	public void PlayCombatIdleAnim()
 	{
-
+		ResetTriggers();
+		animator.SetInteger("state", 2);
 	}
 
-	public void Idle()
+	void ResetTriggers()
 	{
-		animator = GetComponent<Animator>();
-		animator.SetBool("Walk", false);
-		animator.SetBool("SprintJump", false);
-		animator.SetBool("SprintSlide", false);
+		animator.ResetTrigger("Attack");
+	}
+	public void PlayAttackAnim()
+	{
+		// Random Attack Type
+
+		int attackType = Random.Range(0, 2);
+		animator.SetInteger("AttackTypeIndex", attackType);
+		if(attackType == 0)
+		{
+			animator.SetInteger("AttackFastIndex", Random.Range(0, 5));
+		} else
+		{
+			animator.SetInteger("AttackMedIndex", Random.Range(0,11));
+		}
+		
+		animator.SetTrigger("Attack");
 	}
 
-	public void DefenseIdle()
+
+	public void PlayDeath()
 	{
-		// Keep updating!
-		animator = GetComponent<Animator>();
-		animator.SetBool("Combat", true);
+		animator.ResetTrigger("GetHit");
+		animator.ResetTrigger("Dodge");
+		animator.SetTrigger("Death");
+		animator.SetBool("Dead", true);
 	}
 
-	public void CombatMove()
+	public void PlayGetHit()
 	{
-		animator = GetComponent<Animator>();
-		animator.SetBool("Combat", true);
-		animator.SetBool("Moving", true);
+		animator.ResetTrigger("Death");
+		animator.ResetTrigger("Dodge");
+		animator.SetTrigger("GetHit");
 	}
 
-	public void Walk()
+	public void PlayDodge()
 	{
-		animator = GetComponent<Animator>();
-		animator.SetBool("Walk", true);
-		animator.SetBool("SprintJump", false);
-		animator.SetBool("SprintSlide", false);
-	}
+		int random = Random.Range(0, 3);
+		animator.ResetTrigger("Death");
+		animator.ResetTrigger("GetHit");
 
-	public void SprintJump()
-	{
-		animator = GetComponent<Animator>();
-		animator.SetBool("Walk", false);
-		animator.SetBool("SprintJump", true);
-		animator.SetBool("SprintSlide", false);
-	}
-
-	public void SprintSlide()
-	{
-		animator = GetComponent<Animator>();
-		animator.SetBool("Walk", false);
-		animator.SetBool("SprintJump", false);
-		animator.SetBool("SprintSlide", true);
+		animator.SetInteger("dodgeIndex", random);
+		animator.SetTrigger("Dodge");
 	}
 }

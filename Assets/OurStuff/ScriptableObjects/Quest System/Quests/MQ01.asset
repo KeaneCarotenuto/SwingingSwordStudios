@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MQ01
   m_EditorClassIdentifier: 
   questName: Kill the Bandits
-  questDesc: Kill.The.Bandits.
+  questDesc: Kill the Bandits, Then Return to the Town
   objectiveList:
+  - {fileID: 11400000, guid: c2d804d8aca2c4d4f847f408f450b830, type: 2}
   - {fileID: 11400000, guid: 071bfd43712317747bf9b8216f41c24d, type: 2}
-  - {fileID: 11400000, guid: 619597a2b5566c243899d3f1966bb759, type: 2}
-  - {fileID: 11400000, guid: 96c510f9a30b65a4d9faa49a0d8129a6, type: 2}
   questComplete: 0
+  currentObjectiveIndex: 1

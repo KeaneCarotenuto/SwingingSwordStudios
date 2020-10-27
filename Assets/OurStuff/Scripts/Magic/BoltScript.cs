@@ -35,6 +35,7 @@ public class BoltScript : MonoBehaviour
 
     private void Awake()
     {
+
         foreach (GameObject _obj in toSeek)
         {
             foreach (GameObject gameObj in FindObjectsOfType(_obj.GetType()))
@@ -66,7 +67,7 @@ public class BoltScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Dont Hit player
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "En")
         {
             return;
         }

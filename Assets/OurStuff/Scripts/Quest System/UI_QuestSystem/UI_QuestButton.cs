@@ -17,6 +17,7 @@ public class UI_QuestButton : MonoBehaviour
 
     public void DisplayDetails()
     {
+        Debug.Log("Clicked " + quest.name);
         questUI.DisplayQuestDetails(quest);
     }
 
