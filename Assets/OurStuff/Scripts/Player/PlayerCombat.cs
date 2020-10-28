@@ -21,6 +21,10 @@ public class PlayerCombat : MonoBehaviour
     private float strikeMaxDamage = 100;
     private float strikeMaxHoldTime = 4;
 
+    public PlayerScript GetPlayerScript;
+    public int boltManaCost = 5;
+    public int strikeManaCost = 20;
+
     private void Start()
     {
         nextActionTime = Time.time + period;
@@ -29,7 +33,7 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && Time.time >= nextActionTime)
+        if (Input.GetMouseButton(0) && Time.time >= nextActionTime && GetPlayerScript.mana > boltManaCost)
         {
             nextActionTime = Time.time + period;
 
@@ -39,6 +43,7 @@ public class PlayerCombat : MonoBehaviour
             tempBolt.GetComponent<Rigidbody>().AddForce(PCamera.transform.forward * 30000);
             tempBolt.name = "OriginalBolt";
 
+            GetPlayerScript.UpdateManaBar(boltManaCost);
         }
 
         if (holding)
@@ -50,16 +55,15 @@ public class PlayerCombat : MonoBehaviour
             StrikeBar.GetComponent<Slider>().value = 0;
         }
 
-        if (Input.GetMouseButton(1) && !holding && Time.time >= nextActionTime)
+        if (Input.GetMouseButton(1) && !holding && Time.time >= nextActionTime && GetPlayerScript.mana > strikeManaCost && GetPlayerScript.shardsCollected >= 1)
         {
             holding = true;
             nextActionTime = Time.time + period;
             holdingTime = Time.time;
-
             //GameObject tempBolt = Instantiate(Strike, (PCamera.transform.position) - new Vector3(0, 0.5f, 0), PCamera.transform.rotation, GameObject.Find("BoltContainer").transform);
         }
 
-        if (!Input.GetMouseButton(1) && holding)
+        if (!Input.GetMouseButton(1) && holding && GetPlayerScript.mana > strikeManaCost && GetPlayerScript.shardsCollected >= 1)
         {
             holding = false;
             RaycastHit hit;
@@ -71,6 +75,7 @@ public class PlayerCombat : MonoBehaviour
                 float tempDmg = Mathf.Clamp((Time.time - holdingTime) * (strikeMaxDamage / strikeMaxHoldTime), 0, strikeMaxDamage);
                 tempStrike.GetComponent<StrikeScript>().damage = tempDmg;
                 Debug.Log(tempDmg);
+                GetPlayerScript.UpdateManaBar(strikeManaCost);
             }
         }
     }

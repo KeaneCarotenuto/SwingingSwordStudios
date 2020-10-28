@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    //Player Stats
     public float health = 100;
     public float healthMax = 100;
     public float mana = 100;
@@ -17,6 +18,19 @@ public class PlayerScript : MonoBehaviour
     public ResourceBar healthbar;
     public ResourceBar manabar;
     public ResourceBar staminabar;
+
+    //Shards collectible
+    public int shardsCollected = 0;
+
+    //Shards UI
+    public GameObject shard1;
+    public GameObject shard2;
+    public GameObject shard3;
+    public GameObject shard1empty;
+    public GameObject shard2empty;
+    public GameObject shard3empty;
+
+    public GameObject StrikeBar;
 
     //Seting the variables for the resourcebar slider
     void SetHealth()
@@ -42,34 +56,43 @@ public class PlayerScript : MonoBehaviour
         SetHealth();
         SetMana();
         SetStamina();
+
+        shard1.gameObject.SetActive(false);
+        shard2.gameObject.SetActive(false);
+        shard3.gameObject.SetActive(false);
+        shard1empty.gameObject.SetActive(true);
+        shard2empty.gameObject.SetActive(true);
+        shard3empty.gameObject.SetActive(true);
+
+        StrikeBar.gameObject.SetActive(false); 
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateShards();
         //Testing functionality
         //X to reduce health, left click to reduce mana, space to reduce stamina
-        if(Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && Time.timeScale != 0)
         {
             UpdateHealthBar(20);
         }
 
-       if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            UpdateManaBar(20);
-        }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale != 0)
         {
             UpdateStaminaBar(20);
         }
+
         HealthRegen();
         ManaRegen();
         StaminaRegen();
+ 
+
     }
 
     //Function to update resource bar after performing an action
-    void UpdateHealthBar(int cost)
+    public void UpdateHealthBar(int cost)
     {
         health -= cost;
         healthbar.SetResource(health);
@@ -78,7 +101,8 @@ public class PlayerScript : MonoBehaviour
             health = 0;
         }
     }
-    void UpdateManaBar(int cost)
+ 
+    public void UpdateManaBar(int cost)
     {
         mana -= cost;
         manabar.SetResource(mana);
@@ -87,7 +111,7 @@ public class PlayerScript : MonoBehaviour
             mana = 0;
         }
     }
-    void UpdateStaminaBar(int cost)
+    public void UpdateStaminaBar(int cost)
     {
         stamina -= cost;
         staminabar.SetResource(stamina);
@@ -130,4 +154,56 @@ public class PlayerScript : MonoBehaviour
         }
         staminabar.SetResource(stamina);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Shard"))
+        {
+            shardsCollected++;
+            Destroy(other.gameObject);
+        }
+    }
+
+    void UpdateShards()
+    {
+        switch (shardsCollected)
+        {
+            case 1:
+                {
+                    shard1.gameObject.SetActive(true);
+                    shard2.gameObject.SetActive(false);
+                    shard3.gameObject.SetActive(false);
+                    shard1empty.gameObject.SetActive(false);
+                    shard2empty.gameObject.SetActive(true);
+                    shard3empty.gameObject.SetActive(true);
+                    StrikeBar.gameObject.SetActive(true);
+                    break;
+                }
+            case 2:
+                {
+                    shard1.gameObject.SetActive(true);
+                    shard2.gameObject.SetActive(true);
+                    shard3.gameObject.SetActive(false);
+                    shard1empty.gameObject.SetActive(false);
+                    shard2empty.gameObject.SetActive(false);
+                    shard3empty.gameObject.SetActive(true);
+                    break;
+                }
+            case 3:
+                {
+                    shard1.gameObject.SetActive(true);
+                    shard2.gameObject.SetActive(true);
+                    shard3.gameObject.SetActive(true);
+                    shard1empty.gameObject.SetActive(false);
+                    shard2empty.gameObject.SetActive(false);
+                    shard3empty.gameObject.SetActive(false);
+                    break;
+                }
+            default:
+                break;
+        }
+
+
+    }
+
 }
