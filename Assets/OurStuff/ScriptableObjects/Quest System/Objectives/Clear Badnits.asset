@@ -16,5 +16,5 @@ MonoBehaviour:
   objectiveType: 0
   objectiveTargetID: 21
   objectiveDesc: Clear The North Camp's minions
-  objectiveComplete: 1
+  objectiveComplete: 0
   objectiveIndex: 0
