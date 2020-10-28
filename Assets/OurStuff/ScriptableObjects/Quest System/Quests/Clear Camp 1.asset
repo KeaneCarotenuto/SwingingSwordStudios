@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a059e33b702241d4b804f1967e80a0c3, type: 3}
-  m_Name: MQ01
+  m_Name: Clear Camp 1
   m_EditorClassIdentifier: 
-  questName: Kill the Bandits
-  questDesc: Kill the Bandits, Then Return to the Town
+  questName: Clear the Northern Camp
+  questDesc: Kill the Leader of the norther camp
   objectiveList:
-  - {fileID: 11400000, guid: c2d804d8aca2c4d4f847f408f450b830, type: 2}
-  - {fileID: 11400000, guid: 071bfd43712317747bf9b8216f41c24d, type: 2}
-  questComplete: 0
-  currentObjectiveIndex: 1
+  - {fileID: 11400000, guid: 4200d41e79f8bed41935ecbe2f690132, type: 2}
+  - {fileID: 11400000, guid: 91b56e58cba2c314487a847e3e70ca4c, type: 2}
+  questComplete: 1
+  currentObjectiveIndex: 2
