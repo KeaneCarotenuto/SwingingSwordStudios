@@ -34,7 +34,7 @@ public class Quest : ScriptableObject
 
             if (!objective.isComplete())
             {
-                if (objective.objectiveIndex == currentObjectiveIndex)
+                if (objective.objectiveIndex <= currentObjectiveIndex)
                 {
                     objective.TryAdvance(_targetID, _type);
 

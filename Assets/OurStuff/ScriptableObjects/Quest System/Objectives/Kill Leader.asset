@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 419a4bbfac2bc9d47902474b0b4c80d1, type: 3}
-  m_Name: Return to Town Centre
+  m_Name: Kill Leader
   m_EditorClassIdentifier: 
   defaultObjectiveAmount: 1
-  objectiveType: 1
-  objectiveTargetID: 11
-  objectiveDesc: Go to the Town
+  objectiveType: 0
+  objectiveTargetID: 20
+  objectiveDesc: Kill the leader at the north Camp
   objectiveComplete: 0
-  objectiveIndex: 1
+  objectiveIndex: 0
