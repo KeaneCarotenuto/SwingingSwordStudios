@@ -16,6 +16,6 @@ MonoBehaviour:
   questDesc: Kill the Leader of the norther camp
   objectiveList:
   - {fileID: 11400000, guid: 4200d41e79f8bed41935ecbe2f690132, type: 2}
-  - {fileID: 11400000, guid: 4200d41e79f8bed41935ecbe2f690132, type: 2}
+  - {fileID: 11400000, guid: 91b56e58cba2c314487a847e3e70ca4c, type: 2}
   questComplete: 1
-  currentObjectiveIndex: 1
+  currentObjectiveIndex: 2
