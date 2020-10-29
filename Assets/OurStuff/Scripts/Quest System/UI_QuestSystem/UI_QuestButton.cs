@@ -15,15 +15,14 @@ public class UI_QuestButton : MonoBehaviour
         questUI = GetComponentInParent<UI_QuestUI>();
     }
 
+    /// <summary>
+    /// Displays the details.
+    /// </summary>
     public void DisplayDetails()
     {
         Debug.Log("Clicked " + quest.name);
         questUI.DisplayQuestDetails(quest);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

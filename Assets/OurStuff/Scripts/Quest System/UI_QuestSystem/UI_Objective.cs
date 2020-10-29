@@ -19,9 +19,5 @@ public class UI_Objective : MonoBehaviour
         objectiveToggle.isOn = objectiveComplete;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

@@ -22,15 +22,11 @@ public class UI_QuestPanel : MonoBehaviour
             GameObject objectiveUI = (GameObject)Instantiate(objectivePrefab);
             UI_Objective uiObjective = objectiveUI.GetComponent<UI_Objective>();
             uiObjective.objectiveDesc = objective.objectiveDesc;
-            uiObjective.objectiveComplete = objective.isComplete();
+            uiObjective.objectiveComplete = objective.IsComplete;
             objectiveUI.transform.SetParent(objectivePanel);
         }
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

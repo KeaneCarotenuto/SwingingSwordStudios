@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a059e33b702241d4b804f1967e80a0c3, type: 3}
   m_Name: Clear Camp 1
   m_EditorClassIdentifier: 
-  questName: Clear the Northern Camp
-  questDesc: Kill the Leader of the norther camp
+  questName: Clear the Nearest Bandit Camp
+  questDesc: There is a bandit camp just North of the town that needs to be cleared
+    out! Also collect a power shard that they are gaurding!
   objectiveList:
-  - {fileID: 11400000, guid: 4200d41e79f8bed41935ecbe2f690132, type: 2}
-  - {fileID: 11400000, guid: 91b56e58cba2c314487a847e3e70ca4c, type: 2}
-  questComplete: 1
-  currentObjectiveIndex: 2
+  - {fileID: 11400000, guid: 72118ca3b3ea7dc4290c8d833c5242d5, type: 2}
+  - {fileID: 11400000, guid: 5ffa4c3ed333fde48a702335612f838b, type: 2}
+  - {fileID: 11400000, guid: b28e9906454b92640b7777d66a1ffff6, type: 2}
+  - {fileID: 11400000, guid: 25466116aacf96843b4bf3dfc8a6e4be, type: 2}
+  - {fileID: 11400000, guid: 4cf50126c6459764f8448bdf0d472cb3, type: 2}
+  - {fileID: 11400000, guid: efa11b7686513724880cb0037eff74d2, type: 2}
+  - {fileID: 11400000, guid: 3b718c6eebd2fdc479dc6bb5813e58eb, type: 2}
+  questComplete: 0
+  currentObjectiveIndex: 0
+  nextQuest: {fileID: 11400000, guid: 42984b4fe6b5dba48ada6e65115c2997, type: 2}
