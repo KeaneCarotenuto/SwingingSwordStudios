@@ -684,6 +684,9 @@ MonoBehaviour:
   Strike: {fileID: 1217148070832024551, guid: 5c2dead37265bcf42ac879cb7b5bf18c, type: 3}
   StrikeBar: {fileID: 5357194977749158956}
   boltAmount: 0
+  GetPlayerScript: {fileID: 0}
+  boltManaCost: 5
+  strikeManaCost: 20
 --- !u!114 &973085347718678155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,6 +711,14 @@ MonoBehaviour:
   healthbar: {fileID: 973085348016733008}
   manabar: {fileID: 973085346451107747}
   staminabar: {fileID: 973085346328419454}
+  shardsCollected: 0
+  shard1: {fileID: 0}
+  shard2: {fileID: 0}
+  shard3: {fileID: 0}
+  shard1empty: {fileID: 0}
+  shard2empty: {fileID: 0}
+  shard3empty: {fileID: 0}
+  StrikeBar: {fileID: 0}
 --- !u!1 &1556368492593613138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,6 +1638,16 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.5019608
       objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3139716150110543050, guid: 589f7480599cf474e8435d1eb4e4ce35,
         type: 3}
       propertyPath: m_Color.r
@@ -1810,6 +1831,16 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.5019608
       objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3139716150110543050, guid: 589f7480599cf474e8435d1eb4e4ce35,
         type: 3}
       propertyPath: m_Color.r
@@ -1992,6 +2023,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3139716150110543050, guid: 589f7480599cf474e8435d1eb4e4ce35,
         type: 3}
@@ -2180,6 +2221,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3139716150110543051, guid: 589f7480599cf474e8435d1eb4e4ce35,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3139716150110543050, guid: 589f7480599cf474e8435d1eb4e4ce35,
         type: 3}
