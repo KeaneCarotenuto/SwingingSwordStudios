@@ -78,10 +78,13 @@ public class BoltScript : MonoBehaviour
         destroyTime = Time.time + afterHitAliveTime;
 
         //If bolt hits enemy, deal damage and destroy self.
-        if (other.name.Contains("Bandit"))
+        if (other.name.Contains("Bandit") || other.name.Contains("BOSS"))
         {
-            other.GetComponent<Actor>().TakeDamage(boltDamage);
-            Destroy(gameObject);
+            if (other != null && other.GetComponent<Actor>())
+            {
+                other.GetComponent<Actor>().TakeDamage(20);
+                Destroy(gameObject);
+            }
         }
     }
 

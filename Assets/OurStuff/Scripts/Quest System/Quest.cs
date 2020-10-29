@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "New Quest", menuName = "Quest", order = 51)]
 public class Quest : ScriptableObject
@@ -14,6 +15,7 @@ public class Quest : ScriptableObject
     [SerializeField]
     public bool questComplete;
     public int currentObjectiveIndex;
+    public Quest nextQuest;
 
     public void Initialise()
     {
@@ -47,6 +49,18 @@ public class Quest : ScriptableObject
             }
         }
         questComplete = completeFlag;
+
+        if (questComplete)
+        {
+            if (nextQuest != null)
+            {
+                GameObject.Find("QuestManager").GetComponent<QuestManager>().activeQuests.Add(nextQuest);
+            }
+            if (questName == "Kill Boss")
+            {
+                SceneManager.LoadScene("EndScreen");
+            }
+        }
     }
 
     

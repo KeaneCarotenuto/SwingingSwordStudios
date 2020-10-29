@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Kill Town Bandit
   m_EditorClassIdentifier: 
   questName: Kill the Town Bandit
-  questDesc: Kill the Bandit near town, Then Return to the Town
+  questDesc: Kill the Bandit in the town, Then Return to the Town
   objectiveList:
   - {fileID: 11400000, guid: c2d804d8aca2c4d4f847f408f450b830, type: 2}
   - {fileID: 11400000, guid: 071bfd43712317747bf9b8216f41c24d, type: 2}
   questComplete: 1
   currentObjectiveIndex: 2
+  nextQuest: {fileID: 11400000, guid: 230ec9a8f80ae3740815703f892718ed, type: 2}

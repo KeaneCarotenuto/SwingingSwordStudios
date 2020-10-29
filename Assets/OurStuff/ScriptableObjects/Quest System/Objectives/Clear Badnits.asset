@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419a4bbfac2bc9d47902474b0b4c80d1, type: 3}
   m_Name: Clear Badnits
   m_EditorClassIdentifier: 
-  defaultObjectiveAmount: 4
+  defaultObjectiveAmount: 1
   objectiveType: 0
   objectiveTargetID: 21
-  objectiveDesc: Clear The North Camp's minions
+  objectiveDesc: Kill at least one of the minions at the southern camp
   objectiveComplete: 0
   objectiveIndex: 0
