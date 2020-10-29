@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+/// <summary>
+/// The textbox.
+/// </summary>
 
 public class Textbox : MonoBehaviour
 {
@@ -24,15 +27,14 @@ public class Textbox : MonoBehaviour
         BoxSprite.sprite = CurrentSprite;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
+
+    /// <summary>
+    /// Destroys the text box.
+    /// </summary>
     public void DestroyTextBox()
     {
-        if (Writer.enabled == true)
+        if (Writer.enabled == true) //Skip the typing and display full message
         {
             Writer.enabled = false;
             Writer.story = "";
@@ -40,7 +42,7 @@ public class Textbox : MonoBehaviour
             BoxText.text = CurrentText;
             return;
         }
-        else
+        else //delete the box and get the next one
         {
             FindController F = Bton.GetComponent<FindController>();
             F.TriggerNextBox();

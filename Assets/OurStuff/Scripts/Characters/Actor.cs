@@ -57,6 +57,18 @@ public class Actor : MonoBehaviour
         {
             // dead
             Kill();
+
+            
+        }
+
+        if (health <= 0)
+        {
+            if (GetComponent<QuestTarget>() != null)
+            {
+                // If this actor is a quest target, trigger the thing
+                QuestTarget quest = GetComponent<QuestTarget>();
+                quest.Trigger();
+            }
         }
         navAgent.speed = moveSpeed;
         
@@ -258,8 +270,8 @@ public class Actor : MonoBehaviour
 
     void SetDefaultAV()
     {
-        healthMax = 100;
-        health = healthMax;
+        //healthMax = 100;
+        //health = healthMax;
         manaMax = 100;
         mana = manaMax;
         staminaMax = 100;

@@ -14,6 +14,9 @@ public class QuestTarget : MonoBehaviour
         questManager = GameObject.FindWithTag("QuestManager").GetComponent<QuestManager>();
         
     }
+    /// <summary>
+    /// Triggers the questmaanager to check if the players action fufills a quest objective.
+    /// </summary>
     public void Trigger()
     {
         questManager.OnPlayerAction.Invoke(waypointID, ObjectiveType.KILL);

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a059e33b702241d4b804f1967e80a0c3, type: 3}
+  m_Name: Clear Camp 2
+  m_EditorClassIdentifier: 
+  questName: Clear the East Bandit Camp
+  questDesc: There is a bandit camp east of the town that needs to be cleared out!
+    Also collect a power shard that they are gaurding!
+  objectiveList:
+  - {fileID: 11400000, guid: 487d8e524dbef8b4cbe1e815b688d2da, type: 2}
+  - {fileID: 11400000, guid: daa7dd113483b9942bd07a5beaf9ce24, type: 2}
+  - {fileID: 11400000, guid: fec2ac8bc4e38dc4c83e60a8eb921ed8, type: 2}
+  - {fileID: 11400000, guid: 58a24c443547ed443968bf2c2bc27453, type: 2}
+  - {fileID: 11400000, guid: 32ba18d1e3dd1cb41bcd05095b78b3b4, type: 2}
+  - {fileID: 11400000, guid: 2d16946123bf6264f935994a67d4a4e7, type: 2}
+  - {fileID: 11400000, guid: f05767340d8d3e14e87a4e958a02ccf6, type: 2}
+  - {fileID: 11400000, guid: b536639e3248bd749bbeb839a61b0a66, type: 2}
+  - {fileID: 11400000, guid: 2d204b8b18ad4154b93c99f643a33503, type: 2}
+  questComplete: 0
+  currentObjectiveIndex: 0
+  nextQuest: {fileID: 11400000, guid: 62c9da597cd0ac94094f68a5b2e965f1, type: 2}

@@ -21,14 +21,23 @@ public class questObjective : ScriptableObject
     [SerializeField]
     public string objectiveDesc;
     [SerializeField]
-    private bool objectiveComplete;
+    public bool objectiveComplete;
     public int objectiveIndex;
 
+    /// <summary>
+    /// Initialises the Objective.
+    /// </summary>
     public void Initialise()
     {
         objectiveAmount = defaultObjectiveAmount;
         objectiveComplete = false;
     }
+    /// <summary>
+    /// Tries to advance objective.
+    /// </summary>
+    /// <param name="_targetID">The _target i d.</param>
+    /// <param name="_type">The _type.</param>
+    /// <returns>A bool.</returns>
     public bool TryAdvance(string _targetID, ObjectiveType _type)
     {
         if(_type != objectiveType) { return false; }
@@ -44,9 +53,9 @@ public class questObjective : ScriptableObject
         return false;
 
     }
-    public bool isComplete()
-    {
-        return objectiveComplete;
-    }
-    
+    /// <summary>
+    /// Gets a value indicating whether is complete.
+    /// </summary>
+    public bool IsComplete => objectiveComplete;
+
 }

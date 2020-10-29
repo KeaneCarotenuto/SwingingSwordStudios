@@ -8,6 +8,10 @@ public class UI_QuestUI : MonoBehaviour
     public GameObject questButton, questPanel;
     public GameObject currentQuestPanel = null;
     public QuestManager questManager;
+    /// <summary>
+    /// Displays the quest details.
+    /// </summary>
+    /// <param name="_quest">The _quest.</param>
     public void DisplayQuestDetails(Quest _quest)
     {
         foreach(Transform child in questDetails.transform)
@@ -40,9 +44,5 @@ public class UI_QuestUI : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }
