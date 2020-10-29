@@ -8,8 +8,11 @@ using UnityEngine.Events;
 public class QuestEvent : UnityEvent<string, ObjectiveType> { }
 public class QuestManager : MonoBehaviour
 {
+    
     [SerializeField]
     public QuestEvent OnPlayerAction;
+    [SerializeField]
+    public List<Quest> AllQuests;
     [SerializeField]
     public List<Quest> activeQuests;
     [SerializeField]
@@ -18,6 +21,7 @@ public class QuestManager : MonoBehaviour
     void Start()
     {
         OnPlayerAction.AddListener(CheckQuestStatus);
+        ResetQuests();
     }
 
     // Update is called once per frame
@@ -25,32 +29,41 @@ public class QuestManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            foreach (Quest _quest in activeQuests)
-            {
-                _quest.currentObjectiveIndex = 0;
-                _quest.questComplete = false;
-                
-                foreach (questObjective _obj in _quest.objectiveList)
-                {
-                    _obj.objectiveComplete = false;
-                }
-            }
-
-            foreach (Quest _quest in completedQuests)
-            {
-                _quest.currentObjectiveIndex = 0;
-                _quest.questComplete = false;
-
-                foreach (questObjective _obj in _quest.objectiveList)
-                {
-                    _obj.objectiveComplete = false;
-                }
-
-                activeQuests.Add(_quest);
-                completedQuests.Remove(_quest);
-
-            }
+            ResetQuests();
         }
+    }
+
+    private void ResetQuests()
+    {
+        foreach (Quest _quest in AllQuests)
+        {
+            if (_quest != null)
+            {
+                _quest.currentObjectiveIndex = 0;
+                _quest.questComplete = false;
+
+                foreach (questObjective _obj in _quest.objectiveList)
+                {
+                    _obj.objectiveComplete = false;
+                }
+            }
+           
+        }
+
+        //foreach (Quest _quest in completedQuests)
+        //{
+        //    _quest.currentObjectiveIndex = 0;
+        //    _quest.questComplete = false;
+
+        //    foreach (questObjective _obj in _quest.objectiveList)
+        //    {
+        //        _obj.objectiveComplete = false;
+        //    }
+
+        //    activeQuests.Add(_quest);
+        //    completedQuests.Remove(_quest);
+
+        //}
     }
 
     /// <summary>
@@ -60,15 +73,48 @@ public class QuestManager : MonoBehaviour
     /// <param name="_type">The _type.</param>
     void CheckQuestStatus(string _targetID, ObjectiveType _type)
     {
-        foreach(Quest quest in activeQuests)
+        List<Quest> toCheck = new List<Quest>();
+        List<Quest> toRemove =  new List<Quest>();
+        List<Quest> toAdd =  new List<Quest>();
+
+
+        foreach (Quest quest in activeQuests)
+        {
+            toCheck.Add(quest);
+        }
+
+        foreach (Quest quest in toCheck)
         {
             quest.CheckObjective(_targetID, _type);
-            if(quest.questComplete)
+        }
+
+        foreach (Quest quest in activeQuests)
+        {
+            //quest.checkObjective(_targetID, _type);
+            if (quest.questComplete)
+            {
+                toAdd.Add(quest);
+                toRemove.Add(quest);
+            }
+        }
+
+        if (toAdd.Count >= 1)
+        {
+            foreach (Quest quest in toRemove)
             {
                 completedQuests.Add(quest);
+            }
+        }
+
+
+        if (toRemove.Count >= 1)
+        {
+            foreach (Quest quest in toRemove)
+            {
                 activeQuests.Remove(quest);
             }
         }
+        
     }
 
     /// <summary>

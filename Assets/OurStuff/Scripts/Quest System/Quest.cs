@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 /// <summary>
 /// The quest.
 /// </summary>
@@ -17,6 +18,7 @@ public class Quest : ScriptableObject
     [SerializeField]
     public bool questComplete;
     public int currentObjectiveIndex;
+    public Quest nextQuest;
 
     /// <summary>
     /// Initialises the Quest.
@@ -58,6 +60,18 @@ public class Quest : ScriptableObject
             }
         }
         questComplete = completeFlag;
+
+        if (questComplete)
+        {
+            if (nextQuest != null)
+            {
+                GameObject.Find("QuestManager").GetComponent<QuestManager>().activeQuests.Add(nextQuest);
+            }
+            if (questName == "Kill Boss")
+            {
+                SceneManager.LoadScene("EndScreen");
+            }
+        }
     }
 
     

@@ -13,6 +13,7 @@ TagManager:
   - PatrolPoint
   - Projectile
   - En
+  - Shard
   layers:
   - Default
   - TransparentFX
