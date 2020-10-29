@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+/// <summary>
+/// The interact option.
+/// </summary>
 
 public class InteractOption : MonoBehaviour
 {

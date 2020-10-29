@@ -7,6 +7,9 @@ public class TriggerDialogue : MonoBehaviour
 {
     public UnityEvent Event;
 
+    /// <summary>
+    /// Triggers the provided dialogue script.
+    /// </summary>
     public void Trigger()
     {
         Event.Invoke();

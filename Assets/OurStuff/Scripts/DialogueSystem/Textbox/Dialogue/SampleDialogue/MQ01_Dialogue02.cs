@@ -21,7 +21,7 @@ public class MQ01_Dialogue02 : MonoBehaviour
     {
         questManagerObj = GameObject.FindWithTag("QuestManager");
         QuestManager questManager = questManagerObj.GetComponent<QuestManager>();
-        if (questManager.getQuestStage(myQuest.questName) == myStage)
+        if (questManager.GetQuestStage(myQuest.questName) == myStage)
         {
             TBcontroller.CreateTextBox("I killed those bandits for you", Char2Sprite);
             TBcontroller.CreateTextBox("Excellent! You've done us a great service!", Char1Sprite);

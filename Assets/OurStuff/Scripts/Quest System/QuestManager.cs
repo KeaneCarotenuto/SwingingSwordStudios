@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 [System.Serializable]
 public class QuestEvent : UnityEvent<string, ObjectiveType> { }
 public class QuestManager : MonoBehaviour
@@ -65,6 +66,11 @@ public class QuestManager : MonoBehaviour
         //}
     }
 
+    /// <summary>
+    /// Checks the quest status.
+    /// </summary>
+    /// <param name="_targetID">The _target i d.</param>
+    /// <param name="_type">The _type.</param>
     void CheckQuestStatus(string _targetID, ObjectiveType _type)
     {
         List<Quest> toCheck = new List<Quest>();
@@ -111,7 +117,12 @@ public class QuestManager : MonoBehaviour
         
     }
 
-    public int getQuestStage(string _questName)
+    /// <summary>
+    /// Gets the quest stage.
+    /// </summary>
+    /// <param name="_questName">The _quest name.</param>
+    /// <returns>An int.</returns>
+    public int GetQuestStage(string _questName)
     {
         foreach (Quest quest in activeQuests)
         {
@@ -124,6 +135,10 @@ public class QuestManager : MonoBehaviour
         }
         return 0;
     }
+    /// <summary>
+    /// Tries to add quest.
+    /// </summary>
+    /// <param name="_quest">The _quest.</param>
     public void TryAddQuest(Quest _quest)
     {
         if(activeQuests.Contains(_quest) || completedQuests.Contains(_quest))
