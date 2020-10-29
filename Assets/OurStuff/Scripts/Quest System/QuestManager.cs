@@ -85,7 +85,7 @@ public class QuestManager : MonoBehaviour
 
         foreach (Quest quest in toCheck)
         {
-            quest.checkObjective(_targetID, _type);
+            quest.CheckObjective(_targetID, _type);
         }
 
         foreach (Quest quest in activeQuests)

@@ -15,6 +15,6 @@ MonoBehaviour:
   defaultObjectiveAmount: 1
   objectiveType: 0
   objectiveTargetID: 202
-  objectiveDesc: Kill The Enemy the West Camp
+  objectiveDesc: Kill The Enemy the East Camp
   objectiveComplete: 0
   objectiveIndex: 0
