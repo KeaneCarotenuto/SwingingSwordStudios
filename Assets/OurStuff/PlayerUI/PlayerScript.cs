@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject shard3empty;
 
     public GameObject StrikeBar;
+    public GameObject DeathText;
 
     //Seting the variables for the resourcebar slider
     void SetHealth()
@@ -88,7 +90,19 @@ public class PlayerScript : MonoBehaviour
         ManaRegen();
         StaminaRegen();
  
+        if (health <= 0)
+        {
+            DeathText.SetActive(true);
+            health -= 1;
+            Time.timeScale = 0;
 
+            if (health < -200)
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+
+            
+        }
     }
 
     //Function to update resource bar after performing an action

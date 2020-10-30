@@ -69,6 +69,12 @@ public class ActorBehaviour : MonoBehaviour
             //EvaluateAI();
             
         }
+
+        Debug.Log(Vector3.Distance(actionTarget.transform.position, transform.position));
+        if (Vector3.Distance(actionTarget.transform.position, transform.position) < 4)
+        {
+            DoAttacking();
+        }
     }
 
     private void EvaluateAI()
