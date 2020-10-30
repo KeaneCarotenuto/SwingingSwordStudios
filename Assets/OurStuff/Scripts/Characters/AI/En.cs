@@ -1,4 +1,27 @@
-﻿using System.Collections;
+﻿////////////////////////////////////////////////////////////
+//========================================================//
+// Bachelor of Software Engineering                       //
+// Media Design School                                    //
+// Auckland                                               //
+// New Zealand                                            //
+//--------------------------------------------------------//
+// (c) 2020 Media Design School                           //
+//========================================================//
+//   File Name  :  En.cs                                  //
+//--------------------------------------------------------//
+//  Description : Simple script that detects nearby       //
+//               objects to the npc this is attached to   //
+//                                                        //
+//                                                        //
+//--------------------------------------------------------//
+//    Author    : Sem Jafet Salgo BSE20021                //
+//--------------------------------------------------------//
+//    E-mail    : sjafetsalgo15@gmail.com                 //
+//========================================================//
+////////////////////////////////////////////////////////////
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,7 +46,7 @@ public class En : MonoBehaviour
 
         if (other.tag == "Projectile")
         {
-          //  myAi.CheckForDodging();
+            myAi.CheckForDodging();
         }
     }
 }

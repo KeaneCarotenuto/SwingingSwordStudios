@@ -1,12 +1,35 @@
-﻿using System.Collections;
+﻿////////////////////////////////////////////////////////////
+//========================================================//
+// Bachelor of Software Engineering                       //
+// Media Design School                                    //
+// Auckland                                               //
+// New Zealand                                            //
+//--------------------------------------------------------//
+// (c) 2020 Media Design School                           //
+//========================================================//
+//   File Name  :  Actor.cs                      //
+//--------------------------------------------------------//
+//  Description : This class is attached to every actor   //
+//               in the game.                             //
+//                                                        //
+//    It has datas and functions that relates to them.s   //
+//                                                        //
+//--------------------------------------------------------//
+//    Author    : Sem Jafet Salgo BSE20021                //
+//--------------------------------------------------------//
+//    E-mail    : sjafetsalgo15@gmail.com                 //
+//========================================================//
+////////////////////////////////////////////////////////////
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
 /*
-     This class is attached to every actor in the game. 
-     It has datas and functions that relates to them.
+
  */
 public class Actor : MonoBehaviour
 {
