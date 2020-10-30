@@ -28,6 +28,7 @@ public class PlayerCombat : MonoBehaviour
     private void Start()
     {
         nextActionTime = Time.time + period;
+        GetPlayerScript = GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame

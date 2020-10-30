@@ -5486,6 +5486,12 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &89190075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5357194977749158956, guid: 31cd51b4ab3331749a5d3492f715a13f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2011554414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &91010413 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 409784, guid: 9770515ffff23894fa760b75b8b24b51,
@@ -14884,6 +14890,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 92ea8ce96d76b3844a63e6bf7917339b,
     type: 3}
   m_PrefabInstance: {fileID: 491102649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &492735443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1217273317, guid: 31cd51b4ab3331749a5d3492f715a13f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2011554414}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &494425551 stripped
 Transform:
@@ -25314,6 +25326,12 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 5.3310003, z: 0.892}
   m_TimeToStationary: 0.5
+--- !u!1 &818520443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2082319036, guid: 31cd51b4ab3331749a5d3492f715a13f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2011554414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &819103805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 940d55d4117386f4f9398ea3ff52d4cd,
@@ -25813,6 +25831,12 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.010000001, y: 0.021000002, z: -0.305}
   m_TimeToStationary: 0.5
+--- !u!1 &849517648 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 921671763, guid: 31cd51b4ab3331749a5d3492f715a13f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2011554414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &849977705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 484606, guid: 66ce2554d943ab14db051b408dc948ed,
@@ -35624,6 +35648,12 @@ Transform:
   m_Father: {fileID: 1767431836}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &937282784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1326504826, guid: 31cd51b4ab3331749a5d3492f715a13f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2011554414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &938945717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51492,6 +51522,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1613259631}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1620719027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2015765596, guid: 31cd51b4ab3331749a5d3492f715a13f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2011554414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1627553885
 GameObject:
   m_ObjectHideFlags: 0
@@ -58241,37 +58277,37 @@ PrefabInstance:
         type: 3}
       propertyPath: shard1
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 818520443}
     - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: shard2
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 937282784}
     - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: shard3
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2059036892}
     - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: shard1empty
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 849517648}
     - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: shard2empty
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 492735443}
     - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: shard3empty
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1620719027}
     - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: StrikeBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 89190075}
     - target: {fileID: 973085347451871664, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -58926,6 +58962,12 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.141, y: 4.0410004, z: 0.164}
   m_TimeToStationary: 0.5
+--- !u!1 &2059036892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1441588252, guid: 31cd51b4ab3331749a5d3492f715a13f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2011554414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2059281080
 PrefabInstance:
   m_ObjectHideFlags: 0
