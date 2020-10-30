@@ -319,7 +319,9 @@ public class Actor : MonoBehaviour
                 Vector3 spawnPoint = transform.position;
                 spawnPoint.y += 2.5f;
                 GameObject projectile = Instantiate(projectilePrefab, spawnPoint, transform.rotation, GameObject.Find("BoltContainer").transform);
-                projectile.GetComponent<Rigidbody>().AddForce(transform.forward * 5000);
+                projectile.transform.LookAt(GetComponent<ActorBehaviour>().actionTarget.transform.position);
+                projectile.transform.Rotate(90, 0, 0);
+                projectile.GetComponent<Rigidbody>().AddForce((GetComponent<ActorBehaviour>().actionTarget.transform.position - new Vector3(0,1.75f,0) - transform.position).normalized * 5000);
             }
             myAnim.PlayAttackAnim();
             bCanAttack = false;
