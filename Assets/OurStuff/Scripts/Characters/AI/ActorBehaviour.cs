@@ -5,150 +5,301 @@ using UnityEngine.AI;
 
 public class ActorBehaviour : MonoBehaviour
 {
-    public enum AICombatActions { IDLE, HOLD, MOVING, STRAFING, ATTACKING, EVADING, DYING, FALLING}
-    public enum AISandboxActions { IDLE, DYING}
+    bool bEnabled = true;
 
-    public enum AIStates { IDLE, SANDBOX, COMBAT, DEATH, GUARDING, YIELDING, FLEEING }
+    public bool state_combat = false;
+    public bool state_scan = false;
+    public bool state_reposition = false;
+    public bool state_attack = false;
 
 
-    public AIStates state;
-    AIStates prevState;
-    public AICombatActions combatActions;
-    public AISandboxActions sandboxActions;
+    public bool state_patrol = false;
+    public bool state_idle = true;
 
-    NavMeshAgent myNavAgent;
-    ActorAnimation myAnim;
+    public GameObject target;
+    public bool bTargetWithinRange = false;
+
+    public GameObject projectile; // Temporary
+
     Actor myActor;
-
-    GameObject combatTarget;
-    public GameObject actionTarget;
+    NavMeshAgent navAgent;
+    GameObject patrolStartPoint;
+    GameObject patrolCurrentPoint;
+    bool bHasAnim = false;
+    ActorAnimation myAnim;
 
     float nextDodgeTime;
     float dodgeCooldown = 2;
+
+    public void StartCombatState()
+    {
+        state_combat = true;
+    }
+
+    public void EndCombatState()
+    {
+        state_combat = false;
+    }
+
+    public void StartScanState()
+    {
+        state_scan = true;
+        state_reposition = false;
+        state_attack = false;
+        state_patrol = false;
+        state_idle = false;
+    }
+
+    public void StartRepositionState()
+    {
+        // Just move around to get within range of their target
+        state_scan = false;
+        state_reposition = true;
+        state_attack = false;
+        state_patrol = false;
+        state_idle = false;
+    }
+
+    public void StartAttackState()
+    {
+        state_scan = false;
+        state_reposition = false;
+        state_attack = true;
+        state_patrol = false;
+        state_idle = false;
+    }
+
+    // Non Combat
+    public void StartIdleState()
+    {
+        state_scan = false;
+        state_reposition = false;
+        state_attack = false;
+        state_patrol = false;
+        state_idle = true;
+
+        // If this actor is put in the idle state, then turn off combat
+        state_combat = false;
+    }
+
+    public void StartPatrolState()
+    {
+        state_scan = false;
+        state_reposition = false;
+        state_attack = false;
+        state_patrol = true;
+        state_idle = false;
+    }
+
+    private void CheckTargetRange()
+    {
+        // Check if the target is within range
+        float distance = Vector3.Distance(target.transform.position, transform.position);
+        if (distance < myActor.attackRange)
+        {
+            // Target is within range!
+            bTargetWithinRange = true;
+        }
+        else
+        {
+            // Target is too far
+            bTargetWithinRange = false;
+        }
+    }
+
+
+
+    void DoCombatRoutine()
+    {
+        myActor.moveSpeed = 10;
+        transform.LookAt(target.transform.position);
+        // Check if i'm within the range of the target
+        if (bTargetWithinRange)
+        {
+            // If I'm within range, start attacking!
+            Attack();
+        }
+        else
+        {
+            // I'm not in range, Need to move closer!
+            Reposition();
+        }
+    }
+
+    void DoNormalRoutine()
+    {
+        myActor.moveSpeed = 5;
+        if (state_patrol)
+        {
+            Patrol();
+        }
+        else if (state_idle)
+        {
+            Idle();
+        }
+    }
+
+    void Idle()
+    {
+        // Stand still and do fuck all
+        navAgent.velocity = Vector3.zero;
+        navAgent.isStopped = true;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+    }
+
+    void Reposition()
+    {
+        StartRepositionState();
+        // Move to a better position to attack
+        navAgent.isStopped = false;
+        navAgent.SetDestination(target.transform.position);
+        myAnim.PlayRunAnim();
+    }
+
+    void Attack()
+    {
+        StartAttackState();
+        // Stare at the target
+        if (myActor.attackRange > 5)
+        {
+            transform.LookAt(target.transform);
+        }
+        // Then woop their ass
+        myActor.Attack();
+        navAgent.isStopped = true;
+    }
+
+    void Patrol()
+    {
+        // Start patrolling, only if there is a waypoint linked to this actor
+        navAgent.isStopped = false;
+        Vector3 targetPos = patrolCurrentPoint.transform.position;
+        navAgent.SetDestination(targetPos);
+        float distance = Vector3.Distance(targetPos, transform.position);
+        if (distance < 5f)
+        {
+            StartIdleState();
+            StartCoroutine("WaitAtPatrolPoint");
+        }
+    }
+
+    GameObject FindClosestPatrolPoint()
+    {
+        // WIP, UNTESTED, UNUSED for now. WIll fix later
+        PatrolPoint nearestPoint;
+        PatrolPoint startPoint = patrolStartPoint.GetComponent<PatrolPoint>();
+        float distance = Vector3.Distance(transform.position, startPoint.transform.position);
+        float nearestDistance = distance;
+        nearestPoint = startPoint;
+
+        // Loop through all the patrol points linkedlist style
+        PatrolPoint currentPoint = startPoint.GetNextPoint();
+        while (currentPoint != startPoint || currentPoint != null)
+        {
+            distance = Vector3.Distance(transform.position, currentPoint.transform.position);
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearestPoint = currentPoint;
+            }
+        }
+        return nearestPoint.gameObject;
+    }
+
     void Start()
     {
-        ResetAI();
-        combatTarget = GameObject.FindWithTag("Player");
-        nextDodgeTime = Time.time + dodgeCooldown ;
-        actionTarget = combatTarget;
-    }
-
-    public void ResetAI()
-    {
-        state = AIStates.IDLE;
-        combatActions = AICombatActions.IDLE;
-        sandboxActions = AISandboxActions.IDLE;
+        // First check if this object has an actor class.
 
         myActor = GetComponent<Actor>();
-        if(myActor == null)
+        if (myActor == null)
         {
-            Debug.Log("An object has actorbehaviourscript but doesn't have an actor script attach! Pls fix");
+            // No actor class! Complain and remove this script from this object.
+            //  Debug.Log("ERROR: OBJECT WITH NO ACTOR CLASS HAS BEEN GIVEN AN AI");
+            Destroy(this);
         }
-        myNavAgent = GetComponent<NavMeshAgent>();
-        if(myNavAgent == null)
+        // Set the target as the player for now
+        target = GameObject.FindWithTag("Player");
+        // Get navmesh agent
+        navAgent = GetComponent<NavMeshAgent>();
+
+        if (GetComponent<ActorAnimation>() != null)
         {
-            Debug.Log(myActor.myName + " is missing a navmesh agent!");
+            bHasAnim = true;
+            myAnim = GetComponent<ActorAnimation>();
         }
 
-        myAnim = GetComponent<ActorAnimation>();
-        if(myAnim == null)
-        {
-            Debug.Log(myActor.myName + " is missing an ActorAnimation Class, please fix");
-        }
-        myNavAgent.updatePosition = true;
-       // myActor 
-    }
+        projectile = myActor.projectilePrefab;
 
-
-    public void Update()
-    {
-        if (!myActor.isDead)
+        // Find the patrol starting point
+        for (int i = 0; i < myActor.linkedObjects.Length; i++)
         {
-            //myNavAgent.SetDestination(transform.position + transform.forward);
-            DoFollowTarget();
-            //EvaluateAI();
-            if (Vector3.Distance(actionTarget.transform.position, transform.position) < myActor.attackRange)
+            if (myActor.linkedObjects[i].tag == "PatrolPoint")
             {
-                DoAttacking();
+                patrolStartPoint = myActor.linkedObjects[i];
+                patrolCurrentPoint = patrolStartPoint;
             }
         }
 
-        
+        nextDodgeTime = Time.time + dodgeCooldown;
     }
 
-    private void EvaluateAI()
+    void UpdateAnimation()
     {
-        switch (state)
+        if (state_idle)
         {
-            case AIStates.IDLE:
-                DoIdleRoutine();
-                break;
-            case AIStates.SANDBOX:
-                DoSandboxRoutine();
-                break;
-            case AIStates.COMBAT:
+              myAnim.PlayIdleAnim();
+        } else if (state_attack)
+        {
+            myAnim.PlayCombatIdleAnim();
+        }
+        else
+        {
+            if (state_patrol)
+            {
+            //      myAnim.Walk();
+            }
+            else
+            {
+                    myAnim.PlayRunAnim();
+            }
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (bEnabled && !myActor.isDead)
+        {
+            CheckTargetRange();
+            if (state_combat)
+            {
                 DoCombatRoutine();
-                break;
-            case AIStates.DEATH:
-                DoDeathRoutine();
-                break;
-            case AIStates.GUARDING:
-                DoGuardingRoutine();
-                break;
-            case AIStates.YIELDING:
-                DoYieldingRoutine();
-                break;
-            case AIStates.FLEEING:
-                DoFleeingRoutine();
-                break;
-            default:
-                state = AIStates.IDLE;
-                break;
+            }
+            else
+            {
+                DoNormalRoutine();
+            }
+            if (bHasAnim)
+            {
+                UpdateAnimation();
+            }
         }
+
     }
 
-    
-    /* -- Routines -- */
-    private void DoIdleRoutine()
+    void SetNextPatrolPoint()
     {
-        myAnim.PlayIdleAnim();
-    }
-
-    private void DoFollowTarget()
-    {
-        myNavAgent.SetDestination(actionTarget.transform.position);
-        myNavAgent.isStopped = false;
-        
-        
-    }
-
-    private void DoSandboxRoutine()
-    {
-        // Play Enter Idle Animation if first time
-        // if (prevState != state)
-        //{
-        //   myAnim.PlayEnterSandboxAnim();
-
-        // }
-        //   prevState = state;
-        myAnim.PlaySandboxIdleAnim();
-    }
-
-    private void DoCombatRoutine()
-    {
-        myAnim.PlayCombatIdleAnim();
-        switch (combatActions)
+        if (patrolCurrentPoint.GetComponent<PatrolPoint>().GetNextPoint() == null)
         {
-            case AICombatActions.ATTACKING:
-                DoAttacking();
-                break;
+            // If it's null, then we reached the end of the patrol points. Go back at the start
+            patrolCurrentPoint = patrolStartPoint;
         }
-    }
-
-    public void EnterCombat()
-    {
-        state = AIStates.COMBAT;
-        combatActions = AICombatActions.ATTACKING;
+        else
+        {
+            patrolCurrentPoint = patrolCurrentPoint.GetComponent<PatrolPoint>().GetNextPoint().gameObject;
+        }
     }
 
     public void CheckForDodging()
@@ -160,33 +311,13 @@ public class ActorBehaviour : MonoBehaviour
         }
     }
 
-    private void DoAttacking()
+
+    IEnumerator WaitAtPatrolPoint()
     {
-        Debug.Log("EARE YOU ATTACKING");
-        myActor.Attack();
-        Vector3 pos = new Vector3();
-        pos = combatTarget.transform.position;
-        pos.y -= 1f;
-        transform.LookAt(pos);
+        yield return new WaitForSeconds(patrolCurrentPoint.GetComponent<PatrolPoint>().waitTime);   //Wait
+        // After the wait, resume patrol and onto the next node
+        SetNextPatrolPoint();
+        StartPatrolState();
     }
 
-    private void DoDeathRoutine()
-    {
-
-    }
-
-    private void DoGuardingRoutine()
-    {
-
-    } 
-
-    private void DoYieldingRoutine()
-    {
-
-    }
-
-    private void DoFleeingRoutine()
-    {
-
-    }
 }

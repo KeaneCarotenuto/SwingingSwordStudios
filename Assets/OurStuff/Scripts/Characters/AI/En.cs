@@ -23,7 +23,7 @@ public class En : MonoBehaviour
 
         if (other.tag == "Projectile")
         {
-            myAi.CheckForDodging();
+          //  myAi.CheckForDodging();
         }
     }
 }
