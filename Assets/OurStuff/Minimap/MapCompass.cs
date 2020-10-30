@@ -18,6 +18,7 @@ public class MapCompass : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+        //Move map depending on player
         vector.z = player.eulerAngles.y;
         transform.localEulerAngles = vector;
     }

@@ -73,10 +73,12 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Sets resources
         SetHealth();
         SetMana();
         SetStamina();
 
+        //Sets hud
         shard1.gameObject.SetActive(false);
         shard2.gameObject.SetActive(false);
         shard3.gameObject.SetActive(false);
@@ -93,16 +95,6 @@ public class PlayerScript : MonoBehaviour
         UpdateShards();
         //Testing functionality
         //X to reduce health, left click to reduce mana, space to reduce stamina
-        if (Input.GetKeyDown(KeyCode.X) && Time.timeScale != 0)
-        {
-            UpdateHealthBar(20);
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale != 0)
-        {
-            UpdateStaminaBar(20);
-        }
 
         HealthRegen();
         ManaRegen();
@@ -189,6 +181,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Collect shard if collided
         if (other.gameObject.CompareTag("Shard"))
         {
             shardsCollected++;
@@ -196,6 +189,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    //Update shard hud
     void UpdateShards()
     {
         switch (shardsCollected)

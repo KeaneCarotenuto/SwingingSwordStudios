@@ -15,6 +15,7 @@ public class OpenMiniMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Opens minimap if not already open
         if (Input.GetKeyDown(KeyCode.M) && MiniMapOpen == false)
         {
             BigMiniMap.SetActive(true);
