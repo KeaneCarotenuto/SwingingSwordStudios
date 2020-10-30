@@ -44111,7 +44111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!154 &1313743224
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -58241,37 +58241,37 @@ PrefabInstance:
         type: 3}
       propertyPath: shard1
       value: 
-      objectReference: {fileID: 2082319036}
+      objectReference: {fileID: 0}
     - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: shard2
       value: 
-      objectReference: {fileID: 1326504826}
+      objectReference: {fileID: 0}
     - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: shard3
       value: 
-      objectReference: {fileID: 1441588252}
+      objectReference: {fileID: 0}
     - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: shard1empty
       value: 
-      objectReference: {fileID: 921671763}
+      objectReference: {fileID: 0}
     - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: shard2empty
       value: 
-      objectReference: {fileID: 1217273317}
+      objectReference: {fileID: 0}
     - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: shard3empty
       value: 
-      objectReference: {fileID: 2015765596}
+      objectReference: {fileID: 0}
     - target: {fileID: 973085347718678155, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: StrikeBar
       value: 
-      objectReference: {fileID: 1571433785}
+      objectReference: {fileID: 0}
     - target: {fileID: 973085347451871664, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -58391,7 +58391,7 @@ PrefabInstance:
         type: 3}
       propertyPath: GetPlayerScript
       value: 
-      objectReference: {fileID: 447005040}
+      objectReference: {fileID: 0}
     - target: {fileID: 5357194976651215186, guid: 31cd51b4ab3331749a5d3492f715a13f,
         type: 3}
       propertyPath: m_LocalScale.y
