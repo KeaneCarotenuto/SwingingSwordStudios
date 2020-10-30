@@ -1,4 +1,26 @@
-﻿using System;
+﻿////////////////////////////////////////////////////////////
+//========================================================//
+// Bachelor of Software Engineering                       //
+// Media Design School                                    //
+// Auckland                                               //
+// New Zealand                                            //
+//--------------------------------------------------------//
+// (c) 2020 Media Design School                           //
+//========================================================//
+//   File Name  : PlayerCombat.cs
+//--------------------------------------------------------//
+//  Description : 
+//  Manages how the player fights, casts spells, and uses mana
+//  
+//  
+//--------------------------------------------------------//
+//    Author    : Keane Carotenuto BSE20021               //
+//--------------------------------------------------------//
+//    E-mail    : KeaneCarotenuto@gmail.com               //
+//========================================================//
+////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,18 +28,21 @@ using UnityEngine.UI;
 
 public class PlayerCombat : MonoBehaviour
 {
+    //Public vars
     public GameObject PCamera;
     public GameObject Bolt;
     public GameObject Strike;
     public GameObject StrikeBar;
     public float boltAmount;
 
+    //Pivate stuff to manage spell casting
     private float nextActionTime;
     private float period = 0.5f;
 
     private bool holding = false;
     private float holdingTime;
 
+    //Damages
     private float strikeMaxDamage = 100;
     private float strikeMaxHoldTime = 4;
 
@@ -27,6 +52,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Start()
     {
+        //Reset time and get script
         nextActionTime = Time.time + period;
         GetPlayerScript = GetComponent<PlayerScript>();
     }
@@ -34,6 +60,7 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Left click spawns bolt in world
         if (Input.GetMouseButton(0) && Time.time >= nextActionTime && GetPlayerScript.mana > boltManaCost)
         {
             nextActionTime = Time.time + period;
@@ -47,6 +74,7 @@ public class PlayerCombat : MonoBehaviour
             GetPlayerScript.UpdateManaBar(boltManaCost);
         }
 
+        //Charing for Strike
         if (holding)
         {
             StrikeBar.GetComponent<Slider>().value = Mathf.Clamp((Time.time - holdingTime) * (strikeMaxDamage/strikeMaxHoldTime), 0, strikeMaxDamage) / strikeMaxDamage;
@@ -56,6 +84,7 @@ public class PlayerCombat : MonoBehaviour
             StrikeBar.GetComponent<Slider>().value = 0;
         }
 
+        //Right click for strike charge
         if (Input.GetMouseButton(1) && !holding && Time.time >= nextActionTime && GetPlayerScript.mana > strikeManaCost && GetPlayerScript.shardsCollected >= 1)
         {
             holding = true;
@@ -64,6 +93,7 @@ public class PlayerCombat : MonoBehaviour
             //GameObject tempBolt = Instantiate(Strike, (PCamera.transform.position) - new Vector3(0, 0.5f, 0), PCamera.transform.rotation, GameObject.Find("BoltContainer").transform);
         }
 
+        //Rick click relsease for strike shoot
         if (!Input.GetMouseButton(1) && holding && GetPlayerScript.mana > strikeManaCost && GetPlayerScript.shardsCollected >= 1)
         {
             holding = false;
