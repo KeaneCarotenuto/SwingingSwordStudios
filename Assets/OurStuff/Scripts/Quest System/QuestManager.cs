@@ -2,7 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+////////////////////////////////////////////////////////////
+//========================================================//
+// Bachelor of Software Engineering                       //
+// Media Design School                                    //
+// Auckland                                               //
+// New Zealand                                            //
+//--------------------------------------------------------//
+// (c) 2020 Media Design School                           //
+//========================================================//
+//   File Name  : QuestManager.cs                     
+//--------------------------------------------------------//
+//  Description : Manages active and completed quests,                                        
+//  Quest objectives, and the quest log                                                      
+//                                                       
+//                                                        
+//--------------------------------------------------------//
+//    Author    : Nerys Thamm BSE20021                           
+//--------------------------------------------------------//
+//    E-mail    : Nerysthamm@gmail.com                                   
+//========================================================//
+////////////////////////////////////////////////////////////
 
 [System.Serializable]
 public class QuestEvent : UnityEvent<string, ObjectiveType> { }

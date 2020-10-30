@@ -3,7 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-// THIS CLASS IS TEMPORARY. DOOM IS ETERNAL
+////////////////////////////////////////////////////////////
+//========================================================//
+// Bachelor of Software Engineering                       //
+// Media Design School                                    //
+// Auckland                                               //
+// New Zealand                                            //
+//--------------------------------------------------------//
+// (c) 2020 Media Design School                           //
+//========================================================//
+//   File Name  : QuestTarget.cs                     
+//--------------------------------------------------------//
+//  Description : Designates an npc as a quest target                                       
+//   so that killing them fufills a quest objective                                                     
+//                                                       
+//                                                        
+//--------------------------------------------------------//
+//    Author    : Nerys Thamm BSE20021                           
+//--------------------------------------------------------//
+//    E-mail    : Nerysthamm@gmail.com                                   
+//========================================================//
+////////////////////////////////////////////////////////////
 public class QuestTarget : MonoBehaviour
 {
     // Start is called before the first frame update
