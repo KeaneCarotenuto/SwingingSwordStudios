@@ -1,12 +1,35 @@
-﻿using System.Collections;
+﻿////////////////////////////////////////////////////////////
+//========================================================//
+// Bachelor of Software Engineering                       //
+// Media Design School                                    //
+// Auckland                                               //
+// New Zealand                                            //
+//--------------------------------------------------------//
+// (c) 2020 Media Design School                           //
+//========================================================//
+//   File Name  :  Actor.cs                      //
+//--------------------------------------------------------//
+//  Description : This class is attached to every actor   //
+//               in the game.                             //
+//                                                        //
+//    It has datas and functions that relates to them.s   //
+//                                                        //
+//--------------------------------------------------------//
+//    Author    : Sem Jafet Salgo BSE20021                //
+//--------------------------------------------------------//
+//    E-mail    : sjafetsalgo15@gmail.com                 //
+//========================================================//
+////////////////////////////////////////////////////////////
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
 /*
-     This class is attached to every actor in the game. 
-     It has datas and functions that relates to them.
+
  */
 public class Actor : MonoBehaviour
 {
@@ -69,6 +92,8 @@ public class Actor : MonoBehaviour
                 QuestTarget quest = GetComponent<QuestTarget>();
                 quest.Trigger();
             }
+
+            healthbar.GetComponentInParent<Transform>().gameObject.SetActive(false);
         }
         navAgent.speed = moveSpeed;
         
@@ -304,12 +329,11 @@ public class Actor : MonoBehaviour
         if(GetComponent<ActorBehaviour>() != null)
         {
             ActorBehaviour ai = GetComponent<ActorBehaviour>();
-            ai.EnterCombat();
+            ai.StartCombatState();
         }
     }
     public void Attack()
     {
-        Debug.Log("ATATACK ? ");
         // Fire a projectile in front of this actor. TEMPORARY, WILL CHANGE LATER
         if (bCanAttack)
         {
@@ -319,9 +343,9 @@ public class Actor : MonoBehaviour
                 Vector3 spawnPoint = transform.position;
                 spawnPoint.y += 2.5f;
                 GameObject projectile = Instantiate(projectilePrefab, spawnPoint, transform.rotation, GameObject.Find("BoltContainer").transform);
-                projectile.transform.LookAt(GetComponent<ActorBehaviour>().actionTarget.transform.position);
+                projectile.transform.LookAt(GetComponent<ActorBehaviour>().target.transform.position);
                 projectile.transform.Rotate(90, 0, 0);
-                projectile.GetComponent<Rigidbody>().AddForce((GetComponent<ActorBehaviour>().actionTarget.transform.position - new Vector3(0,1.75f,0) - transform.position).normalized * 5000);
+                projectile.GetComponent<Rigidbody>().AddForce((GetComponent<ActorBehaviour>().target.transform.position - new Vector3(0,1.75f,0) - transform.position).normalized * 5000);
             }
             myAnim.PlayAttackAnim();
             bCanAttack = false;

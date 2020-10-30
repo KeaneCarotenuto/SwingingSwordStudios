@@ -15,6 +15,6 @@ MonoBehaviour:
   defaultObjectiveAmount: 1
   objectiveType: 0
   objectiveTargetID: 10
-  objectiveDesc: Kill The Enemy in Town
-  objectiveComplete: 0
+  objectiveDesc: Kill The Enemy on the path to the town
+  objectiveComplete: 1
   objectiveIndex: 0
