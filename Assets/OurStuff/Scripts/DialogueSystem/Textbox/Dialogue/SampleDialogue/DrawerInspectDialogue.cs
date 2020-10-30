@@ -14,13 +14,10 @@ public class DrawerInspectDialogue : MonoBehaviour
     // Start is called before the first frame update
     public void Initiate()
     {
-        
 
         TBcontroller.CreateTextBox("...", CharSprites[1]);
         TBcontroller.CreateTextBox("Whats this doing here?", CharSprites[2]);
         TBcontroller.NextTextBox();
-        
-
 
     }
 }

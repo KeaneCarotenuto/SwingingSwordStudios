@@ -1,4 +1,29 @@
-﻿using System;
+﻿////////////////////////////////////////////////////////////
+//========================================================//
+// Bachelor of Software Engineering                       //
+// Media Design School                                    //
+// Auckland                                               //
+// New Zealand                                            //
+//--------------------------------------------------------//
+// (c) 2020 Media Design School                           //
+//========================================================//
+//   File Name  : BoltScript                              //
+//--------------------------------------------------------//
+//  Description : This script manages the lightning bolt  //
+//  that the player can shoot using left click.           //
+//  It also manages how the bolt behaves, and the damage  //
+//  it does.                                              //
+//                                                        //
+//                                                        //
+//                                                        //
+//--------------------------------------------------------//
+//    Author    : Keane Carotenuto BSE20021               //
+//--------------------------------------------------------//
+//    E-mail    : KeaneCarotenuto@gmail.com               //
+//========================================================//
+////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
@@ -35,7 +60,7 @@ public class BoltScript : MonoBehaviour
 
     private void Awake()
     {
-
+        // adds in all of the enemies on the map to its seeking list
         foreach (GameObject _obj in toSeek)
         {
             foreach (GameObject gameObj in FindObjectsOfType(_obj.GetType()))
@@ -168,6 +193,7 @@ public class BoltScript : MonoBehaviour
         }
     }
 
+    //Used when creating branches
     public void SetBranch(int _branch)
     {
         itterationNum = _branch;
