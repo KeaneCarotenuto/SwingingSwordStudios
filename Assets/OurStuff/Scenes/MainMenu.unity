@@ -188,13 +188,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'PLACEHOLDER 1
+  m_Text: 'Sem Jafet Salgo
 
-    PLACEHOLDER 2
+    Steven Tan
 
-    PLACEHOLDER 3
+    Nerys Thamm
 
-    PLACEHOLDER 4'
+    Keane Carotenuto'
 --- !u!222 &359210676
 CanvasRenderer:
   m_ObjectHideFlags: 0
