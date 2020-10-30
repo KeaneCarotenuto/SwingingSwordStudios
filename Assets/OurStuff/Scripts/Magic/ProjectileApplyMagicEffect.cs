@@ -10,12 +10,16 @@ public class ProjectileApplyMagicEffect : MonoBehaviour
    // public GameObject magicEffectToApply;
     private void OnTriggerEnter(Collider other)
     {
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-        Actor actor = other.GetComponent<Actor>();
-        if(rb != null && actor != null)
+        if (other.name.Contains("Player"))
         {
-            GameObject obj = other.gameObject;
-            ME_Knockback magic = obj.AddComponent<ME_Knockback>() as ME_Knockback;
+
         }
+        //Rigidbody rb = other.GetComponent<Rigidbody>();
+        //Actor actor = other.GetComponent<Actor>();
+        //if(rb != null && actor != null)
+        //{
+        //    GameObject obj = other.gameObject;
+        //    ME_Knockback magic = obj.AddComponent<ME_Knockback>() as ME_Knockback;
+        //}
     }
 }

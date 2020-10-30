@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultObjectiveAmount: 1
   objectiveType: 2
-  objectiveTargetID: 
+  objectiveTargetID: OldMan
   objectiveDesc: Talk to the Villiager
-  objectiveComplete: 0
+  objectiveComplete: 1
+  objectiveIndex: 1

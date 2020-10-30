@@ -65,16 +65,15 @@ public class ActorBehaviour : MonoBehaviour
         if (!myActor.isDead)
         {
             //myNavAgent.SetDestination(transform.position + transform.forward);
-            //DoFollowTarget();
-            EvaluateAI();
-            
+            DoFollowTarget();
+            //EvaluateAI();
+            if (Vector3.Distance(actionTarget.transform.position, transform.position) < myActor.attackRange)
+            {
+                DoAttacking();
+            }
         }
 
-        Debug.Log(Vector3.Distance(actionTarget.transform.position, transform.position));
-        if (Vector3.Distance(actionTarget.transform.position, transform.position) < 4)
-        {
-            DoAttacking();
-        }
+        
     }
 
     private void EvaluateAI()

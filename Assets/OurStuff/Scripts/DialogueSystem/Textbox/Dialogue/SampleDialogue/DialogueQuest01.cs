@@ -21,19 +21,23 @@ public class DialogueQuest01 : MonoBehaviour
         QuestManager questManager = questManagerObj.GetComponent<QuestManager>();
         if (questManager.GetQuestStage(myQuest.questName) == myStage && !myQuest.questComplete)
         {
-            TBcontroller.CreateTextBox("Ahh hello there god!", Char1Sprite);
-            TBcontroller.CreateTextBox("You've lost your powers? That's rough buddy.", Char1Sprite);
-            TBcontroller.CreateTextBox("Got any quest for me?", Char2Sprite);
-            TBcontroller.CreateTextBox("Aye. There's a bunch of bandits on that mountain over there.", Char1Sprite);
-            TBcontroller.CreateTextBox("Head over there and murder them.", Char1Sprite);
-            TBcontroller.CreateTextBox("Return to me when you're done. Cya", Char1Sprite);
+            TBcontroller.CreateTextBox("Thank you for taking care of that bandit!", Char1Sprite);
+            TBcontroller.CreateTextBox("He has been pestering our small town for a while now.", Char1Sprite);
+            TBcontroller.CreateTextBox("It was nothing, he got in my way, I dealt with him...", Char2Sprite);
+            TBcontroller.CreateTextBox("They have been looking all over the place for them shards that fell during the thunderstorm last night.", Char1Sprite);
+            TBcontroller.CreateTextBox("Oh have they now?", Char2Sprite);
+            TBcontroller.CreateTextBox("Say, where are these bandits? I might go and have a word with them...", Char2Sprite);
+            TBcontroller.CreateTextBox("Here, I'll give you some quests.", Char1Sprite);
+            TBcontroller.CreateTextBox("Press 'P' to open up your quest log, and select one to take a look at the objectives.", Char1Sprite);
+            questManager.OnPlayerAction.Invoke("OldMan", ObjectiveType.INTERACT);
         } else if (questManager.GetQuestStage(myQuest.questName) != myStage && !myQuest.questComplete)
         {
-            TBcontroller.CreateTextBox("Hey, have you kicked their asses yet?", Char1Sprite);
+            TBcontroller.CreateTextBox("Hey! Watch out behind you! That bandit over there  is dangerous!", Char1Sprite);
         } else if (myQuest.questComplete)
         {
-            TBcontroller.CreateTextBox("Thank you again!", Char1Sprite);
-            TBcontroller.CreateTextBox("UwU", Char2Sprite);
+            TBcontroller.CreateTextBox("Thank you again for taking care of that bandit!", Char1Sprite);
+            TBcontroller.CreateTextBox("Remember, press 'p' to open and close your quest log, and select a quest to see what to do next.", Char1Sprite);
         }
+        TBcontroller.NextTextBox();
     }
 }
