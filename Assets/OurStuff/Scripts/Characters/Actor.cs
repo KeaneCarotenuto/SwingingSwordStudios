@@ -69,6 +69,8 @@ public class Actor : MonoBehaviour
                 QuestTarget quest = GetComponent<QuestTarget>();
                 quest.Trigger();
             }
+
+            healthbar.GetComponentInParent<Transform>().gameObject.SetActive(false);
         }
         navAgent.speed = moveSpeed;
         
