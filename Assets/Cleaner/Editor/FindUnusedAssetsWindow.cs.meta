@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: ae58975df974c3a419853c2c2412d470
+guid: 74eec3bfba0594259ac2843353c082a3
+labels:
+- ActionGame
+timeCreated: 1437724294
+licenseType: Pro
 MonoImporter:
-  externalObjects: {}
   serializedVersion: 2
   defaultReferences: []
   executionOrder: 0
