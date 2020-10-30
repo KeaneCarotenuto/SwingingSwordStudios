@@ -1,4 +1,28 @@
-﻿using System.Collections;
+﻿////////////////////////////////////////////////////////////
+//========================================================//
+// Bachelor of Software Engineering                       //
+// Media Design School                                    //
+// Auckland                                               //
+// New Zealand                                            //
+//--------------------------------------------------------//
+// (c) 2020 Media Design School                           //
+//========================================================//
+//   File Name  :  ActorBehaviour.cs                      //
+//--------------------------------------------------------//
+//  Description : This script controls the AI of npcs     //
+//                                                        //
+//                                                        //
+//                                                        //
+//--------------------------------------------------------//
+//    Author    : Sem Jafet Salgo BSE20021                //
+//--------------------------------------------------------//
+//    E-mail    : sjafetsalgo15@gmail.com                 //
+//========================================================//
+////////////////////////////////////////////////////////////
+
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
