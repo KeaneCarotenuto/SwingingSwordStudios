@@ -2,7 +2,27 @@
 using System.Collections;
 using UnityEngine.UI;
 
-// attach to UI Text component (with the full text already there)
+////////////////////////////////////////////////////////////
+//========================================================//
+// Bachelor of Software Engineering                       //
+// Media Design School                                    //
+// Auckland                                               //
+// New Zealand                                            //
+//--------------------------------------------------------//
+// (c) 2020 Media Design School                           //
+//========================================================//
+//   File Name  : TypeWriter.cs                     
+//--------------------------------------------------------//
+//  Description :  Writes out the text in textboxes                                       
+//  Charaacter-by-character for cool effect                                                      
+//                                                       
+//                                                        
+//--------------------------------------------------------//
+//    Author    : Nerys Thamm BSE20021                           
+//--------------------------------------------------------//
+//    E-mail    : Nerysthamm@gmail.com                                   
+//========================================================//
+////////////////////////////////////////////////////////////
 
 public class TypeWriter : MonoBehaviour 
 {

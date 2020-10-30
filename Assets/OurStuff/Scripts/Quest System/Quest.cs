@@ -2,9 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-/// <summary>
-/// The quest.
-/// </summary>
+////////////////////////////////////////////////////////////
+//========================================================//
+// Bachelor of Software Engineering                       //
+// Media Design School                                    //
+// Auckland                                               //
+// New Zealand                                            //
+//--------------------------------------------------------//
+// (c) 2020 Media Design School                           //
+//========================================================//
+//   File Name  : Quest.cs                     
+//--------------------------------------------------------//
+//  Description : A scriptableobject type containing                                       
+//  data for a quest                                                      
+//                                                       
+//                                                        
+//--------------------------------------------------------//
+//    Author    : Nerys Thamm BSE20021                           
+//--------------------------------------------------------//
+//    E-mail    : Nerysthamm@gmail.com                                   
+//========================================================//
+////////////////////////////////////////////////////////////
 
 [CreateAssetMenu(fileName = "New Quest", menuName = "Quest", order = 51)]
 public class Quest : ScriptableObject

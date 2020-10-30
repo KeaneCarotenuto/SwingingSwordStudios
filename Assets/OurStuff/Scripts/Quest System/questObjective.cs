@@ -1,7 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+////////////////////////////////////////////////////////////
+//========================================================//
+// Bachelor of Software Engineering                       //
+// Media Design School                                    //
+// Auckland                                               //
+// New Zealand                                            //
+//--------------------------------------------------------//
+// (c) 2020 Media Design School                           //
+//========================================================//
+//   File Name  : questObjective.cs                     
+//--------------------------------------------------------//
+//  Description : A scriptableobject type containing                                        
+//  quest objective data                                                      
+//                                                       
+//                                                        
+//--------------------------------------------------------//
+//    Author    : Nerys Thamm BSE20021                           
+//--------------------------------------------------------//
+//    E-mail    : Nerysthamm@gmail.com                                   
+//========================================================//
+////////////////////////////////////////////////////////////
 public enum ObjectiveType
 {
     KILL,
