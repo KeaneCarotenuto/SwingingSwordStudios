@@ -65,8 +65,8 @@ public class ActorBehaviour : MonoBehaviour
         if (!myActor.isDead)
         {
             //myNavAgent.SetDestination(transform.position + transform.forward);
-            DoFollowTarget();
-            //EvaluateAI();
+            //DoFollowTarget();
+            EvaluateAI();
             
         }
     }
