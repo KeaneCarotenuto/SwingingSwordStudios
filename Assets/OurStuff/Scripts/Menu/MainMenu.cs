@@ -13,17 +13,20 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        //Plays game from main menu
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitGame()
     {
+        //Quits application
         Debug.Log("quit");
         Application.Quit();
     }
 
     public void ReturnMainMenu()
     {
+        //Returns to mainmenu from end screen
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 }
