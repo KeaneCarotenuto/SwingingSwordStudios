@@ -1,4 +1,22 @@
-﻿using System.Collections;
+﻿////////////////////////////////////////////////////////////
+//========================================================//
+// Bachelor of Software Engineering                       //
+// Media Design School                                    //
+// Auckland                                               //
+// New Zealand                                            //
+//--------------------------------------------------------//
+// (c) 2020 Media Design School                           //
+//========================================================//
+//   File Name  : PlayerScript.cs
+//--------------------------------------------------------//
+//  Description : 
+//  Manages the player stats and keeps track of shards and death
+//  
+//  
+//========================================================//
+////////////////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
